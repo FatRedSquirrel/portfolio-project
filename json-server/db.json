@@ -26,12 +26,12 @@
     }
   ],
   "profile": {
-    "first": "123",
-    "lastname": "123",
+    "firstname": "Олег",
+    "lastname": "Козлов",
     "age": 21,
     "currency": "RUB",
-    "country": "Russia",
-    "city": "Moscow",
+    "country": "Japan",
+    "city": "Москва",
     "username": "admin",
     "avatar": "https://img2.akspic.ru/attachments/crops/9/3/9/9/6/169939/169939-anime-zenicu_agacuma-ubijca_demonov_kimetsu_no_yaiba-lyudi_v_prirode-multfilm-1920x1080.jpg"
   }
