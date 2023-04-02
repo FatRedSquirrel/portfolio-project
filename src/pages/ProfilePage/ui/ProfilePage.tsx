@@ -10,7 +10,10 @@ import {
   getProfileIsLoading,
   getProfileError,
   getProfileForm,
+  getProfileValidationErrors,
+  ValidateProfileError,
 } from 'entities/Profile';
+import { Text, TextTheme } from 'shared/ui/Text';
 import ProfilePageHeader from './ProfilePageHeader/ProfilePageHeader';
 
 const reducers: ReducersList = {
@@ -22,21 +25,42 @@ interface ProfilePageProps {
 }
 
 const ProfilePage = ({ className }: ProfilePageProps) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('profile');
   const dispatch = useAppDispatch();
 
   const formData = useSelector(getProfileForm);
   const isLoading = useSelector(getProfileIsLoading);
   const error = useSelector(getProfileError);
 
+  const validationErrors = useSelector(getProfileValidationErrors);
+
+  const validationErrorsTranslations = {
+    [ValidateProfileError.INCORRECT_USER_DATA]: t('Фамилия и имя обязательны'),
+    [ValidateProfileError.INCORRECT_USERNAME]: t('Имя пользователя не указано'),
+    [ValidateProfileError.INCORRECT_AGE]: t('Возраст указан некорректно'),
+    [ValidateProfileError.INCORRECT_CITY]: t('Город не указан'),
+    [ValidateProfileError.NO_DATA]: t('Нет данных'),
+    [ValidateProfileError.SERVER_ERROR]: t('Серверная ошибка'),
+  };
+
   useEffect(() => {
-    dispatch(fetchProfileData());
+    if (__PROJECT__ !== 'storybook') {
+      dispatch(fetchProfileData());
+    }
   }, [dispatch]);
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
       <div className={className}>
         <ProfilePageHeader />
+        {validationErrors?.length
+          && validationErrors.map((err) => (
+            <Text
+              key={err}
+              theme={TextTheme.ERROR}
+              text={validationErrorsTranslations[err]}
+            />
+          ))}
         <ProfileCard
           data={formData}
           isLoading={isLoading}
