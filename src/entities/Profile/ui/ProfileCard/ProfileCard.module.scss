@@ -1,6 +1,6 @@
 .ProfileCard {
     padding: 20px;
-    border: 2px solid var(--inverted-bg-color);
+    border: 2px solid var(--main-color);
 }
 
 .form {
@@ -27,11 +27,11 @@
     .border {
         width: fit-content;
 
-        border: 2px solid var(--primary-color);
+        border: 2px solid var(--main-color);
         border-radius: 100%;
     }
 }
 
 .editing {
-    border: 2px solid var(--inverted-primary-color);
+    border: 2px solid var(--accent-color);
 }

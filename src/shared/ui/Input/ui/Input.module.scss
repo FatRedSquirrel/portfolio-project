@@ -12,7 +12,7 @@
     outline: none;
     width: 100%;
     color: transparent;
-    text-shadow: 0 0 0 var(--primary-color);
+    text-shadow: 0 0 0 var(--main-color);
 
     &:focus {
         outline: none;
@@ -31,7 +31,7 @@
 .caret {
     height: 3px;
     width: 9px;
-    background: var(--primary-color);
+    background: var(--main-color);
     bottom: 0;
     left: 0;
     position: absolute;

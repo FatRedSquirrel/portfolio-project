@@ -6,11 +6,11 @@
 .app,
 .app_modal {
     font: var(--font-m);
-    color: var(--primary-color);
+    color: var(--main-color);
 }
 
 .app {
-    background: var(--bg-color);
+    background: var(--secondary-color);
     min-height: 100vh;
 }
 
