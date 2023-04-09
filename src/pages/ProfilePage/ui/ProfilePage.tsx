@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useEffect } from 'react';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import {
   fetchProfileData,

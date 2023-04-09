@@ -5,7 +5,7 @@ import { Input } from 'shared/ui/Input';
 import { Loader } from 'shared/ui/Loader';
 import { useSelector } from 'react-redux';
 import { getProfileReadonly, profileActions } from 'entities/Profile';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { ChangeEvent, useCallback } from 'react';
 import { Avatar } from 'shared/ui/Avatar';
 import { Currency, CurrencySelect } from 'entities/Currency';

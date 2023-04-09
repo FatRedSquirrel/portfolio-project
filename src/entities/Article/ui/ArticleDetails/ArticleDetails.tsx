@@ -1,7 +1,7 @@
 import { memo, useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { Loader } from 'shared/ui/Loader';
 import { Text, TextAlign, TextTheme } from 'shared/ui/Text';
 import { t } from 'i18next';
@@ -94,6 +94,8 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
         <Skeleton className={cls.avatar} width={200} height={200} round />
         <Skeleton className={cls.title} width={300} height={32} />
         <Skeleton className={cls.skeleton} width={600} height={24} />
+        <Skeleton className={cls.skeleton} width="100%" height={200} />
+        <Skeleton className={cls.skeleton} width="100%" height={200} />
         <Skeleton className={cls.skeleton} width="100%" height={200} />
         <Skeleton className={cls.skeleton} width="100%" height={200} />
       </>

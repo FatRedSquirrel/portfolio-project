@@ -95,7 +95,7 @@
       "id": "2",
       "text": "some comment 2",
       "articleId": "1",
-      "userId": "1"
+      "userId": "2"
     },
     {
       "id": "3",
@@ -109,13 +109,15 @@
       "id": "1",
       "username": "admin",
       "password": "123",
-      "role": "ADMIN"
+      "role": "ADMIN",
+      "avatar": "https://mobimg.b-cdn.net/v3/fetch/0f/0fa2ad47af6d1440a1662c1651724ab0.jpeg"
     },
     {
       "id": "2",
       "username": "user",
       "password": "123",
-      "role": "USER"
+      "role": "USER",
+      "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
     }
   ],
   "profile": {
@@ -126,7 +128,6 @@
     "country": "Belarus",
     "city": "Moscow",
     "username": "admin213",
-    "avatar": "https://i.pinimg.com/originals/1b/8c/4f/1b8c4f6a5cf319992d81e2fbdd65eb36.jpg",
-    "firstname": "123"
+    "avatar": "https://www.hdwallpapers.in/download/boy_zenitsu_agatsuma_hd_demon_slayer_kimetsu_no_yaiba-HD.jpg"
   }
 }

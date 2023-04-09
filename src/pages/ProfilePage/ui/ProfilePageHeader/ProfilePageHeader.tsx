@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import {
   getProfileReadonly, profileActions, updateProfileData,
 } from 'entities/Profile';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { useCallback } from 'react';
 import cls from './ProfilePageHeader.module.scss';
