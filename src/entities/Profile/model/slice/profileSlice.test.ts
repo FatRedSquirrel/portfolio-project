@@ -1,19 +1,19 @@
 import { Currency } from 'entities/Currency';
+import { Country } from 'entities/Country';
 import { updateProfileData } from '../services/updateProfileData/updateProfileData';
 import { ProfileSchema, ValidateProfileError } from '../types/profile';
 import { profileActions, profileReducer } from './profileSlice';
-import { Country } from 'entities/Country';
 
 const data = {
-  firstname: "Олег",
-  lastname: "Козлов",
+  firstname: 'Олег',
+  lastname: 'Козлов',
   age: 21,
   currency: Currency.EUR,
   country: Country.USA,
-  city: "Москва",
-  username: "disciplinedMonster?",
-  avatar: "https://img2.akspic.ru/attachments/crops/9/3/9/9/6/169939/169939-anime-zenicu_agacuma-ubijca_demonov_kimetsu_no_yaiba-lyudi_v_prirode-multfilm-1920x1080.jpg"
-}
+  city: 'Москва',
+  username: 'disciplinedMonster?',
+  avatar: 'https://img2.akspic.ru/attachments/crops/9/3/9/9/6/169939/169939-anime-zenicu_agacuma-ubijca_demonov_kimetsu_no_yaiba-lyudi_v_prirode-multfilm-1920x1080.jpg',
+};
 
 describe('loginSlice.test', () => {
   test('test updateProfile (lastname)', () => {
@@ -44,7 +44,7 @@ describe('loginSlice.test', () => {
     const state: DeepPartial<ProfileSchema> = {
       isLoading: false,
       readonly: false,
-      validationErrors: [ValidateProfileError.SERVER_ERROR]
+      validationErrors: [ValidateProfileError.SERVER_ERROR],
     };
     expect(profileReducer(
       state as ProfileSchema,
@@ -52,7 +52,7 @@ describe('loginSlice.test', () => {
     )).toEqual({
       isLoading: true,
       readonly: false,
-      validationErrors: undefined
+      validationErrors: undefined,
     });
   });
 
@@ -69,7 +69,7 @@ describe('loginSlice.test', () => {
       readonly: true,
       form: data,
       error: null,
-      data
+      data,
     });
   });
 });

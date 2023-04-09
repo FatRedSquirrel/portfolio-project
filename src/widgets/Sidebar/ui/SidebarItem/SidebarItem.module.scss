@@ -2,6 +2,10 @@
     margin-top: 10px;
     display: flex;
     align-items: center;
+
+    svg {
+        fill: var(--accent-color-reversed)
+    }
 }
 
 .link {

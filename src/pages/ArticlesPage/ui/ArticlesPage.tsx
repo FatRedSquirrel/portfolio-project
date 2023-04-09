@@ -1,7 +1,10 @@
+import { ArticleDetailsPage } from 'pages/ArticleDetailsPage';
 import { memo } from 'react';
 
 const ArticlesPage = () => (
-  <div>ArticlesPage</div>
+  <div>
+    <ArticleDetailsPage />
+  </div>
 );
 
 export default memo(ArticlesPage);

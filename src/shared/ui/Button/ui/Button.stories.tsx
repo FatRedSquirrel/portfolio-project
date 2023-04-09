@@ -17,8 +17,16 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  children: 'Text',
+  children: 'Button',
+  theme: ButtonTheme.PRIMARY,
 };
+
+export const PrimaryDarkTheme = Template.bind({});
+PrimaryDarkTheme.args = {
+  children: 'Button',
+  theme: ButtonTheme.PRIMARY,
+};
+PrimaryDarkTheme.decorators = [ThemeDecorator(Theme.DARK)];
 
 export const Clear = Template.bind({});
 Clear.args = {
