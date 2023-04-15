@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { useEffect } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import {
@@ -14,6 +13,9 @@ import {
   ValidateProfileError,
 } from 'entities/Profile';
 import { Text, TextTheme } from 'shared/ui/Text';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
+import { useParams } from 'react-router-dom';
+import { getUserAuthData } from 'entities/User';
 import ProfilePageHeader from './ProfilePageHeader/ProfilePageHeader';
 
 const reducers: ReducersList = {
@@ -43,11 +45,13 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
     [ValidateProfileError.SERVER_ERROR]: t('Серверная ошибка'),
   };
 
-  useEffect(() => {
-    if (__PROJECT__ !== 'storybook') {
-      dispatch(fetchProfileData());
+  const { id } = useParams<{id: string}>();
+
+  useInitialEffect(() => {
+    if (id) {
+      dispatch(fetchProfileData(id));
     }
-  }, [dispatch]);
+  });
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>

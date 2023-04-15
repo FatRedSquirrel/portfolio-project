@@ -7,6 +7,10 @@
 
   border: 1px solid var(--main-color);
 
+  &.noBorder {
+    border: none;
+  }
+
   &__header {
     display: flex;
     align-items: center;

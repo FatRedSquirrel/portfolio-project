@@ -1,6 +1,9 @@
 import { Avatar } from 'shared/ui/Avatar';
 import { Text } from 'shared/ui/Text';
 import { Skeleton } from 'shared/ui/Skeleton/ui/Skeleton';
+import { AppLink } from 'shared/ui/AppLink';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import classNames from 'shared/lib/classNames/classNames';
 import { Comment } from '../../model/types/comment';
 import cls from './CommentCard.module.scss';
 
@@ -19,7 +22,7 @@ export const CommentCard = (props: CommentProps) => {
 
   if (isLoading) {
     return (
-      <div className={cls.comment}>
+      <div className={classNames(cls.comment, cls.noBorder)}>
         <div className={cls.comment__header}>
           <Skeleton width={30} height={30} round />
           <Skeleton width={150} height={20} />
@@ -35,11 +38,12 @@ export const CommentCard = (props: CommentProps) => {
 
   return (
     <div className={cls.comment}>
-      <div className={cls.comment__header}>
+      <AppLink to={`${RoutePath.profile}/${comment.user.id}`} className={cls.comment__header}>
         {comment.user.avatar
-        && <Avatar size={40} src={comment.user.avatar} />}
+          ? <Avatar size={40} src={comment.user.avatar} />
+          : <Avatar size={40} empty />}
         <Text title={comment.user.username} />
-      </div>
+      </AppLink>
       <Text text={comment.text} />
     </div>
   );

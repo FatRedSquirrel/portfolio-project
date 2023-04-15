@@ -7,6 +7,7 @@ interface AvatarProps {
   src?: string
   size?: number
   alt?: string
+  empty?: boolean
 }
 
 export const Avatar = (props: AvatarProps) => {
@@ -15,6 +16,7 @@ export const Avatar = (props: AvatarProps) => {
     src,
     size,
     alt,
+    empty,
   } = props;
 
   const styles = useMemo<CSSProperties>(() => ({
@@ -24,7 +26,7 @@ export const Avatar = (props: AvatarProps) => {
 
   return (
     <div
-      className={classNames(cls.avatar, className)}
+      className={classNames(cls.avatar, className, empty && cls.empty)}
       style={styles}
     >
       <img

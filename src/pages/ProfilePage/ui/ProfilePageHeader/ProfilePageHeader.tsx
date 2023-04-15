@@ -7,14 +7,20 @@ import {
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { useCallback } from 'react';
+import { useParams } from 'react-router-dom';
+import { getUserAuthData } from 'entities/User';
 import cls from './ProfilePageHeader.module.scss';
 
 const ProfilePageHeader = () => {
   const dispatch = useAppDispatch();
 
+  const { id } = useParams<{id: string}>();
   const { t } = useTranslation('profile');
 
   const readonly = useSelector(getProfileReadonly);
+  const authData = useSelector(getUserAuthData);
+
+  const canEdit = authData?.id === id;
 
   const enableEdit = useCallback(() => {
     dispatch(profileActions.setReadonly(false));
@@ -25,14 +31,16 @@ const ProfilePageHeader = () => {
   }, [dispatch]);
 
   const save = useCallback(() => {
-    dispatch(updateProfileData());
-  }, [dispatch]);
+    if (id) {
+      dispatch(updateProfileData(id));
+    }
+  }, [dispatch, id]);
 
   return (
     <div className={cls.header}>
       <Text title={t('Профиль')} />
-      {
-        readonly
+      {canEdit
+        && (readonly
           ? (
             <Button
               className={cls.editBtn}
@@ -59,8 +67,7 @@ const ProfilePageHeader = () => {
                 {t('Сохранить')}
               </Button>
             </div>
-          )
-      }
+          ))}
     </div>
   );
 };

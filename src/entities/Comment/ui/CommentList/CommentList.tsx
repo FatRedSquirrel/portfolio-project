@@ -1,4 +1,3 @@
-import { Skeleton } from 'shared/ui/Skeleton/ui/Skeleton';
 import { Text } from 'shared/ui/Text';
 import { useTranslation } from 'react-i18next';
 import { Comment } from '../../model/types/comment';
@@ -19,6 +18,16 @@ export const CommentList = (props: CommentListProps) => {
   } = props;
 
   const { t } = useTranslation();
+
+  if (isLoading) {
+    return (
+      <div className={cls.commentsList}>
+        <CommentCard isLoading />
+        <CommentCard isLoading />
+        <CommentCard isLoading />
+      </div>
+    );
+  }
 
   return (
     <div>

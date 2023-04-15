@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { CommentList } from './CommentList';
 
 export default {
-  title: 'entities/CommentList',
+  title: 'entities/comments/CommentList',
   component: CommentList,
   argTypes: {
     backgroundColor: { control: 'color' },
@@ -18,6 +18,7 @@ const comments = [
     user: {
       id: '1',
       username: 'user 1',
+      avatar: 'https://www.hdwallpapers.in/download/boy_zenitsu_agatsuma_hd_demon_slayer_kimetsu_no_yaiba-HD.jpg',
     },
   },
   {
@@ -26,6 +27,7 @@ const comments = [
     user: {
       id: '2',
       username: 'user 2',
+      avatar: 'https://www.hdwallpapers.in/download/boy_zenitsu_agatsuma_hd_demon_slayer_kimetsu_no_yaiba-HD.jpg',
     },
   },
   {
@@ -38,8 +40,8 @@ const comments = [
   },
 ];
 
-export const Primary = Template.bind({});
-Primary.args = {
+export const Normal = Template.bind({});
+Normal.args = {
   comments,
 };
 

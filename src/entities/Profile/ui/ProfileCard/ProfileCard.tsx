@@ -118,19 +118,19 @@ export const ProfileCard = (props: ProfileCardProps) => {
       <form className={cls.form}>
         <Input
           value={data?.firstname}
-          placeholder={t('Ваше имя')}
+          placeholder={t('Имя')}
           readonly={readonly}
           onChange={onFirstnameChange}
         />
         <Input
           value={data?.lastname}
-          placeholder={t('Ваша фамилия')}
+          placeholder={t('Фамилия')}
           readonly={readonly}
           onChange={onLastnameChange}
         />
         <Input
           value={data?.age}
-          placeholder={t('Ваш возраст')}
+          placeholder={t('Возраст')}
           readonly={readonly}
           onChange={onAgeChange}
         />
