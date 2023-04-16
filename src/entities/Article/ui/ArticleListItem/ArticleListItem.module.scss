@@ -1,0 +1,155 @@
+.GRID {
+  width: 230px;
+  transition: all 200ms;
+
+  &:hover {
+    transform: scale(1.01);
+    opacity: 0.8;
+  }
+
+  &:active {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+
+  .image {
+    width: 200px;
+    height: 200px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .date {
+      padding: 4px 10px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      background-color: var(--card-bg);
+    }
+  }
+
+  .info {
+    width: 100%;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .title {
+    p {
+      width: 200px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+
+  .skeleton {
+    height: 100%;
+  }
+}
+
+.LIST {
+  width: 100%;
+
+  & > div {
+    padding: 30px;
+  }
+
+  .header {
+    width: 100%;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .user {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+
+  .types {
+    flex-wrap: wrap;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .image {
+    width: 100%;
+    height: 200px;
+
+    img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: contain;
+    }
+  }
+
+  .text {
+    max-height: 210px;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-overflow: ellipsis;
+    overflow-y: hidden;
+  }
+
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .imgSkeleton {
+    margin: 20px auto;
+  }
+
+  .titleSkeleton {
+    margin-bottom: 10px;
+  }
+
+  .textSkeleton {
+    overflow-y: visible;
+  }
+
+  .footerSkeleton {
+    margin-top: 20px;
+  }
+}
+
+.type {
+  p {
+    width: 100px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+
+.viewsWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  svg {
+    width: 30px;
+    height: 30px;
+
+    fill: var(--accent-color);
+  }
+}

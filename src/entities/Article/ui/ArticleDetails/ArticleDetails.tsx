@@ -2,9 +2,7 @@ import { memo, useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
-import { Loader } from 'shared/ui/Loader';
 import { Text, TextAlign, TextTheme } from 'shared/ui/Text';
-import { t } from 'i18next';
 import { Skeleton } from 'shared/ui/Skeleton/ui/Skeleton';
 import { Avatar } from 'shared/ui/Avatar';
 import EyeIcon from 'shared/assets/icons/eye.svg';
@@ -14,8 +12,7 @@ import { ArticleBlock, ArticleBlockType } from '../../model/types/article';
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
 import {
-  getArticlesDetailsData,
-  getArticlesDetailsError,
+  getArticlesDetailsData, getArticlesDetailsError,
   getArticlesDetailsIsLoading,
 } from '../../model/selectors/articleDetails';
 import cls from './ArticleDetails.module.scss';

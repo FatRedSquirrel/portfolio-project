@@ -1,6 +1,7 @@
-import { memo } from 'react';
-import { Article, ArticleList, ArticleView } from 'entities/Article';
-import { useSelector } from 'react-redux';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Article, ArticleView } from 'entities/Article';
+import { ArticleListItemSkeleton } from 'entities/Article/ui/ArticleListItem/ArticleListItemSkeleton';
+import { ArticleListItem } from './ArticleListItem';
 
 const article = {
   id: '1',
@@ -81,21 +82,35 @@ const article = {
   ],
 } as Article;
 
-const ArticlesPage = () => {
-  const zxc = '123';
+export default {
+  title: 'entities/article/ArticleListItem',
+  component: ArticleListItem,
+  argTypes: {
+    backgroundColor: { control: 'color' },
+  },
+} as ComponentMeta<typeof ArticleListItem>;
 
-  return (
-    <div>
-      <ArticleList
-        view={ArticleView.LIST}
-        articles={
-          new Array(16)
-            .fill(0)
-            .map((item, index) => ({ ...article, id: String(index) }))
-        }
-      />
-    </div>
-  );
+const Template: ComponentStory<typeof ArticleListItem> = (args) => <ArticleListItem {...args} />;
+const LoadingTemplate: ComponentStory<typeof ArticleListItemSkeleton> = (args) => <ArticleListItemSkeleton {...args} />;
+
+export const GridView = Template.bind({});
+GridView.args = {
+  article,
+  view: ArticleView.GRID,
 };
 
-export default memo(ArticlesPage);
+export const GridViewLoading = LoadingTemplate.bind({});
+GridViewLoading.args = {
+  view: ArticleView.GRID,
+};
+
+export const ListView = Template.bind({});
+ListView.args = {
+  article,
+  view: ArticleView.LIST,
+};
+
+export const ListViewLoading = LoadingTemplate.bind({});
+ListViewLoading.args = {
+  view: ArticleView.LIST,
+};

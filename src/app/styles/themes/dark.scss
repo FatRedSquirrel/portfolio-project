@@ -1,10 +1,13 @@
 .app_dark_theme {
-    --main-color: #F4F9FB;
-    --secondary-color: #006C9E;
-    --accent-color: #22d4a4;
-    --accent-color-reversed: #007556;
+  --main-color: #f4f9fb;
+  --secondary-color: #006c9e;
+  --accent-color: #22d4a4;
+  --accent-color-reversed: #007556;
 
-    // code
-    --code-color: #F4F9FB;
-    --code-bg: #044766;
+  // code
+  --code-color: #f4f9fb;
+  --code-bg: #044766;
+
+  //article
+  --card-bg: #2d93c4;
 }
