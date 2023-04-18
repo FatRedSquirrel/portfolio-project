@@ -118,3 +118,8 @@ ListViewLoading.args = {
   view: ArticleView.LIST,
   isLoading: true,
 };
+
+export const Empty = Template.bind({});
+Empty.args = {
+  articles: [],
+};
