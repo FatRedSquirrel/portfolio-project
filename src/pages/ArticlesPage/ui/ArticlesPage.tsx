@@ -5,14 +5,14 @@ import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import {
-  getArticlesPageError,
+  getArticlesPageError, getArticlesPageInited,
   getArticlesPageIsLoading, getArticlesPageView,
 } from 'pages/ArticlesPage/model/selectors/articlesPageSelectors';
 import { Text } from 'shared/ui/Text';
 import { ArticleViewSelector } from 'entities/Article/ui/ArticleViewSelector/ArticleViewSelector';
-import { Page } from 'shared/ui/Page/Page';
+import { Page } from 'widgets/Page';
 import { fetchNextArticlesPage } from 'pages/ArticlesPage/model/services/fetchNextArticlesPage/fetchNextArticlesPage';
-import { fetchArticlesList } from '../model/services/fetchArticlesList/fetchArticlesList';
+import { initArticlesPage } from 'pages/ArticlesPage/model/services/initArticlesPage/initArticlesPage';
 import { articlesPageActions, articlesPageReducer, getArticles } from '../model/slice/articlesPageSlice';
 
 const reducers: ReducersList = {
@@ -22,15 +22,14 @@ const reducers: ReducersList = {
 const ArticlesPage = () => {
   const dispatch = useAppDispatch();
 
-  useInitialEffect(() => {
-    dispatch(articlesPageActions.initState());
-    dispatch(fetchArticlesList({ page: 1 }));
-  });
-
   const articles = useSelector(getArticles.selectAll);
   const view = useSelector(getArticlesPageView);
   const isLoading = useSelector(getArticlesPageIsLoading);
   const error = useSelector(getArticlesPageError);
+
+  useInitialEffect(() => {
+    dispatch(initArticlesPage());
+  });
 
   const changeView = (newView: ArticleView) => {
     dispatch(articlesPageActions.setView(newView));
@@ -50,7 +49,7 @@ const ArticlesPage = () => {
   }
 
   return (
-    <DynamicModuleLoader reducers={reducers}>
+    <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
       <Page onScrollEnd={loadNextPart}>
         <ArticleViewSelector
           view={view}

@@ -35,8 +35,8 @@ export const ArticleList = (props: ArticleListProps) => {
       {isLoading
         && (
           new Array(view === ArticleView.GRID ? 9 : 3)
-            .fill(0)
-            .map((item, index) => (
+            .fill(Math.random())
+            .map((_, index) => (
               <ArticleListItemSkeleton key={index} view={view} />
             ))
         )}

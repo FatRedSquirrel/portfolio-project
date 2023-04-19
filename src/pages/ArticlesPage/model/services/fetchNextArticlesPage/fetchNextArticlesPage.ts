@@ -14,7 +14,7 @@ export const fetchNextArticlesPage = createAsyncThunk<
   void, // func argument type,
   ThunkConfig<string>
 >(
-  'articles/fetchNextArticlesPage',
+  'articlesPage/fetchNextArticlesPage',
   async (_, thunkApi) => {
     const { getState, dispatch } = thunkApi;
     const hasMore = getArticlesPageHasMore(getState());

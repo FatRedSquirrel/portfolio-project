@@ -12,7 +12,7 @@ export const fetchArticlesList = createAsyncThunk<
   FetchArticlesListProps, // func argument type,
   ThunkConfig<string>
 >(
-  'articles/fetchArticlesList',
+  'articlesPage/fetchArticlesList',
   async (props, thunkApi) => {
     const { extra, rejectWithValue, getState } = thunkApi;
     const { page = 1 } = props;
