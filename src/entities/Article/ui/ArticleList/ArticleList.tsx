@@ -27,23 +27,19 @@ export const ArticleList = (props: ArticleListProps) => {
     />
   );
 
-  if (isLoading) {
-    return (
-      <div className={cls.ArticleList}>
-        {new Array(view === ArticleView.GRID ? 9 : 3)
-          .fill(0)
-          .map((item, index) => (
-            <ArticleListItemSkeleton key={index} view={view} />
-          ))}
-      </div>
-    );
-  }
-
   return (
     <div className={classNames(cls.ArticleList, className)}>
       {articles.length
         ? articles.map(renderArticle)
-        : <div>нет статей</div>}
+        : !isLoading && <div>нет статей</div>}
+      {isLoading
+        && (
+          new Array(view === ArticleView.GRID ? 9 : 3)
+            .fill(0)
+            .map((item, index) => (
+              <ArticleListItemSkeleton key={index} view={view} />
+            ))
+        )}
     </div>
   );
 };

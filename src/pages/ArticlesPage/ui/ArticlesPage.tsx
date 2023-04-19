@@ -3,7 +3,6 @@ import { ArticleList, ArticleView } from 'entities/Article';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
-import { fetchArticlesList } from 'pages/ArticlesPage/model/services/fetchArticlesList';
 import { useSelector } from 'react-redux';
 import {
   getArticlesPageError,
@@ -11,6 +10,9 @@ import {
 } from 'pages/ArticlesPage/model/selectors/articlesPageSelectors';
 import { Text } from 'shared/ui/Text';
 import { ArticleViewSelector } from 'entities/Article/ui/ArticleViewSelector/ArticleViewSelector';
+import { Page } from 'shared/ui/Page/Page';
+import { fetchNextArticlesPage } from 'pages/ArticlesPage/model/services/fetchNextArticlesPage/fetchNextArticlesPage';
+import { fetchArticlesList } from '../model/services/fetchArticlesList/fetchArticlesList';
 import { articlesPageActions, articlesPageReducer, getArticles } from '../model/slice/articlesPageSlice';
 
 const reducers: ReducersList = {
@@ -21,8 +23,8 @@ const ArticlesPage = () => {
   const dispatch = useAppDispatch();
 
   useInitialEffect(() => {
-    dispatch(fetchArticlesList());
     dispatch(articlesPageActions.initState());
+    dispatch(fetchArticlesList({ page: 1 }));
   });
 
   const articles = useSelector(getArticles.selectAll);
@@ -32,6 +34,10 @@ const ArticlesPage = () => {
 
   const changeView = (newView: ArticleView) => {
     dispatch(articlesPageActions.setView(newView));
+  };
+
+  const loadNextPart = () => {
+    dispatch(fetchNextArticlesPage());
   };
 
   if (error) {
@@ -45,7 +51,7 @@ const ArticlesPage = () => {
 
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <div>
+      <Page onScrollEnd={loadNextPart}>
         <ArticleViewSelector
           view={view}
           onViewClick={changeView}
@@ -55,7 +61,7 @@ const ArticlesPage = () => {
           view={view}
           articles={articles}
         />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   );
 };

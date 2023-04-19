@@ -15,18 +15,14 @@ import {
 import { Text, TextTheme } from 'shared/ui/Text';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { useParams } from 'react-router-dom';
-import { getUserAuthData } from 'entities/User';
+import { Page } from 'shared/ui/Page/Page';
 import ProfilePageHeader from './ProfilePageHeader/ProfilePageHeader';
 
 const reducers: ReducersList = {
   profile: profileReducer,
 };
 
-interface ProfilePageProps {
-    className?: string;
-}
-
-const ProfilePage = ({ className }: ProfilePageProps) => {
+const ProfilePage = () => {
   const { t } = useTranslation('profile');
   const dispatch = useAppDispatch();
 
@@ -55,7 +51,7 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <div className={className}>
+      <Page>
         <ProfilePageHeader />
         {validationErrors?.length
           && validationErrors.map((err) => (
@@ -70,7 +66,7 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
           isLoading={isLoading}
           error={error}
         />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   );
 };
