@@ -1,0 +1,17 @@
+.tabs {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.tab {
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &:active {
+    opacity: 0.3;
+  }
+}

@@ -5,3 +5,6 @@ export { fetchArticleById } from './model/services/fetchArticleById/fetchArticle
 export { ArticleView } from './model/types/article';
 export { ArticleList } from './ui/ArticleList/ArticleList';
 export { ArticleViewSelector } from './ui/ArticleViewSelector/ArticleViewSelector';
+export { ArticleSortField } from './model/types/article';
+export { ArticleSortSelector } from './ui/ArticleSortSelector/ArticleSortSelector';
+export { ArticleType } from 'entities/Article/model/types/article';

@@ -45,7 +45,6 @@ export const ProfileCard = (props: ProfileCardProps) => {
 
   const onAgeChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
-
     // Checking if input value is number
     if (!/^[0-9]+$/.test(value) && value !== '') {
       return;
