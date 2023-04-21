@@ -8,7 +8,11 @@ import { CombinedState } from 'redux';
 import { ProfileSchema } from 'entities/Profile';
 import { AxiosInstance } from 'axios';
 import { ArticleDetailsSchema } from 'entities/Article';
-import { ArticleDetailsCommentsSchema } from 'pages/ArticleDetailsPage';
+import {
+  ArticleCommentsSchema,
+  ArticleDetailsPageSchema,
+  ArticleRecommendationsSchema,
+} from 'pages/ArticleDetailsPage';
 import { AddCommentFormSchema } from 'features/addCommentForm';
 import { ArticlesPageSchema } from 'pages/ArticlesPage/model/types/articlesPageSchema';
 import { PageSchema } from 'widgets/Page';
@@ -22,9 +26,10 @@ export interface StateSchema {
     loginForm?: LoginSchema
     profile?: ProfileSchema
     articleDetails?: ArticleDetailsSchema
-    articleDetailsComments?: ArticleDetailsCommentsSchema
     addCommentForm?: AddCommentFormSchema
     articlesPage?: ArticlesPageSchema
+    articleComments?: ArticleCommentsSchema
+    articleRecommendations?: ArticleRecommendationsSchema
 }
 
 export type StateSchemaKey = keyof StateSchema;

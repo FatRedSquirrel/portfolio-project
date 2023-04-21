@@ -2,12 +2,12 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/StoreProvider';
 import { Comment } from 'entities/Comment';
 
-export const fetchCommentsByArticleId = createAsyncThunk<
+export const fetchArticleComments = createAsyncThunk<
   Comment[], // return type
   string | undefined, // func argument type
   ThunkConfig<string>
 >(
-  'articleDetails/fetchCommentsByArticleId',
+  'articleDetails/fetchArticleComments',
   async (articleId, thunkApi) => {
     const { extra, rejectWithValue } = thunkApi;
 

@@ -8,6 +8,7 @@ import { Avatar } from 'shared/ui/Avatar';
 import EyeIcon from 'shared/assets/icons/eye.svg';
 import CalendarIcon from 'shared/assets/icons/calendar.svg';
 import { TextSize } from 'shared/ui/Text/ui/Text';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { ArticleBlock, ArticleBlockType } from '../../model/types/article';
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
@@ -32,18 +33,16 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
   const dispatch = useAppDispatch();
 
   const {
-    id = '1',
+    id,
   } = props;
 
   const isLoading = useSelector(getArticlesDetailsIsLoading);
   const error = useSelector(getArticlesDetailsError);
   const article = useSelector(getArticlesDetailsData);
 
-  useEffect(() => {
-    if (__PROJECT__ !== 'storybook') {
-      dispatch(fetchArticleById(id));
-    }
-  }, [dispatch, id]);
+  useInitialEffect(() => {
+    dispatch(fetchArticleById(id));
+  }, [id]);
 
   const renderBlock = useCallback((block: ArticleBlock) => {
     switch (block.type) {

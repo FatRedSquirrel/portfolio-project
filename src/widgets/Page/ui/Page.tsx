@@ -38,7 +38,7 @@ export const Page = (props: PageProps) => {
 
   useInitialEffect(() => {
     wrapperRef.current.scrollTop = scrollPosition;
-  });
+  }, []);
 
   const handleScroll = useThrottle((e: UIEvent<HTMLDivElement>) => {
     dispatch(pageActions.setScrollPosition({

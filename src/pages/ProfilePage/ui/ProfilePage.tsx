@@ -47,7 +47,7 @@ const ProfilePage = () => {
     if (id) {
       dispatch(fetchProfileData(id));
     }
-  });
+  }, []);
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>

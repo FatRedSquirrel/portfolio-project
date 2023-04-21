@@ -2,6 +2,7 @@ import classNames from 'shared/lib/classNames/classNames';
 import { ArticleListItemSkeleton } from 'entities/Article/ui/ArticleListItem/ArticleListItemSkeleton';
 import { Text, TextAlign } from 'shared/ui/Text';
 import { TextSize } from 'shared/ui/Text/ui/Text';
+import { HTMLAttributeAnchorTarget } from 'react';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { Article, ArticleView } from '../../model/types/article';
 import cls from './ArticleList.module.scss';
@@ -11,6 +12,7 @@ interface ArticleListProps {
     articles: Article[]
     isLoading?: boolean
     view?: ArticleView
+    target?: HTMLAttributeAnchorTarget
 }
 
 export const ArticleList = (props: ArticleListProps) => {
@@ -19,6 +21,7 @@ export const ArticleList = (props: ArticleListProps) => {
     articles,
     isLoading,
     view = ArticleView.GRID,
+    target,
   } = props;
 
   const renderArticle = (article: Article) => (
@@ -26,6 +29,7 @@ export const ArticleList = (props: ArticleListProps) => {
       key={article.id}
       article={article}
       view={view}
+      target={target}
     />
   );
 

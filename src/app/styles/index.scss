@@ -18,3 +18,18 @@
   display: flex;
 }
 
+*::-webkit-scrollbar {
+  width: 12px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  border-radius: 12px;
+  background: var(--secondary-color);
+}
+
+*::-webkit-scrollbar-thumb {
+  border: 3px solid var(--secondary-color);
+  border-radius: 10px;
+  background-color: var(--main-color);
+}

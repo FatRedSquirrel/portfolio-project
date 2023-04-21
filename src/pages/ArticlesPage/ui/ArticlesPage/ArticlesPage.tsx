@@ -33,7 +33,7 @@ const ArticlesPage = () => {
 
   useInitialEffect(() => {
     dispatch(initArticlesPage(searchParams));
-  });
+  }, []);
 
   const loadNextPart = () => {
     dispatch(fetchNextArticlesPage());
