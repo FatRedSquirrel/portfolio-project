@@ -2,6 +2,10 @@
     margin-top: 10px;
     display: flex;
     align-items: center;
+
+    svg {
+        fill: var(--accent-color-reversed)
+    }
 }
 
 .link {
@@ -10,7 +14,7 @@
 }
 
 .icon {
-    fill: var(--inverted-primary-color);
+    fill: var(--secondary-color);
 }
 
 .collapsed {

@@ -1,33 +1,74 @@
-import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { fetchProfileData, ProfileCard, profileReducer } from 'entities/Profile';
-import { useEffect } from 'react';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
+import { useSelector } from 'react-redux';
+import {
+  fetchProfileData,
+  ProfileCard,
+  profileReducer,
+  getProfileIsLoading,
+  getProfileError,
+  getProfileForm,
+  getProfileValidationErrors,
+  ValidateProfileError,
+} from 'entities/Profile';
+import { Text, TextTheme } from 'shared/ui/Text';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
+import { useParams } from 'react-router-dom';
+import { Page } from 'widgets/Page';
+import ProfilePageHeader from './ProfilePageHeader/ProfilePageHeader';
 
 const reducers: ReducersList = {
-    profile: profileReducer,
+  profile: profileReducer,
 };
 
-interface ProfilePageProps {
-    className?: string;
-}
+const ProfilePage = () => {
+  const { t } = useTranslation('profile');
+  const dispatch = useAppDispatch();
 
-const ProfilePage = ({ className }: ProfilePageProps) => {
-    const { t } = useTranslation();
-    const dispatch = useAppDispatch();
+  const formData = useSelector(getProfileForm);
+  const isLoading = useSelector(getProfileIsLoading);
+  const error = useSelector(getProfileError);
 
-    useEffect(() => {
-        dispatch(fetchProfileData());
-    }, [dispatch]);
+  const validationErrors = useSelector(getProfileValidationErrors);
 
-    return (
-        <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-            <div className={classNames('', {}, [className])}>
-                <ProfileCard />
-            </div>
-        </DynamicModuleLoader>
-    );
+  const validationErrorsTranslations = {
+    [ValidateProfileError.INCORRECT_USER_DATA]: t('Фамилия и имя обязательны'),
+    [ValidateProfileError.INCORRECT_USERNAME]: t('Имя пользователя не указано'),
+    [ValidateProfileError.INCORRECT_AGE]: t('Возраст указан некорректно'),
+    [ValidateProfileError.INCORRECT_CITY]: t('Город не указан'),
+    [ValidateProfileError.NO_DATA]: t('Нет данных'),
+    [ValidateProfileError.SERVER_ERROR]: t('Серверная ошибка'),
+  };
+
+  const { id } = useParams<{id: string}>();
+
+  useInitialEffect(() => {
+    if (id) {
+      dispatch(fetchProfileData(id));
+    }
+  }, []);
+
+  return (
+    <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+      <Page>
+        <ProfilePageHeader />
+        {validationErrors?.length
+          && validationErrors.map((err) => (
+            <Text
+              key={err}
+              theme={TextTheme.ERROR}
+              text={validationErrorsTranslations[err]}
+            />
+          ))}
+        <ProfileCard
+          data={formData}
+          isLoading={isLoading}
+          error={error}
+        />
+      </Page>
+    </DynamicModuleLoader>
+  );
 };
 
 export default ProfilePage;

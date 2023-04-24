@@ -1,0 +1,19 @@
+.comment {
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  border: 1px solid var(--main-color);
+
+  &.noBorder {
+    border: none;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+}

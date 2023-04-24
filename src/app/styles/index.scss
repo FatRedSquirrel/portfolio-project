@@ -5,20 +5,31 @@
 
 .app,
 .app_modal {
-    font: var(--font-m);
-    color: var(--primary-color);
+  font: var(--font-m);
+  color: var(--main-color);
 }
 
 .app {
-    background: var(--bg-color);
-    min-height: 100vh;
+  min-height: 100vh;
+  background: var(--secondary-color);
 }
 
 .content-page {
-    display: flex;
+  display: flex;
 }
 
-.page-wrapper {
-    flex-grow: 1;
-    padding: 20px;
+*::-webkit-scrollbar {
+  width: 12px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  border-radius: 12px;
+  background: var(--secondary-color);
+}
+
+*::-webkit-scrollbar-thumb {
+  border: 3px solid var(--secondary-color);
+  border-radius: 10px;
+  background-color: var(--main-color);
 }

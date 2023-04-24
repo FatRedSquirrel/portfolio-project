@@ -1,0 +1,47 @@
+.articleDetails {
+  min-height: 100%;
+}
+
+.avatar {
+  margin: 0 auto;
+
+  img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+  }
+}
+
+.title {
+  margin-top: 20px;
+}
+
+.skeleton {
+  margin-top: 15px;
+}
+
+.articleInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  svg {
+    width: 21px;
+    height: 21px;
+
+    fill: var(--accent-color);
+  }
+}
+
+.imageBlock {
+  max-width: 800px;
+  width: 100%;
+  max-height: 300px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

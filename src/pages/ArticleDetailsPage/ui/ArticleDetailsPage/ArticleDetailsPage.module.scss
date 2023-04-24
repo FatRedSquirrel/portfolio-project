@@ -1,0 +1,16 @@
+.comments,
+.recommendations {
+  margin-top: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.recommendations {
+  &__list {
+    padding: 4px;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+  }
+}

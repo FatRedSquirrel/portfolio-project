@@ -1,7 +1,7 @@
 .Sidebar {
     height: calc(100vh - var(--navbar-height));
     width: var(--sidebar-width);
-    background: var(--inverted-bg-color);
+    background: var(--main-color);
     position: relative;
     transition: width 0.3s;
 }
@@ -29,6 +29,7 @@
     margin-left: 30px;
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 
 .collapsed {
