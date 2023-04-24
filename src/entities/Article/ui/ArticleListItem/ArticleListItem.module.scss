@@ -1,6 +1,11 @@
 .GRID {
   width: 230px;
+  height: 324px;
   transition: all 200ms;
+
+  & > div {
+    height: 100%;
+  }
 
   &:hover {
     transform: scale(1.01);

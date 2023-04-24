@@ -40,7 +40,7 @@ export const ArticleList = (props: ArticleListProps) => {
         : !isLoading && <Text text="Нет статей" align={TextAlign.CENTER} size={TextSize.L} />}
       {isLoading
         && (
-          new Array(view === ArticleView.GRID ? 9 : 3)
+          new Array(view === ArticleView.GRID ? 4 : 3)
             .fill(Math.random())
             .map((_, index) => (
               <ArticleListItemSkeleton key={index} view={view} />

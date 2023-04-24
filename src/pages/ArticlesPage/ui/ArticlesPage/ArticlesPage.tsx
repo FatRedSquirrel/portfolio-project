@@ -1,21 +1,20 @@
 import { memo } from 'react';
-import { ArticleList, ArticleView } from 'entities/Article';
+import { ArticleList } from 'entities/Article';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import {
-  getArticlesPageError, getArticlesPageInited,
+  getArticlesPageError,
   getArticlesPageIsLoading, getArticlesPageView,
 } from 'pages/ArticlesPage/model/selectors/articlesPageSelectors';
 import { Text } from 'shared/ui/Text';
-import { ArticleViewSelector } from 'entities/Article/ui/ArticleViewSelector/ArticleViewSelector';
 import { Page } from 'widgets/Page';
 import { fetchNextArticlesPage } from 'pages/ArticlesPage/model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import { initArticlesPage } from 'pages/ArticlesPage/model/services/initArticlesPage/initArticlesPage';
 import { ArticlesPageFilters } from 'pages/ArticlesPage/ui/ArticlesPageFilters/ArticlesPageFilters';
 import { useSearchParams } from 'react-router-dom';
-import { articlesPageActions, articlesPageReducer, getArticles } from '../../model/slice/articlesPageSlice';
+import { articlesPageReducer, getArticles } from '../../model/slice/articlesPageSlice';
 
 const reducers: ReducersList = {
   articlesPage: articlesPageReducer,
