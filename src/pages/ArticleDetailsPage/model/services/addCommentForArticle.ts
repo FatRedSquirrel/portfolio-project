@@ -23,8 +23,6 @@ export const addCommentForArticle = createAsyncThunk<
       return rejectWithValue('no data');
     }
 
-    dispatch(fetchArticleComments(articleId));
-
     try {
       const { data } = await extra.api.post<Comment>('comments', {
         text: comment,
@@ -40,6 +38,8 @@ export const addCommentForArticle = createAsyncThunk<
     } catch (e) {
       console.log(e);
       return rejectWithValue('error');
+    } finally {
+      dispatch(fetchArticleComments(articleId));
     }
   },
 );

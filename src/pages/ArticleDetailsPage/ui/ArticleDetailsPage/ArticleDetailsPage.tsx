@@ -23,6 +23,9 @@ import { fetchArticleRecommendations } from 'pages/ArticleDetailsPage/model/serv
 import {
   ArticleDetailsPageHeader,
 } from 'pages/ArticleDetailsPage/ui/ArticleDetailsPageHeader/ArticleDetailsPageHeader';
+import { getAddCommentFormStatus } from 'features/addCommentForm/model/selectors/addCommentFormSelectors';
+import classNames from 'shared/lib/classNames/classNames';
+import { AddCommentFormStatus } from 'features/addCommentForm/model/types/addCommentForm';
 import cls from './ArticleDetailsPage.module.scss';
 import {
   articleRecommendationsReducer,
@@ -45,6 +48,8 @@ const ArticleDetailsPage = () => {
   const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
   const recommendations = useSelector(getArticleRecommendations.selectAll);
   const recommendationsIsLoading = useSelector(getArticleRecommendationsIsLoading);
+
+  const commentFormStatus = useSelector(getAddCommentFormStatus);
 
   const sendComment = useCallback((comment: string) => {
     dispatch(addCommentForArticle(comment));
@@ -81,7 +86,14 @@ const ArticleDetailsPage = () => {
             target='_blank'
           />
         </div>
-        <div className={cls.comments}>
+        <div
+          className={
+            classNames(
+              cls.comments,
+              commentFormStatus === AddCommentFormStatus.SENDING && cls.disabled,
+            )
+          }
+        >
           <Text
             size={TextSize.L}
             className={cls.comments__title}
