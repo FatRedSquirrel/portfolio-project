@@ -38,8 +38,6 @@ export const ArticlesPageFilters = () => {
 
   const changeView = (newView: ArticleView) => {
     dispatch(articlesPageActions.setView(newView));
-    dispatch(articlesPageActions.setPage(1));
-    fetchData();
   };
 
   const changeSort = (newSort: ArticleSortField) => {

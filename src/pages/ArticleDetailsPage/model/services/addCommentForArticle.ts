@@ -1,8 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/StoreProvider';
 import { Comment } from 'entities/Comment';
-import { getUserAuthData } from 'entities/User';
+import { getUserAuthData, User } from 'entities/User';
 import { getArticlesDetailsData } from 'entities/Article/model/selectors/articleDetails';
+import { addComment } from 'pages/ArticleDetailsPage/model/slice/articleDetailsCommentsSlice';
 import { fetchArticleComments } from './fetchArticleComments';
 
 export const addCommentForArticle = createAsyncThunk<
@@ -24,22 +25,30 @@ export const addCommentForArticle = createAsyncThunk<
     }
 
     try {
-      const { data } = await extra.api.post<Comment>('comments', {
-        text: comment,
-        articleId,
-        userId: userData.id,
-      });
+      const { data } = await extra.api.post<Comment>(
+        'comments',
+        {
+          text: comment,
+          articleId,
+          userId: userData.id,
+        },
+      );
 
       if (!data) {
         throw new Error();
       }
+
+      dispatch(addComment({
+        ...data,
+        user: userData,
+      }));
 
       return data;
     } catch (e) {
       console.log(e);
       return rejectWithValue('error');
     } finally {
-      dispatch(fetchArticleComments(articleId));
+      // dispatch(fetchArticleComments(articleId));
     }
   },
 );
