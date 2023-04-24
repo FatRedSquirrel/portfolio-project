@@ -6,9 +6,14 @@ import { useSelector } from 'react-redux';
 import { ChangeEvent, useCallback } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { AddCommentFormStatus } from 'features/addCommentForm/model/types/addCommentForm';
 import { addCommentFormActions, addCommentFormReducer } from '../../model/slice/addCommentFormSlice';
 import cls from './AddCommentForm.module.scss';
-import { getAddCommentFormError, getAddCommentFormText } from '../../model/selectors/addCommentFormSelectors';
+import {
+  getAddCommentFormError,
+  getAddCommentFormStatus,
+  getAddCommentFormText,
+} from '../../model/selectors/addCommentFormSelectors';
 
 interface AddCommentFormProps {
   className?: string
@@ -28,6 +33,7 @@ const AddCommentForm = (props: AddCommentFormProps) => {
   const { t } = useTranslation();
 
   const text = useSelector(getAddCommentFormText);
+  const status = useSelector(getAddCommentFormStatus);
   const error = useSelector(getAddCommentFormError);
 
   const handleTextChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
@@ -54,7 +60,10 @@ const AddCommentForm = (props: AddCommentFormProps) => {
           value={text}
           onChange={handleTextChange}
         />
-        <Button onClick={handleSendComment}>
+        <Button
+          onClick={handleSendComment}
+          disabled={status === AddCommentFormStatus.SENDING}
+        >
           {t('Отправить')}
         </Button>
       </div>

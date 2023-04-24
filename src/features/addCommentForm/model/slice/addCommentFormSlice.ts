@@ -1,8 +1,10 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { AddCommentFormSchema } from '../types/addCommentForm';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { addCommentForArticle } from 'pages/ArticleDetailsPage/model/services/addCommentForArticle';
+import { AddCommentFormSchema, AddCommentFormStatus } from '../types/addCommentForm';
 
 const initialState: AddCommentFormSchema = {
   text: '',
+  status: AddCommentFormStatus.IDLE,
 };
 
 export const addCommentFormSlice = createSlice({
@@ -13,7 +15,18 @@ export const addCommentFormSlice = createSlice({
       state.text = action.payload;
     },
   },
-  extraReducers: (builder) => {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(addCommentForArticle.pending, (state) => {
+        state.status = AddCommentFormStatus.SENDING;
+      })
+      .addCase(addCommentForArticle.fulfilled, (state) => {
+        state.status = AddCommentFormStatus.IDLE;
+      })
+      .addCase(addCommentForArticle.rejected, (state) => {
+        state.status = AddCommentFormStatus.IDLE;
+      });
+  },
 });
 
 export const { actions: addCommentFormActions } = addCommentFormSlice;
