@@ -10,7 +10,6 @@ import { AxiosInstance } from 'axios';
 import { ArticleDetailsSchema } from 'entities/Article';
 import {
   ArticleCommentsSchema,
-  ArticleDetailsPageSchema,
   ArticleRecommendationsSchema,
 } from 'pages/ArticleDetailsPage';
 import { AddCommentFormSchema } from 'features/addCommentForm';

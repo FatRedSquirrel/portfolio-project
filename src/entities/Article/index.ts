@@ -8,3 +8,4 @@ export { ArticleViewSelector } from './ui/ArticleViewSelector/ArticleViewSelecto
 export { ArticleSortField } from './model/types/article';
 export { ArticleSortSelector } from './ui/ArticleSortSelector/ArticleSortSelector';
 export { ArticleType } from 'entities/Article/model/types/article';
+export { getArticlesDetailsData } from 'entities/Article/model/selectors/articleDetails';

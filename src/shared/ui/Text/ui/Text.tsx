@@ -42,10 +42,10 @@ export const Text = memo((props: TextProps) => {
       className={
         classNames(
           cls.Text,
-          className,
           cls[theme],
           cls[align],
           cls[size],
+          className,
         )
       }
     >

@@ -19,6 +19,9 @@
   color: var(--secondary-color);
 }
 
-.red {
-  color: red;
+.outlined {
+  padding: 6px 15px;
+  border: 1px solid var(--main-color);
+  color: var(--main-color);
+  background: none;
 }

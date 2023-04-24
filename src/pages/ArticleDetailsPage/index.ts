@@ -5,4 +5,3 @@ export {
   ArticleRecommendationsSchema,
 } from 'pages/ArticleDetailsPage/model/types/articleRecommendationsSchema';
 export { articleCommentsReducer } from 'pages/ArticleDetailsPage/model/slice/articleDetailsCommentsSlice';
-export { ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage/model/types';
