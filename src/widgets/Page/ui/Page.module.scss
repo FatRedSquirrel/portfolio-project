@@ -1,5 +1,5 @@
 .page {
-  width: 100%;
+  width: calc(100% - var(--sidebar-width));
   height: calc(100vh - var(--navbar-height));
   flex-grow: 1;
   padding: 20px 20px 20px 45px;
