@@ -22,7 +22,11 @@ const articleCommentsSlice = createSlice({
     ids: [],
     entities: {},
   }),
-  reducers: {},
+  reducers: {
+    addComment(state, action: PayloadAction<Comment>) {
+      commentsAdapter.addOne(state, action.payload);
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchArticleComments.pending, (state) => {
@@ -48,4 +52,5 @@ const articleCommentsSlice = createSlice({
   },
 });
 
+export const { addComment } = articleCommentsSlice.actions;
 export const articleCommentsReducer = articleCommentsSlice.reducer;
