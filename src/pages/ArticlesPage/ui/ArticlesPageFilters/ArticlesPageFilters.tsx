@@ -12,6 +12,7 @@ import { fetchArticlesList } from 'pages/ArticlesPage/model/services/fetchArticl
 import useDebounce from 'shared/lib/hooks/useDebounce';
 import { ArticleTypeTabs } from 'entities/Article/ui/ArticleTypeTabs/ArticleTypeTabs';
 import { TabItem } from 'shared/ui/Tabs/ui/Tabs';
+import classNames from 'shared/lib/classNames/classNames';
 import {
   getArticlesPageOrder, getArticlesPageSearch,
   getArticlesPageSort,
@@ -20,7 +21,17 @@ import {
 import { articlesPageActions } from '../../model/slice/articlesPageSlice';
 import cls from './ArticlesPageFilters.module.scss';
 
-export const ArticlesPageFilters = () => {
+interface ArticlesPageFiltersProps {
+  className?: string
+  isLoading?: boolean
+}
+
+export const ArticlesPageFilters = (props: ArticlesPageFiltersProps) => {
+  const {
+    className,
+    isLoading,
+  } = props;
+
   const { t } = useTranslation();
 
   const dispatch = useAppDispatch();
@@ -65,7 +76,15 @@ export const ArticlesPageFilters = () => {
   };
 
   return (
-    <div className={cls.ArticlesPageFilters}>
+    <div
+      className={
+        classNames(
+          cls.ArticlesPageFilters,
+          isLoading && cls.loading,
+          className,
+        )
+      }
+    >
       <div className={cls.sort}>
         <ArticleSortSelector
           sort={sort}
