@@ -1,6 +1,10 @@
 .GRID {
-  width: 230px;
+  width: 100%;
+
   height: 324px;
+
+  display: flex;
+  flex-direction: column;
   transition: all 200ms;
 
   & > div {
@@ -20,6 +24,8 @@
   .image {
     width: 200px;
     height: 200px;
+
+    margin: 0 auto;
 
     img {
       width: 100%;
@@ -60,6 +66,8 @@
 
 .LIST {
   width: 100%;
+
+  margin-bottom: 30px;
 
   & > div {
     padding: 30px;
