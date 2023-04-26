@@ -22,7 +22,7 @@ export const ArticleDetailsPageHeader = (props: ArticleDetailsPageHeaderProps) =
         theme={AppLinkTheme.OUTLINED}
         to={RoutePath.articles}
       >
-        Назад к списку
+        К списку статей
       </AppLink>
       {canEdit
         && (

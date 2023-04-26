@@ -12,7 +12,7 @@ describe('fetchNextArticlesPage.test', () => {
         ids: [],
         entities: {},
         limit: 5,
-        isLoading: false,
+        status: 'idle',
         hasMore: true,
       },
     });
@@ -30,7 +30,7 @@ describe('fetchNextArticlesPage.test', () => {
         ids: [],
         entities: {},
         limit: 5,
-        isLoading: false,
+        status: 'idle',
         hasMore: false,
       },
     });
@@ -48,7 +48,7 @@ describe('fetchNextArticlesPage.test', () => {
         ids: [],
         entities: {},
         limit: 5,
-        isLoading: true,
+        status: 'fetching',
         hasMore: true,
       },
     });
