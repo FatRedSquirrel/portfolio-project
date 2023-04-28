@@ -1,13 +1,13 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Page } from 'widgets/Page';
+import { ListBox } from 'shared/ui/ListBox/ui/ListBox';
 
 const AboutPage = () => {
   const { t } = useTranslation('about');
 
   return (
     <Page>
-      {t('О сайте')}
+      О сайте
     </Page>
   );
 };

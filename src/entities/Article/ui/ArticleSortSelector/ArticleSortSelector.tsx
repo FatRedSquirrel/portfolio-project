@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { SelectOption } from 'shared/ui/Select/ui/Select';
 import { ArticleSortField } from 'entities/Article/model/types/article';
 import { SortOrder } from 'shared/types';
+import { ListBox } from 'shared/ui/ListBox/ui/ListBox';
 import cls from './ArticleSortSelector.module.scss';
 
 interface ArticleSortSelectorProps {
@@ -53,17 +54,17 @@ export const ArticleSortSelector = (props: ArticleSortSelectorProps) => {
 
   return (
     <div className={cls.sort}>
-      <Select
-        label={t('Соритровать по')}
-        options={sortFieldOptions}
+      <ListBox
+        items={sortFieldOptions}
+        defaultValue='Выберите значение'
         value={sort}
-        onChange={changeSort}
+        onChange={changeSort as (value: string) => void}
       />
-      <Select
-        label={t('по')}
-        options={orderOptions}
+      <ListBox
+        items={orderOptions}
+        defaultValue='Выберите значение'
         value={order}
-        onChange={changeOrder}
+        onChange={changeOrder as (value: string) => void}
       />
     </div>
   );

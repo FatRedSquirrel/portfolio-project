@@ -12,6 +12,7 @@ import {
 } from 'pages/ArticlesPage/model/selectors/articlesPageSelectors';
 import { Virtuoso, VirtuosoGrid } from 'react-virtuoso';
 import { articlesPageActions } from 'pages/ArticlesPage/model/slice/articlesPageSlice';
+import { useTranslation } from 'react-i18next';
 import cls from './ArticleList.module.scss';
 import { Article, ArticleView } from '../../model/types/article';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
@@ -35,6 +36,8 @@ export const ArticleList = (props: ArticleListProps) => {
     recommendations = false,
   } = props;
 
+  const { t } = useTranslation();
+
   const dispatch = useAppDispatch();
   const status = useSelector(getArticlesPageStatus);
   const initialItemIndex = useSelector(getArticlesPageInitialItemIndex);
@@ -47,6 +50,10 @@ export const ArticleList = (props: ArticleListProps) => {
 
   // eslint-disable-next-line react/no-unstable-nested-components
   const Footer = () => {
+    if (!articles.length && status === 'idle') {
+      return <div>{t('нет статей')}</div>;
+    }
+
     switch (status) {
     case 'fetching':
       return (
@@ -123,7 +130,6 @@ export const ArticleList = (props: ArticleListProps) => {
           }}
         />
       )
-
       : (
         <Virtuoso
           initialTopMostItemIndex={initialItemIndex}

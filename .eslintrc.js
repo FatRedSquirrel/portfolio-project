@@ -22,6 +22,7 @@ module.exports = {
     '@typescript-eslint',
     'i18next',
     'react-hooks',
+    'ulbi-tv-plugin',
   ],
   rules: {
     'react/jsx-indent': [2, 2],
