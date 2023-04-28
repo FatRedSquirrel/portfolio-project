@@ -5,9 +5,11 @@ import { Card } from 'shared/ui/Card/Card';
 import useHover from 'shared/lib/hooks/useHover';
 import { Avatar } from 'shared/ui/Avatar';
 import { Button } from 'shared/ui/Button';
-import { HTMLAttributeAnchorTarget, useMemo } from 'react';
+import { CSSProperties, HTMLAttributeAnchorTarget, useMemo } from 'react';
 import { AppLink } from 'shared/ui/AppLink';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
+import { articlesPageActions } from 'pages/ArticlesPage/model/slice/articlesPageSlice';
 import TextBlock from '../components/TextBlock';
 import {
   Article, ArticleBlockText, ArticleBlockType, ArticleView,
@@ -15,10 +17,12 @@ import {
 import cls from './ArticleListItem.module.scss';
 
 interface ArticleListItemProps {
+  style?: CSSProperties
   className?: string;
   article: Article
   view: ArticleView
   target?: HTMLAttributeAnchorTarget
+  setInitialItemIndex?: () => void
 }
 
 export const ArticleListItem = (props: ArticleListItemProps) => {
@@ -27,7 +31,11 @@ export const ArticleListItem = (props: ArticleListItemProps) => {
     article,
     view,
     target,
+    style,
+    setInitialItemIndex,
   } = props;
+
+  const dispatch = useAppDispatch();
 
   const [isHovered, bindHover] = useHover();
 
@@ -47,6 +55,7 @@ export const ArticleListItem = (props: ArticleListItemProps) => {
 
     return (
       <div
+        style={style}
         {...bindHover}
         className={classNames(className, cls[view])}
       >
@@ -78,7 +87,7 @@ export const ArticleListItem = (props: ArticleListItemProps) => {
               target={target}
               to={RoutePath.article_details + article.id}
             >
-              <Button>
+              <Button onClick={setInitialItemIndex}>
                 Читать далее...
               </Button>
             </AppLink>
@@ -91,6 +100,7 @@ export const ArticleListItem = (props: ArticleListItemProps) => {
 
   return (
     <AppLink
+      style={style}
       target={target}
       to={RoutePath.article_details + article.id}
       {...bindHover}

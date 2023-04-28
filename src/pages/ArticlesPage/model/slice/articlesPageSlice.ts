@@ -18,7 +18,7 @@ export const getArticles = articlesAdapter.getSelectors<StateSchema>(
 const articlesPageSlice = createSlice({
   name: 'articlesPageSlice',
   initialState: articlesAdapter.getInitialState<ArticlesPageSchema>({
-    isLoading: false,
+    status: 'idle',
     ids: [],
     entities: {},
     view: ArticleView.LIST,
@@ -51,6 +51,9 @@ const articlesPageSlice = createSlice({
     setType(state, action: PayloadAction<ArticleType>) {
       state.type = action.payload;
     },
+    setInitialItemIndex(state, action: PayloadAction<number>) {
+      state.initialItemIndex = action.payload;
+    },
     initState(state) {
       const view = localStorage.getItem(ARTICLES_VIEW_LOCALSTORAGE_KEY) as ArticleView;
       state.view = view;
@@ -61,15 +64,16 @@ const articlesPageSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchArticlesList.pending, (state, action) => {
-        state.isLoading = true;
+        state.status = 'fetching';
         state.error = undefined;
 
         if (action.meta.arg.replace) {
           articlesAdapter.removeAll(state);
+          state.status = 'loading';
         }
       })
       .addCase(fetchArticlesList.fulfilled, (state, action) => {
-        state.isLoading = false;
+        state.status = 'idle';
         state.error = undefined;
         state.hasMore = action.payload.length >= state.limit;
 
@@ -80,7 +84,7 @@ const articlesPageSlice = createSlice({
         }
       })
       .addCase(fetchArticlesList.rejected, (state, action) => {
-        state.isLoading = false;
+        state.status = 'error';
         state.error = action.payload;
       });
   },

@@ -2,6 +2,27 @@
   width: 100%;
 
   flex-wrap: wrap;
-  display: flex;
+
+  display: grid;
   gap: 30px;
+}
+
+.GRID {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.LIST {
+  grid-template-columns: 1fr;
+}
+
+.footer {
+  margin: 30px 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.recommendations {
+  grid-template-columns: repeat(4, 1fr);
 }

@@ -5,7 +5,8 @@ import { EntityState } from '@reduxjs/toolkit';
 import { SortOrder } from 'shared/types';
 
 export interface ArticlesPageSchema extends EntityState<Article> {
-  isLoading: boolean
+  status: 'idle' | 'loading' | 'fetching' | 'error'
+  initialItemIndex?: number
   error?: string
 
   // pagination

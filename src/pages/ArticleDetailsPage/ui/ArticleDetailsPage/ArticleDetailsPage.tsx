@@ -80,6 +80,7 @@ const ArticleDetailsPage = () => {
             title={t('Рекомендуем')}
           />
           <ArticleList
+            recommendations
             articles={recommendations}
             isLoading={recommendationsIsLoading}
             className={cls.recommendations__list}

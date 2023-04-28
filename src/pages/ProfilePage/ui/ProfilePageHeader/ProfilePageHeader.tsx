@@ -2,6 +2,7 @@ import { Text } from 'shared/ui/Text';
 import { Button, ButtonTheme } from 'shared/ui/Button';
 import { useTranslation } from 'react-i18next';
 import {
+  getProfileIsLoading,
   getProfileReadonly, profileActions, updateProfileData,
 } from 'entities/Profile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
@@ -9,6 +10,7 @@ import { useSelector } from 'react-redux';
 import { useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { getUserAuthData } from 'entities/User';
+import classNames from 'shared/lib/classNames/classNames';
 import cls from './ProfilePageHeader.module.scss';
 
 const ProfilePageHeader = () => {
@@ -19,6 +21,7 @@ const ProfilePageHeader = () => {
 
   const readonly = useSelector(getProfileReadonly);
   const authData = useSelector(getUserAuthData);
+  const isLoading = useSelector(getProfileIsLoading);
 
   const canEdit = authData?.id === id;
 
@@ -37,7 +40,13 @@ const ProfilePageHeader = () => {
   }, [dispatch, id]);
 
   return (
-    <div className={cls.header}>
+    <div className={
+      classNames(
+        cls.header,
+        isLoading && cls.disabled,
+      )
+    }
+    >
       <Text title={t('Профиль')} />
       {canEdit
         && (readonly
