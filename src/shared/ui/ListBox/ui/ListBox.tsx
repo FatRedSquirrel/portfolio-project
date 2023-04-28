@@ -1,6 +1,6 @@
 import {
   CSSProperties,
-  Fragment, ReactNode, useCallback, useState,
+  Fragment, ReactNode,
 } from 'react';
 import { Listbox } from '@headlessui/react';
 import classNames from 'shared/lib/classNames/classNames';
