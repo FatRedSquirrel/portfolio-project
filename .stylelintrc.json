@@ -8,7 +8,10 @@
     "selector-type-case": null,
     "no-descending-specificity": null,
     "selector-class-pattern": null,
-    "indentation": [2],
+    "scss/at-rule-no-unknown": null,
+    "indentation": [
+      2
+    ],
     "order/order": [
       "custom-properties",
       "declarations"
@@ -26,32 +29,27 @@
       "height",
       "min-height",
       "max-height",
-
       "flex",
       "flex-flow",
       "flex-basis",
       "flex-grow",
       "flex-shrink",
       "flex-wrap",
-
       "margin",
       "margin-top",
       "margin-right",
       "margin-bottom",
       "margin-left",
-
       "padding",
       "padding-top",
       "padding-right",
       "padding-bottom",
       "padding-left",
-
       "position",
       "top",
       "right",
       "bottom",
       "left",
-
       "display",
       "align-content",
       "align-items",
@@ -59,9 +57,7 @@
       "justify-content",
       "flex-direction",
       "gap",
-
       "vertical-align",
-
       "font",
       "font-family",
       "font-size",
@@ -72,9 +68,7 @@
       "font-stretch",
       "line-height",
       "letter-spacing",
-
       "tab-size",
-
       "text-shadow",
       "text-align",
       "text-align-last",
@@ -91,33 +85,27 @@
       "text-emphasis-position",
       "text-indent",
       "text-justify",
-
       "white-space",
       "word-spacing",
       "word-wrap",
       "word-break",
-
       "order",
       "box-sizing",
       "table-layout",
       "empty-cells",
       "caption-side",
-
       "nav-index",
       "nav-up",
       "nav-right",
       "nav-down",
       "nav-left",
-
       "list-style",
       "list-style-position",
       "list-style-type",
       "list-style-image",
-
       "quotes",
       "counter-reset",
       "counter-increment",
-
       "animation",
       "animation-name",
       "animation-duration",
@@ -126,29 +114,23 @@
       "animation-delay",
       "animation-iteration-count",
       "animation-direction",
-
       "content",
-
       "cursor",
       "resize",
       "user-select",
       "pointer-events",
-
       "clip",
       "zoom",
       "float",
       "clear",
       "hyphens",
-
       "transition",
       "transition-delay",
       "transition-timing-function",
       "transition-duration",
       "transition-property",
-
       "transform",
       "transform-origin",
-
       "border",
       "border-width",
       "border-style",
@@ -182,25 +164,19 @@
       "border-image-repeat",
       "border-spacing",
       "border-collapse",
-
       "outline",
       "outline-width",
       "outline-style",
       "outline-color",
       "outline-offset",
-
       "visibility",
       "overflow",
       "overflow-x",
       "overflow-y",
-
       "box-decoration-break",
       "box-shadow",
-
       "z-index",
-
       "opacity",
-
       "color",
       "background",
       "background-color",

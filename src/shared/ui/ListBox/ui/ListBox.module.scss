@@ -14,9 +14,8 @@
   border: none;
   border-radius: 10px;
   outline: none;
-  color: var(--secondary-color);
-  background: none;
-  background-color: var(--main-color);
+  color: var(--main-color);
+  background-color: var(--card-bg);
 
   &__arrow {
     width: 30px;
@@ -25,12 +24,13 @@
     top: 50%;
     right: 10px;
     transform: translateY(-50%);
-    fill: var(--secondary-color);
+    fill: var(--main-color);
   }
 }
 
 .options {
   position: absolute;
+  left: 0;
   border-radius: 12px;
   outline: none;
   z-index: 10000;
