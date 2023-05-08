@@ -1,5 +1,5 @@
 import classNames from 'shared/lib/classNames/classNames';
-import { HTMLAttributeAnchorTarget, useRef } from 'react';
+import { HTMLAttributeAnchorTarget, useMemo, useRef } from 'react';
 import { fetchNextArticlesPage } from 'pages/ArticlesPage/model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { ArticleListItemSkeleton } from 'entities/Article/ui/ArticleListItem/ArticleListItemSkeleton';
@@ -20,7 +20,7 @@ import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 interface ArticleListProps {
     className?: string
     articles: Article[]
-    isLoading?: boolean
+    status?: 'idle' | 'loading' | 'fetching' | 'error'
     view?: ArticleView
     target?: HTMLAttributeAnchorTarget
   recommendations?: boolean
@@ -30,7 +30,7 @@ export const ArticleList = (props: ArticleListProps) => {
   const {
     className,
     articles,
-    isLoading,
+    status,
     view = ArticleView.GRID,
     target,
     recommendations = false,
@@ -39,7 +39,6 @@ export const ArticleList = (props: ArticleListProps) => {
   const { t } = useTranslation();
 
   const dispatch = useAppDispatch();
-  const status = useSelector(getArticlesPageStatus);
   const initialItemIndex = useSelector(getArticlesPageInitialItemIndex);
 
   const virtuoso = useRef(null);
@@ -50,7 +49,7 @@ export const ArticleList = (props: ArticleListProps) => {
 
   // eslint-disable-next-line react/no-unstable-nested-components
   const Footer = () => {
-    if (!articles.length && status === 'idle') {
+    if ((!articles || !articles.length) && status === 'idle') {
       return <div>{t('нет статей')}</div>;
     }
 
@@ -81,7 +80,7 @@ export const ArticleList = (props: ArticleListProps) => {
   // eslint-disable-next-line react/no-unstable-nested-components
   const Header = () => (
     <ArticlesPageFilters
-      isLoading={isLoading}
+      isLoading={status === 'loading'}
     />
   );
 
@@ -99,7 +98,7 @@ export const ArticleList = (props: ArticleListProps) => {
     />
   );
 
-  if (recommendations) {
+  if (recommendations && status === 'idle') {
     return (
       <div className={classNames(cls.ArticleList, cls.recommendations, cls[view])}>
         {articles.map((article) => (

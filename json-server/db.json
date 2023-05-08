@@ -919,6 +919,42 @@
       "articleId": "2",
       "userId": "1",
       "id": "PMZS8-z"
+    },
+    {
+      "text": "python is cool",
+      "articleId": "2",
+      "userId": "2",
+      "id": "2hRXYR3"
+    },
+    {
+      "text": "123",
+      "articleId": "4",
+      "userId": "2",
+      "id": "I1rKMVx"
+    },
+    {
+      "text": "123",
+      "articleId": "7",
+      "userId": "2",
+      "id": "VZAENzD"
+    },
+    {
+      "text": "ECONOMICS SUCKS",
+      "articleId": "18",
+      "userId": "2",
+      "id": "5nILkF3"
+    },
+    {
+      "text": "GOLANG IS NICE",
+      "articleId": "5",
+      "userId": "2",
+      "id": "bvsOL-Q"
+    },
+    {
+      "text": "123",
+      "articleId": "19",
+      "userId": "2",
+      "id": "v9KyETe"
     }
   ],
   "users": [
@@ -957,7 +993,7 @@
       "first": "123",
       "lastname": "a112312312",
       "age": 46513,
-      "currency": "RUB",
+      "currency": "USD",
       "country": "USA",
       "city": "Moscow",
       "firstname": "xasan"

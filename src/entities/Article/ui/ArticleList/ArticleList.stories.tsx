@@ -109,14 +109,14 @@ export const GridViewLoading = Template.bind({});
 GridViewLoading.args = {
   articles: getArticles(9),
   view: ArticleView.GRID,
-  isLoading: true,
+  status: 'loading',
 };
 
 export const ListViewLoading = Template.bind({});
 ListViewLoading.args = {
   articles: getArticles(3),
   view: ArticleView.LIST,
-  isLoading: true,
+  status: 'loading',
 };
 
 export const Empty = Template.bind({});

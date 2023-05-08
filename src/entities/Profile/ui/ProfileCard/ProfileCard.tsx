@@ -4,36 +4,43 @@ import { Text, TextAlign, TextTheme } from 'shared/ui/Text';
 import { Input } from 'shared/ui/Input';
 import { Loader } from 'shared/ui/Loader';
 import { useSelector } from 'react-redux';
-import { getProfileReadonly, profileActions } from 'entities/Profile';
+import {
+  fetchProfileData, getProfileError, getProfileForm, getProfileIsLoading, getProfileReadonly, profileActions,
+} from 'entities/Profile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { ChangeEvent, useCallback } from 'react';
 import { Avatar } from 'shared/ui/Avatar';
 import { Currency, CurrencySelect } from 'entities/Currency';
-import { Select } from 'shared/ui/Select';
 import { Country, CountrySelect } from 'entities/Country';
-import { Profile } from '../../model/types/profile';
+import { useParams } from 'react-router-dom';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import cls from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
-    className?: string;
-    data?: Profile;
-    isLoading?: boolean;
-    error?: string;
+    className?: string
+    id: string
 }
 
 export const ProfileCard = (props: ProfileCardProps) => {
   const {
     className,
-    data,
-    isLoading,
-    error,
+    id,
   } = props;
-
-  const dispatch = useAppDispatch();
 
   const { t } = useTranslation('profile');
 
+  const dispatch = useAppDispatch();
+
+  const data = useSelector(getProfileForm);
+  const isLoading = useSelector(getProfileIsLoading);
+  const error = useSelector(getProfileError);
   const readonly = useSelector(getProfileReadonly);
+
+  useInitialEffect(() => {
+    if (id) {
+      dispatch(fetchProfileData(id));
+    }
+  }, []);
 
   const onFirstnameChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     dispatch(profileActions.updateProfile({ firstname: e.target.value }));

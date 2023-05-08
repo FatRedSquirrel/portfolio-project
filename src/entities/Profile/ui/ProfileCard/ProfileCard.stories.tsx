@@ -15,18 +15,7 @@ export default {
 const Template: ComponentStory<typeof ProfileCard> = (args) => <ProfileCard {...args} />;
 
 export const Readonly = Template.bind({});
-Readonly.args = {
-  data: {
-    firstname: 'Олег',
-    lastname: 'Шевченко',
-    age: 21,
-    currency: Currency.USD,
-    country: Country.Japan,
-    city: 'Tokyo',
-    username: 'disciplinedMonster',
-    avatar: 'https://img2.akspic.ru/attachments/crops/9/3/9/9/6/169939/169939-anime-zenicu_agacuma-ubijca_demonov_kimetsu_no_yaiba-lyudi_v_prirode-multfilm-1920x1080.jpg',
-  },
-};
+Readonly.args = {};
 Readonly.decorators = [StoreDecorator({
   profile: {
     readonly: true,
@@ -37,18 +26,7 @@ Readonly.decorators = [StoreDecorator({
 })];
 
 export const Editable = Template.bind({});
-Editable.args = {
-  data: {
-    firstname: 'Олег',
-    lastname: 'Шевченко',
-    age: 21,
-    currency: Currency.USD,
-    country: Country.Japan,
-    city: 'Tokyo',
-    username: 'disciplinedMonster',
-    avatar: 'https://img2.akspic.ru/attachments/crops/9/3/9/9/6/169939/169939-anime-zenicu_agacuma-ubijca_demonov_kimetsu_no_yaiba-lyudi_v_prirode-multfilm-1920x1080.jpg',
-  },
-};
+Editable.args = {};
 Editable.decorators = [StoreDecorator({
   profile: {
     readonly: false,
@@ -59,17 +37,13 @@ Editable.decorators = [StoreDecorator({
 })];
 
 export const Loading = Template.bind({});
-Loading.args = {
-  isLoading: true,
-};
+Loading.args = {};
 Loading.decorators = [StoreDecorator({
   profile: {},
 })];
 
 export const Error = Template.bind({});
-Error.args = {
-  error: 'error',
-};
+Error.args = {};
 Error.decorators = [StoreDecorator({
   profile: {},
 })];

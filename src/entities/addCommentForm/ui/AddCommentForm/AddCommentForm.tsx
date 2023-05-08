@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { ChangeEvent, useCallback } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { AddCommentFormStatus } from 'features/addCommentForm/model/types/addCommentForm';
+import { AddCommentFormStatus } from '../../model/types/addCommentForm';
 import { addCommentFormActions, addCommentFormReducer } from '../../model/slice/addCommentFormSlice';
 import cls from './AddCommentForm.module.scss';
 import {

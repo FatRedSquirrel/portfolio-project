@@ -1,5 +1,5 @@
 import { StateSchema } from 'app/providers/StoreProvider';
-import { AddCommentFormStatus } from 'features/addCommentForm/model/types/addCommentForm';
+import { AddCommentFormStatus } from '../types/addCommentForm';
 
 export const getAddCommentFormText = (state: StateSchema) => state?.addCommentForm?.text ?? '';
 export const getAddCommentFormError = (state: StateSchema) => state?.addCommentForm?.error;

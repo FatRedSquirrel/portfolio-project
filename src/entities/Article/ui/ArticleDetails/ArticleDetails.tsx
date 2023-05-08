@@ -9,6 +9,7 @@ import EyeIcon from 'shared/assets/icons/eye.svg';
 import CalendarIcon from 'shared/assets/icons/calendar.svg';
 import { TextSize } from 'shared/ui/Text/ui/Text';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
+import { useParams } from 'react-router-dom';
 import { ArticleBlock, ArticleBlockType } from '../../model/types/article';
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
@@ -25,23 +26,21 @@ const reducers = {
   articleDetails: articleDetailsReducer,
 };
 
-interface ArticleDetailsProps {
-  id: string
-}
+interface ArticleDetailsProps {}
 
 export const ArticleDetails = memo((props: ArticleDetailsProps) => {
   const dispatch = useAppDispatch();
 
-  const {
-    id,
-  } = props;
+  const { id } = useParams<{id: string}>();
 
   const isLoading = useSelector(getArticlesDetailsIsLoading);
   const error = useSelector(getArticlesDetailsError);
   const article = useSelector(getArticlesDetailsData);
 
   useInitialEffect(() => {
-    dispatch(fetchArticleById(id));
+    if (id) {
+      dispatch(fetchArticleById(id));
+    }
   }, [id]);
 
   const renderBlock = useCallback((block: ArticleBlock) => {

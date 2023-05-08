@@ -12,14 +12,16 @@ import {
   ArticleCommentsSchema,
   ArticleRecommendationsSchema,
 } from 'pages/ArticleDetailsPage';
-import { AddCommentFormSchema } from 'features/addCommentForm';
+import { AddCommentFormSchema } from 'entities/addCommentForm';
 import { ArticlesPageSchema } from 'pages/ArticlesPage/model/types/articlesPageSchema';
 import { PageSchema } from 'widgets/Page';
+import { rtkApi } from 'shared/api/rtkApi';
 
 export interface StateSchema {
     counter: CounterSchema
     user: UserSchema
     page: PageSchema
+    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
 
     // Асинхронные редюсеры
     loginForm?: LoginSchema
