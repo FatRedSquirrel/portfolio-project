@@ -6,7 +6,9 @@ import React, {
 import { Button, ButtonTheme } from 'shared/ui/Button';
 import { LoginModal } from 'features/AuthByUsername';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserAuthData, userActions } from 'entities/User';
+import {
+  getUserAuthData, isUserAdmin, isUserManager, userActions,
+} from 'entities/User';
 import { Text } from 'shared/ui/Text';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
@@ -26,6 +28,13 @@ export const Navbar = memo(({ className }: NavbarProps) => {
   const [isAuthModal, setIsAuthModal] = useState(false);
 
   const authData = useSelector(getUserAuthData);
+  const isAdmin = useSelector(isUserAdmin);
+  const isManager = useSelector(isUserManager);
+
+  console.log(authData?.roles);
+
+  const isAdminPanelAvailable = isAdmin || isManager;
+
   const navigate = useNavigate();
 
   const onCloseModal = useCallback(() => {
@@ -42,6 +51,10 @@ export const Navbar = memo(({ className }: NavbarProps) => {
 
   const items = useMemo(
     () => [
+      ...(isAdminPanelAvailable ? [{
+        content: t('Админка'),
+        onClick: () => navigate(RoutePath.admin_panel),
+      }] : []),
       {
         content: t('Профиль'),
         onClick: () => navigate(`${RoutePath.profile}/${authData?.id}`),
@@ -51,7 +64,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
         onClick: onLogout,
       },
     ],
-    [authData?.id, navigate, onLogout, t],
+    [authData?.id, isAdminPanelAvailable, navigate, onLogout, t],
   );
 
   if (authData) {
@@ -78,6 +91,10 @@ export const Navbar = memo(({ className }: NavbarProps) => {
 
   return (
     <header className={classNames(cls.Navbar, {}, [className])}>
+      <Text
+        className={cls.logo}
+        title='Portfolio App'
+      />
       <Button
         className={cls.loginBtn}
         theme={ButtonTheme.CLEAR_INVERTED}

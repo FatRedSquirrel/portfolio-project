@@ -955,6 +955,12 @@
       "articleId": "19",
       "userId": "2",
       "id": "v9KyETe"
+    },
+    {
+      "text": "true",
+      "articleId": "5",
+      "userId": "2",
+      "id": "GILLwqb"
     }
   ],
   "users": [
@@ -962,14 +968,18 @@
       "id": "1",
       "username": "admin",
       "password": "123",
-      "role": "ADMIN",
+      "roles": [
+        "ADMIN"
+      ],
       "avatar": "https://mobimg.b-cdn.net/v3/fetch/0f/0fa2ad47af6d1440a1662c1651724ab0.jpeg"
     },
     {
       "id": "2",
       "username": "user",
       "password": "123",
-      "role": "USER",
+      "roles": [
+        "VIEWER"
+      ],
       "avatar": "https://www.hdwallpapers.in/download/boy_zenitsu_agatsuma_hd_demon_slayer_kimetsu_no_yaiba-HD.jpg"
     }
   ],
