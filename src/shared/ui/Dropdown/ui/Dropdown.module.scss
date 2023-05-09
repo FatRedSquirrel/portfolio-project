@@ -4,7 +4,7 @@
   z-index: 1000;
 }
 
-.btn {
+.trigger {
   margin: 0;
   padding: 0;
   cursor: pointer;
@@ -24,6 +24,7 @@
   flex-direction: column;
   gap: 10px;
   border-radius: 12px;
+  box-shadow: 0 5px 10px var(--accent-color);
   background-color: var(--main-color);
 
   &.left {

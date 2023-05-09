@@ -5,7 +5,7 @@ import { updateProfileData } from '../services/updateProfileData/updateProfileDa
 
 const initialState: ProfileSchema = {
   readonly: true,
-  isLoading: false,
+  isLoading: true,
   error: null,
   data: null,
   form: null,

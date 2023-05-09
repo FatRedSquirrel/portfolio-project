@@ -35,7 +35,7 @@ export const Dropdown = (props: DropdownProps) => {
       as='div'
       className={classNames(cls.Dropdown, className)}
     >
-      <Menu.Button className={cls.btn}>
+      <Menu.Button className={cls.trigger}>
         {trigger}
       </Menu.Button>
       <Transition

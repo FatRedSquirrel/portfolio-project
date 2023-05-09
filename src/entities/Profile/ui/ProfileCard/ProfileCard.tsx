@@ -9,7 +9,6 @@ import { ChangeEvent, useCallback } from 'react';
 import { Avatar } from 'shared/ui/Avatar';
 import { Currency, CurrencySelect } from 'entities/Currency';
 import { Country, CountrySelect } from 'entities/Country';
-import { useParams } from 'react-router-dom';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import {
   getProfileError,

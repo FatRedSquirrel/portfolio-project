@@ -1,0 +1,65 @@
+.popover {
+  position: relative;
+  z-index: 1000;
+
+  &__panel {
+    width: max-content;
+    margin-top: 20px;
+    position: absolute;
+    top: 100%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px var(--accent-color);
+    color: var(--secondary-color);
+    background-color: var(--main-color);
+
+    &.left {
+      right: 0;
+    }
+  
+    &.right {
+      left: 0;
+    }  
+  }
+}
+
+.trigger {
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+// Transition
+.enter {
+  transition: 100ms ease-out;
+}
+
+.enterFrom {
+  transform: scale(0.95);
+  opacity: 0;
+}
+
+.enterTo {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.leave {
+  transition: 75ms ease-out;
+}
+
+.leaveFrom {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.leaveTo {
+  transform: scale(0.95);
+  opacity: 0;
+}
