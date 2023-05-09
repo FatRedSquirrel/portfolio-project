@@ -14,6 +14,8 @@ import { AppLink, AppLinkTheme } from 'shared/ui/AppLink';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { NotificationsButton } from 'features/notificationsButton';
 import { AvatarDropdown } from 'features/avatarDropdown';
+import { Drawer } from 'shared/ui/Drawer';
+import { NotificationsList } from 'entities/Notification';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {

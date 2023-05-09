@@ -5,6 +5,7 @@ import React, {
 } from 'react';
 import { Portal } from 'shared/ui/Portal';
 import { useTheme } from 'app/providers/ThemeProvider';
+import { Overlay } from 'shared/ui/Overlay';
 import cls from './Modal.module.scss';
 
 interface ModalProps {
@@ -86,13 +87,12 @@ export const Modal = (props: ModalProps) => {
         )
       }
       >
-        <div className={cls.overlay} onClick={closeHandler}>
-          <div
-            className={cls.content}
-            onClick={onContentClick}
-          >
-            {children}
-          </div>
+        <Overlay onClick={onClose} />
+        <div
+          className={cls.content}
+          onClick={onContentClick}
+        >
+          {children}
         </div>
       </div>
     </Portal>
