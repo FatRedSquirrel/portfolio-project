@@ -31,8 +31,6 @@ export const Navbar = memo(({ className }: NavbarProps) => {
   const isAdmin = useSelector(isUserAdmin);
   const isManager = useSelector(isUserManager);
 
-  console.log(authData?.roles);
-
   const isAdminPanelAvailable = isAdmin || isManager;
 
   const navigate = useNavigate();
