@@ -54,7 +54,7 @@ export const ArticleComments = memo((props: ArticleCommentsProps) => {
       <Text
         size={TextSize.L}
         className={cls.comments__title}
-        title={t('Комментарии')}
+        title={t('Комментарии') as string}
       />
       <AddCommentForm sendComment={sendComment} />
       <CommentList

@@ -44,7 +44,7 @@ export const CommentList = (props: CommentListProps) => {
             ))}
           </div>
         )
-        : <Text text={t('Комментарии отсутствуют')} />}
+        : <Text text={t('Комментарии отсутствуют') as string} />}
     </div>
   );
 };

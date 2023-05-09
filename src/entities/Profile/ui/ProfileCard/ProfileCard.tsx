@@ -93,8 +93,8 @@ export const ProfileCard = (props: ProfileCardProps) => {
       <div className={classNames(cls.ProfileCard, className, cls.error)}>
         <Text
           theme={TextTheme.ERROR}
-          title={t('Произошла ошибка при закрузке профиля')}
-          text={t('Попробуйте обновить страницу')}
+          title={t('Произошла ошибка при закрузке профиля') as string}
+          text={t('Попробуйте обновить страницу') as string}
           align={TextAlign.CENTER}
         />
       </div>
@@ -124,37 +124,37 @@ export const ProfileCard = (props: ProfileCardProps) => {
       <form className={cls.form}>
         <Input
           value={data?.firstname}
-          placeholder={t('Имя')}
+          placeholder={t('Имя') as string}
           readonly={readonly}
           onChange={onFirstnameChange}
         />
         <Input
           value={data?.lastname}
-          placeholder={t('Фамилия')}
+          placeholder={t('Фамилия') as string}
           readonly={readonly}
           onChange={onLastnameChange}
         />
         <Input
           value={data?.age}
-          placeholder={t('Возраст')}
+          placeholder={t('Возраст') as string}
           readonly={readonly}
           onChange={onAgeChange}
         />
         <Input
           value={data?.city}
-          placeholder={t('Город')}
+          placeholder={t('Город') as string}
           readonly={readonly}
           onChange={onCityChange}
         />
         <Input
           value={data?.username}
-          placeholder={t('Имя пользователя')}
+          placeholder={t('Имя пользователя') as string}
           readonly={readonly}
           onChange={onUsernameChange}
         />
         <Input
           value={data?.avatar}
-          placeholder={t('Ссылка на аватар')}
+          placeholder={t('Ссылка на аватар') as string}
           readonly={readonly}
           onChange={onAvatarChange}
         />

@@ -101,7 +101,7 @@ export const ArticlesPageFilters = (props: ArticlesPageFiltersProps) => {
         <Input
           value={search}
           onChange={changeSearch}
-          placeholder={t('Поиск')}
+          placeholder={t('Поиск') as string}
         />
       </Card>
       <ArticleTypeTabs
