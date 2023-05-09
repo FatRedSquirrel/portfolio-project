@@ -4,9 +4,6 @@ import { Text, TextAlign, TextTheme } from 'shared/ui/Text';
 import { Input } from 'shared/ui/Input';
 import { Loader } from 'shared/ui/Loader';
 import { useSelector } from 'react-redux';
-import {
-  fetchProfileData, getProfileError, getProfileForm, getProfileIsLoading, getProfileReadonly, profileActions,
-} from 'entities/Profile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { ChangeEvent, useCallback } from 'react';
 import { Avatar } from 'shared/ui/Avatar';
@@ -14,6 +11,24 @@ import { Currency, CurrencySelect } from 'entities/Currency';
 import { Country, CountrySelect } from 'entities/Country';
 import { useParams } from 'react-router-dom';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
+import {
+  getProfileError,
+} from '../../model/selectors/getProfileError/getProfileError';
+import {
+  fetchProfileData,
+} from '../../model/services/fetchProfileData/fetchProfileData';
+import {
+  getProfileForm,
+} from '../../model/selectors/getProfileForm/getProfileForm';
+import {
+  getProfileIsLoading,
+} from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';
+import {
+  getProfileReadonly,
+} from '../../model/selectors/getProfileReadonly/getProfileReadonly';
+import {
+  profileActions,
+} from '../../model/slice/profileSlice';
 import cls from './ProfileCard.module.scss';
 
 interface ProfileCardProps {

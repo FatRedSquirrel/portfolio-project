@@ -49,8 +49,9 @@ export const Dropdown = (props: DropdownProps) => {
         <Menu.Items
           className={classNames(cls.items, cls[direction])}
         >
-          {items && items.map((item) => (
+          {items && items.map((item, index) => (
             <Menu.Item
+              key={index}
               as={Fragment}
               disabled={item.disabled}
             >

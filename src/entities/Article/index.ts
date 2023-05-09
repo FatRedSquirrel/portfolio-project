@@ -7,5 +7,5 @@ export { ArticleList } from './ui/ArticleList/ArticleList';
 export { ArticleViewSelector } from './ui/ArticleViewSelector/ArticleViewSelector';
 export { ArticleSortField } from './model/types/article';
 export { ArticleSortSelector } from './ui/ArticleSortSelector/ArticleSortSelector';
-export { ArticleType } from 'entities/Article/model/types/article';
-export { getArticlesDetailsData } from 'entities/Article/model/selectors/articleDetails';
+export { ArticleType } from './model/types/article';
+export { getArticlesDetailsData } from './model/selectors/articleDetails';
