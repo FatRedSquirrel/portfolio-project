@@ -4,6 +4,8 @@ import { Portal } from 'shared/ui/Portal';
 import { useTheme } from 'app/providers/ThemeProvider';
 import { Overlay } from 'shared/ui/Overlay';
 import { useModal } from 'shared/lib/hooks/useModal';
+import { useDrag } from '@use-gesture/react';
+import { a, useSpring, config } from '@react-spring/web';
 import cls from './Modal.module.scss';
 
 interface ModalProps {

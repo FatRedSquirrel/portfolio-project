@@ -40,7 +40,7 @@ export const NotificationsList = (props: NotificationsListProps) => {
     )}
     >
       {(notifications && notifications.length) ? (
-        notifications.map((item) => (
+        [...notifications, ...notifications, ...notifications, ...notifications].map((item) => (
           <NotificationsItem
             key={item.id}
             item={item}

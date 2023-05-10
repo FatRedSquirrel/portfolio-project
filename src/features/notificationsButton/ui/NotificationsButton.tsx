@@ -6,6 +6,7 @@ import { Button, ButtonTheme } from 'shared/ui/Button';
 import { Drawer } from 'shared/ui/Drawer';
 import { useState } from 'react';
 import { BrowserView, MobileView } from 'react-device-detect';
+import { AnimationProvider } from 'shared/lib/components/AnimationProvider';
 import cls from './NotificationsButton.module.scss';
 
 interface NotificationsButtonProps {}
@@ -41,9 +42,11 @@ export const NotificationsButton = (props: NotificationsButtonProps) => {
       </BrowserView>
       <MobileView>
         {trigger}
-        <Drawer isOpen={drawerOpen} onClose={closeDrawer}>
-          <NotificationsList />
-        </Drawer>
+        <AnimationProvider>
+          <Drawer isOpen={drawerOpen} onClose={closeDrawer}>
+            <NotificationsList />
+          </Drawer>
+        </AnimationProvider>
       </MobileView>
     </>
   );
