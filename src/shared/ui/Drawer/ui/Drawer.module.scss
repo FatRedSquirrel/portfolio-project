@@ -22,7 +22,7 @@
   overflow-x: hidden;
   overflow-y: auto;
   z-index: 10000;
-  background: var(--secondary-color);
+  background: var(--main-color);
 }
 
 .content::before {
@@ -44,5 +44,11 @@
 
   .content {
     transform: translateY(0%);
+  }
+}
+
+.isClosing {
+  .content {
+    transform: translateY(100%);
   }
 }
