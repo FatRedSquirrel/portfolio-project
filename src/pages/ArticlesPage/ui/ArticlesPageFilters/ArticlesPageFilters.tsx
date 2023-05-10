@@ -8,11 +8,11 @@ import { Card } from 'shared/ui/Card/Card';
 import { Input } from 'shared/ui/Input';
 import { SortOrder } from 'shared/types';
 import { ChangeEvent } from 'react';
-import { fetchArticlesList } from 'pages/ArticlesPage/model/services/fetchArticlesList/fetchArticlesList';
 import useDebounce from 'shared/lib/hooks/useDebounce';
 import { ArticleTypeTabs } from 'entities/Article/ui/ArticleTypeTabs/ArticleTypeTabs';
 import { TabItem } from 'shared/ui/Tabs/ui/Tabs';
 import classNames from 'shared/lib/classNames/classNames';
+import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
 import {
   getArticlesPageOrder, getArticlesPageSearch,
   getArticlesPageSort,
@@ -101,7 +101,7 @@ export const ArticlesPageFilters = (props: ArticlesPageFiltersProps) => {
         <Input
           value={search}
           onChange={changeSearch}
-          placeholder={t('Поиск')}
+          placeholder={t('Поиск') as string}
         />
       </Card>
       <ArticleTypeTabs

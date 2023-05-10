@@ -4,7 +4,7 @@ import { Comment } from 'entities/Comment';
 
 export const fetchArticleComments = createAsyncThunk<
   Comment[], // return type
-  string | undefined, // func argument type
+  string, // func argument type
   ThunkConfig<string>
 >(
   'articleDetails/fetchArticleComments',

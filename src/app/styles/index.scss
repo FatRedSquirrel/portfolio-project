@@ -4,7 +4,8 @@
 @import "themes/dark";
 
 .app,
-.app_modal {
+.app_modal,
+.app_drawer {
   font: var(--font-m);
   color: var(--main-color);
 }
@@ -19,7 +20,7 @@
 }
 
 *::-webkit-scrollbar {
-  width: 12px;
+  width: 10px;
   height: 8px;
 }
 

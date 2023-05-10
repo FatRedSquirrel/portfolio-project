@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import { Select } from 'shared/ui/Select';
 import { memo } from 'react';
 import { ListBox } from 'shared/ui/ListBox';
 import { Country } from '../../model/types/country';
@@ -25,8 +24,6 @@ export const CountrySelect = memo((props: CountrySelectProps) => {
     readonly,
   } = props;
 
-  console.log(value);
-
   const { t } = useTranslation();
 
   const changeHandler = (value: string) => {
@@ -35,10 +32,10 @@ export const CountrySelect = memo((props: CountrySelectProps) => {
 
   return (
     <ListBox
-      label={t('Страна')}
+      label={t('Страна') as string}
       items={options}
       value={value}
-      defaultValue={t('Выберите страну')}
+      defaultValue={t('Выберите страну') as string}
       readonly={readonly}
       direction='top'
       onChange={changeHandler}

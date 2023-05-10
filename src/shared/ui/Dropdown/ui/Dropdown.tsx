@@ -35,7 +35,7 @@ export const Dropdown = (props: DropdownProps) => {
       as='div'
       className={classNames(cls.Dropdown, className)}
     >
-      <Menu.Button className={cls.btn}>
+      <Menu.Button className={cls.trigger}>
         {trigger}
       </Menu.Button>
       <Transition
@@ -49,8 +49,9 @@ export const Dropdown = (props: DropdownProps) => {
         <Menu.Items
           className={classNames(cls.items, cls[direction])}
         >
-          {items && items.map((item) => (
+          {items && items.map((item, index) => (
             <Menu.Item
+              key={index}
               as={Fragment}
               disabled={item.disabled}
             >

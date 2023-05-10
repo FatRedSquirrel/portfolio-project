@@ -47,7 +47,7 @@ const ProfilePageHeader = () => {
       )
     }
     >
-      <Text title={t('Профиль')} />
+      <Text title={t('Профиль') as string} />
       {canEdit
         && (readonly
           ? (

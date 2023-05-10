@@ -1,18 +1,19 @@
 import classNames from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import React, {
-  memo, useCallback, useMemo, useState,
+import {
+  memo, useCallback, useState,
 } from 'react';
 import { Button, ButtonTheme } from 'shared/ui/Button';
 import { LoginModal } from 'features/AuthByUsername';
-import { useDispatch, useSelector } from 'react-redux';
-import { getUserAuthData, userActions } from 'entities/User';
+import { useSelector } from 'react-redux';
+import {
+  getUserAuthData,
+} from 'entities/User';
 import { Text } from 'shared/ui/Text';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { Dropdown } from 'shared/ui/Dropdown';
-import { Avatar } from 'shared/ui/Avatar';
-import { useNavigate } from 'react-router-dom';
+import { NotificationsButton } from 'features/notificationsButton';
+import { AvatarDropdown } from 'features/avatarDropdown';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -21,12 +22,10 @@ interface NavbarProps {
 
 export const Navbar = memo(({ className }: NavbarProps) => {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
 
   const [isAuthModal, setIsAuthModal] = useState(false);
 
   const authData = useSelector(getUserAuthData);
-  const navigate = useNavigate();
 
   const onCloseModal = useCallback(() => {
     setIsAuthModal(false);
@@ -35,24 +34,6 @@ export const Navbar = memo(({ className }: NavbarProps) => {
   const onShowModal = useCallback(() => {
     setIsAuthModal(true);
   }, []);
-
-  const onLogout = useCallback(() => {
-    dispatch(userActions.logout());
-  }, [dispatch]);
-
-  const items = useMemo(
-    () => [
-      {
-        content: t('Профиль'),
-        onClick: () => navigate(`${RoutePath.profile}/${authData?.id}`),
-      },
-      {
-        content: t('Выйти'),
-        onClick: onLogout,
-      },
-    ],
-    [authData?.id, navigate, onLogout, t],
-  );
 
   if (authData) {
     return (
@@ -68,16 +49,20 @@ export const Navbar = memo(({ className }: NavbarProps) => {
         >
           Создать статью
         </AppLink>
-        <Dropdown
-          trigger={<Avatar size={40} src={authData.avatar} />}
-          items={items}
-        />
+        <div className={cls.actions}>
+          <NotificationsButton />
+          <AvatarDropdown />
+        </div>
       </header>
     );
   }
 
   return (
     <header className={classNames(cls.Navbar, {}, [className])}>
+      <Text
+        className={cls.logo}
+        title='Portfolio App'
+      />
       <Button
         className={cls.loginBtn}
         theme={ButtonTheme.CLEAR_INVERTED}
@@ -85,6 +70,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
       >
         {t('Войти')}
       </Button>
+
       {isAuthModal && (
         <LoginModal
           isOpen={isAuthModal}

@@ -4,36 +4,57 @@ import { Text, TextAlign, TextTheme } from 'shared/ui/Text';
 import { Input } from 'shared/ui/Input';
 import { Loader } from 'shared/ui/Loader';
 import { useSelector } from 'react-redux';
-import { getProfileReadonly, profileActions } from 'entities/Profile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { ChangeEvent, useCallback } from 'react';
 import { Avatar } from 'shared/ui/Avatar';
 import { Currency, CurrencySelect } from 'entities/Currency';
-import { Select } from 'shared/ui/Select';
 import { Country, CountrySelect } from 'entities/Country';
-import { Profile } from '../../model/types/profile';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
+import {
+  getProfileError,
+} from '../../model/selectors/getProfileError/getProfileError';
+import {
+  fetchProfileData,
+} from '../../model/services/fetchProfileData/fetchProfileData';
+import {
+  getProfileForm,
+} from '../../model/selectors/getProfileForm/getProfileForm';
+import {
+  getProfileIsLoading,
+} from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';
+import {
+  getProfileReadonly,
+} from '../../model/selectors/getProfileReadonly/getProfileReadonly';
+import {
+  profileActions,
+} from '../../model/slice/profileSlice';
 import cls from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
-    className?: string;
-    data?: Profile;
-    isLoading?: boolean;
-    error?: string;
+    className?: string
+    id: string
 }
 
 export const ProfileCard = (props: ProfileCardProps) => {
   const {
     className,
-    data,
-    isLoading,
-    error,
+    id,
   } = props;
-
-  const dispatch = useAppDispatch();
 
   const { t } = useTranslation('profile');
 
+  const dispatch = useAppDispatch();
+
+  const data = useSelector(getProfileForm);
+  const isLoading = useSelector(getProfileIsLoading);
+  const error = useSelector(getProfileError);
   const readonly = useSelector(getProfileReadonly);
+
+  useInitialEffect(() => {
+    if (id) {
+      dispatch(fetchProfileData(id));
+    }
+  }, []);
 
   const onFirstnameChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     dispatch(profileActions.updateProfile({ firstname: e.target.value }));
@@ -86,8 +107,8 @@ export const ProfileCard = (props: ProfileCardProps) => {
       <div className={classNames(cls.ProfileCard, className, cls.error)}>
         <Text
           theme={TextTheme.ERROR}
-          title={t('Произошла ошибка при закрузке профиля')}
-          text={t('Попробуйте обновить страницу')}
+          title={t('Произошла ошибка при закрузке профиля') as string}
+          text={t('Попробуйте обновить страницу') as string}
           align={TextAlign.CENTER}
         />
       </div>
@@ -117,37 +138,37 @@ export const ProfileCard = (props: ProfileCardProps) => {
       <form className={cls.form}>
         <Input
           value={data?.firstname}
-          placeholder={t('Имя')}
+          placeholder={t('Имя') as string}
           readonly={readonly}
           onChange={onFirstnameChange}
         />
         <Input
           value={data?.lastname}
-          placeholder={t('Фамилия')}
+          placeholder={t('Фамилия') as string}
           readonly={readonly}
           onChange={onLastnameChange}
         />
         <Input
           value={data?.age}
-          placeholder={t('Возраст')}
+          placeholder={t('Возраст') as string}
           readonly={readonly}
           onChange={onAgeChange}
         />
         <Input
           value={data?.city}
-          placeholder={t('Город')}
+          placeholder={t('Город') as string}
           readonly={readonly}
           onChange={onCityChange}
         />
         <Input
           value={data?.username}
-          placeholder={t('Имя пользователя')}
+          placeholder={t('Имя пользователя') as string}
           readonly={readonly}
           onChange={onUsernameChange}
         />
         <Input
           value={data?.avatar}
-          placeholder={t('Ссылка на аватар')}
+          placeholder={t('Ссылка на аватар') as string}
           readonly={readonly}
           onChange={onAvatarChange}
         />

@@ -18,7 +18,7 @@ export const getArticles = articlesAdapter.getSelectors<StateSchema>(
 const articlesPageSlice = createSlice({
   name: 'articlesPageSlice',
   initialState: articlesAdapter.getInitialState<ArticlesPageSchema>({
-    status: 'idle',
+    status: 'loading',
     ids: [],
     entities: {},
     view: ArticleView.LIST,

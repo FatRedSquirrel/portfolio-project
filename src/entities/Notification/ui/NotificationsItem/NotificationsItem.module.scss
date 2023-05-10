@@ -1,0 +1,15 @@
+.item {
+  width: 100%;
+  padding: 8px 24px;
+  display: block;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--secondary-color);
+  }
+
+  &__text {
+    p {
+      color: var(--secondary-color);
+    }
+  }
+}

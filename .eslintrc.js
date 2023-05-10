@@ -32,6 +32,7 @@ module.exports = {
       2,
       { extensions: ['.js', '.jsx', '.tsx'] },
     ],
+    'linebreak-style': 'off',
     'react/no-array-index-key': 'off',
     'import/no-unresolved': 'off',
     'import/prefer-default-export': 'off',

@@ -7,6 +7,7 @@ interface SkeletonProps {
   height?: string | number
   width?: string | number
   round?: boolean
+  border?: number
 }
 
 export const Skeleton = memo((props: SkeletonProps) => {
@@ -15,11 +16,13 @@ export const Skeleton = memo((props: SkeletonProps) => {
     height,
     width,
     round,
+    border,
   } = props;
 
   const styles: CSSProperties = {
     width,
     height,
+    borderRadius: `${border}px`,
   };
 
   return (
