@@ -1,15 +1,15 @@
-import classNames from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Text, TextAlign, TextTheme } from 'shared/ui/Text';
-import { Input } from 'shared/ui/Input';
-import { Loader } from 'shared/ui/Loader';
 import { useSelector } from 'react-redux';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { ChangeEvent, useCallback } from 'react';
-import { Avatar } from 'shared/ui/Avatar';
-import { Currency, CurrencySelect } from 'entities/Currency';
-import { Country, CountrySelect } from 'entities/Country';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
+import classNames from '@/shared/lib/classNames/classNames';
+import { Text, TextAlign, TextTheme } from '@/shared/ui/Text';
+import { Input } from '@/shared/ui/Input';
+import { Loader } from '@/shared/ui/Loader';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
+import { Avatar } from '@/shared/ui/Avatar';
+import { Currency, CurrencySelect } from '@/entities/Currency';
+import { Country, CountrySelect } from '@/entities/Country';
+import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
 import {
   getProfileError,
 } from '../../model/selectors/getProfileError/getProfileError';

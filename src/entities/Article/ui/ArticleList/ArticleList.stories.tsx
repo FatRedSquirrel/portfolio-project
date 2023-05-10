@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Article, ArticleView } from 'entities/Article';
+import { Article, ArticleView } from '@/entities/Article';
 import { ArticleList } from './ArticleList';
 
 const article = {

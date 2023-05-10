@@ -1,12 +1,12 @@
-import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useParams } from 'react-router-dom';
+import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import {
   ProfileCard,
   profileReducer,
-} from 'entities/Profile';
-import { Page } from 'widgets/Page';
-import { useParams } from 'react-router-dom';
-import { Drawer } from 'shared/ui/Drawer';
-import { NotificationsList } from 'entities/Notification';
+} from '@/entities/Profile';
+import { Page } from '@/widgets/Page';
+import { Drawer } from '@/shared/ui/Drawer';
+import { NotificationsList } from '@/entities/Notification';
 import ProfilePageHeader from './ProfilePageHeader/ProfilePageHeader';
 import ProfilePageErrors from './ProfilePageErrors';
 

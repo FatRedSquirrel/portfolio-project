@@ -1,7 +1,7 @@
-import classNames from 'shared/lib/classNames/classNames';
-import ListIcon from 'shared/assets/icons/list.svg';
-import GridIcon from 'shared/assets/icons/grid.svg';
-import { Button, ButtonTheme } from 'shared/ui/Button';
+import classNames from '@/shared/lib/classNames/classNames';
+import ListIcon from '@/shared/assets/icons/list.svg';
+import GridIcon from '@/shared/assets/icons/grid.svg';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { ArticleView } from '../../model/types/article';
 import cls from './ArticleViewSelector.module.scss';
 

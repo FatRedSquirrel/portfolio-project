@@ -1,7 +1,7 @@
-import classNames from 'shared/lib/classNames/classNames';
 import { ReactNode } from 'react';
-import { Card, CardTheme } from 'shared/ui/Card/Card';
-import { ArticleType } from 'entities/Article/model/types/article';
+import classNames from '@/shared/lib/classNames/classNames';
+import { Card, CardTheme } from '@/shared/ui/Card/Card';
+import { ArticleType } from '@/entities/Article/model/types/article';
 import cls from './Tabs.module.scss';
 
 export interface TabItem<T> {

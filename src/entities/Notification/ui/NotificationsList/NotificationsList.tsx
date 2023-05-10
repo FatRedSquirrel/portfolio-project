@@ -1,5 +1,5 @@
-import classNames from 'shared/lib/classNames/classNames';
-import { Skeleton } from 'shared/ui/Skeleton/ui/Skeleton';
+import classNames from '@/shared/lib/classNames/classNames';
+import { Skeleton } from '@/shared/ui/Skeleton/ui/Skeleton';
 import { useNotifications } from '../../api/notofocationsApi';
 import cls from './NotificationsList.module.scss';
 import NotificationsItem from '../NotificationsItem/NotificationsItem';

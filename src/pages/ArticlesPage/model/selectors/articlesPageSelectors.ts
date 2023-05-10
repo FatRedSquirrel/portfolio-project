@@ -1,5 +1,5 @@
-import { StateSchema } from 'app/providers/StoreProvider';
-import { ArticleSortField, ArticleType, ArticleView } from 'entities/Article';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { ArticleSortField, ArticleType, ArticleView } from '@/entities/Article';
 
 export const getArticlesPageStatus = (state: StateSchema) => state.articlesPage?.status || 'idle';
 export const getArticlesPageError = (state: StateSchema) => state.articlesPage?.error;

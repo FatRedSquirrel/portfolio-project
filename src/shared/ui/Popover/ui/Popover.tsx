@@ -1,6 +1,6 @@
 import { Popover as HPopover, Transition } from '@headlessui/react';
 import { ReactNode } from 'react';
-import classNames from 'shared/lib/classNames/classNames';
+import classNames from '@/shared/lib/classNames/classNames';
 import cls from './Popover.module.scss';
 
 interface PopoverProps {

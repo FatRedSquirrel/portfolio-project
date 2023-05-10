@@ -1,15 +1,15 @@
-import { ArticleDetails } from 'entities/Article';
 import { memo } from 'react';
-import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { ArticleDetails } from '@/entities/Article';
+import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import {
   articleCommentsReducer,
-} from 'pages/ArticleDetailsPage/model/slice/articleDetailsCommentsSlice';
-import { Page } from 'widgets/Page';
+} from '@/pages/ArticleDetailsPage/model/slice/articleDetailsCommentsSlice';
+import { Page } from '@/widgets/Page';
 import {
   ArticleDetailsPageHeader,
-} from 'pages/ArticleDetailsPage/ui/ArticleDetailsPageHeader/ArticleDetailsPageHeader';
-import { ArticleRecommendationsList } from 'features/articleRecommendationsList';
-import { ArticleComments } from 'features/articleComments';
+} from '@/pages/ArticleDetailsPage/ui/ArticleDetailsPageHeader/ArticleDetailsPageHeader';
+import { ArticleRecommendationsList } from '@/features/articleRecommendationsList';
+import { ArticleComments } from '@/features/articleComments';
 import {
   articleRecommendationsReducer,
 } from '../../model/slice/articleRecommendationsSlice';
