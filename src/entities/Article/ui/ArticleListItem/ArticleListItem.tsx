@@ -1,15 +1,15 @@
-import classNames from 'shared/lib/classNames/classNames';
-import { Text } from 'shared/ui/Text';
-import EyeIcon from 'shared/assets/icons/eye.svg';
-import { Card } from 'shared/ui/Card/Card';
-import useHover from 'shared/lib/hooks/useHover';
-import { Avatar } from 'shared/ui/Avatar';
-import { Button } from 'shared/ui/Button';
 import { CSSProperties, HTMLAttributeAnchorTarget, useMemo } from 'react';
-import { AppLink } from 'shared/ui/AppLink';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
-import { articlesPageActions } from 'pages/ArticlesPage/model/slice/articlesPageSlice';
+import classNames from '@/shared/lib/classNames/classNames';
+import { Text } from '@/shared/ui/Text';
+import EyeIcon from '@/shared/assets/icons/eye.svg';
+import { Card } from '@/shared/ui/Card/Card';
+import useHover from '@/shared/lib/hooks/useHover';
+import { Avatar } from '@/shared/ui/Avatar';
+import { Button } from '@/shared/ui/Button';
+import { AppLink } from '@/shared/ui/AppLink';
+import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
+import { articlesPageActions } from '@/pages/ArticlesPage/model/slice/articlesPageSlice';
 import TextBlock from '../components/TextBlock';
 import {
   Article, ArticleBlockText, ArticleBlockType, ArticleView,

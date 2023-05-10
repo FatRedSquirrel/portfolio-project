@@ -1,12 +1,12 @@
-import { ArticleList } from 'entities/Article';
-import { getArticlesPageError, getArticlesPageStatus, getArticlesPageView } from 'pages/ArticlesPage/model/selectors/articlesPageSelectors';
-import { initArticlesPage } from 'pages/ArticlesPage/model/services/initArticlesPage/initArticlesPage';
-import { getArticles } from 'pages/ArticlesPage/model/slice/articlesPageSlice';
 import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
-import { Text } from 'shared/ui/Text';
+import { ArticleList } from '@/entities/Article';
+import { getArticlesPageError, getArticlesPageStatus, getArticlesPageView } from '@/pages/ArticlesPage/model/selectors/articlesPageSelectors';
+import { initArticlesPage } from '@/pages/ArticlesPage/model/services/initArticlesPage/initArticlesPage';
+import { getArticles } from '@/pages/ArticlesPage/model/slice/articlesPageSlice';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
+import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
+import { Text } from '@/shared/ui/Text';
 
 const ArticlesInfiniteList = () => {
   const dispatch = useAppDispatch();

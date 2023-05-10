@@ -1,6 +1,6 @@
 import { Menu, Transition } from '@headlessui/react';
 import { CSSProperties, Fragment, ReactNode } from 'react';
-import classNames from 'shared/lib/classNames/classNames';
+import classNames from '@/shared/lib/classNames/classNames';
 import cls from './Dropdown.module.scss';
 
 type DropdownDirection = 'left' | 'right';

@@ -3,8 +3,8 @@ import {
   Fragment, ReactNode,
 } from 'react';
 import { Listbox } from '@headlessui/react';
-import classNames from 'shared/lib/classNames/classNames';
-import DropDownArrow from 'shared/assets/icons/dropdown-arrow.svg';
+import classNames from '@/shared/lib/classNames/classNames';
+import DropDownArrow from '@/shared/assets/icons/dropdown-arrow.svg';
 import cls from './ListBox.module.scss';
 
 export interface ListBoxItem {

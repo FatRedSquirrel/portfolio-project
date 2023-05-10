@@ -1,13 +1,13 @@
-import classNames from 'shared/lib/classNames/classNames';
 import {
   MutableRefObject, ReactNode, useRef, UIEvent,
 } from 'react';
-import useInfiniteScroll from 'shared/lib/hooks/useInfiniteScroll';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
-import { StateSchema } from 'app/providers/StoreProvider';
-import useThrottle from 'shared/lib/hooks/useThrottle';
+import useInfiniteScroll from '@/shared/lib/hooks/useInfiniteScroll';
+import classNames from '@/shared/lib/classNames/classNames';
+import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import useThrottle from '@/shared/lib/hooks/useThrottle';
 import { pageActions } from '../model/slice/pageSlice';
 import { getPageScrollByPath } from '../model/selectors/pageSelectors';
 import cls from './Page.module.scss';

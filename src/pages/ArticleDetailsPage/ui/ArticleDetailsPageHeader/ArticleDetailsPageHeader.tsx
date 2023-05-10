@@ -1,9 +1,9 @@
-import classNames from 'shared/lib/classNames/classNames';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { useSelector } from 'react-redux';
-import { getCanEditArticle } from 'pages/ArticleDetailsPage/model/selectors/article';
-import { AppLink, AppLinkTheme } from 'shared/ui/AppLink';
-import { getArticlesDetailsData } from 'entities/Article';
+import classNames from '@/shared/lib/classNames/classNames';
+import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
+import { getCanEditArticle } from '@/pages/ArticleDetailsPage/model/selectors/article';
+import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink';
+import { getArticlesDetailsData } from '@/entities/Article';
 import cls from './ArticleDetailsPageHeader.module.scss';
 
 interface ArticleDetailsPageHeaderProps {

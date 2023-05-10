@@ -3,13 +3,13 @@ import {
   useCallback, useMemo, useState,
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import {
   getUserAuthData, isUserAdmin, isUserManager, userActions,
-} from 'entities/User';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { Dropdown } from 'shared/ui/Dropdown';
-import { Avatar } from 'shared/ui/Avatar';
-import { useNavigate } from 'react-router-dom';
+} from '@/entities/User';
+import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
+import { Dropdown } from '@/shared/ui/Dropdown';
+import { Avatar } from '@/shared/ui/Avatar';
 
 interface AvatarDropdownProps {
 

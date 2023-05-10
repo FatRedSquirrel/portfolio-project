@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
-import { getArticlesPageType } from 'pages/ArticlesPage/model/selectors/articlesPageSelectors';
-import { TabItem, Tabs } from 'shared/ui/Tabs/ui/Tabs';
-import { ArticleType } from 'entities/Article';
+import { getArticlesPageType } from '@/pages/ArticlesPage/model/selectors/articlesPageSelectors';
+import { TabItem, Tabs } from '@/shared/ui/Tabs/ui/Tabs';
+import { ArticleType } from '@/entities/Article';
 import cls from './ArticleTypeTabs.module.scss';
 
 interface ArticleTypeTabsProps {

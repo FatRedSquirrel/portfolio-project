@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
-import { Text, TextTheme } from 'shared/ui/Text';
+import { useTranslation } from 'react-i18next';
+import { Text, TextTheme } from '@/shared/ui/Text';
 import {
   fetchProfileData,
   ProfileCard,
@@ -9,8 +10,7 @@ import {
   getProfileForm,
   getProfileValidationErrors,
   ValidateProfileError,
-} from 'entities/Profile';
-import { useTranslation } from 'react-i18next';
+} from '@/entities/Profile';
 
 const ProfilePageErrors = () => {
   const validationErrors = useSelector(getProfileValidationErrors);

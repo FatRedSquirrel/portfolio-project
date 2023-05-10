@@ -1,17 +1,17 @@
-import classNames from 'shared/lib/classNames/classNames';
 import { HTMLAttributeAnchorTarget, useMemo, useRef } from 'react';
-import { fetchNextArticlesPage } from 'pages/ArticlesPage/model/services/fetchNextArticlesPage/fetchNextArticlesPage';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
-import { ArticlesPageFilters } from 'pages/ArticlesPage/ui/ArticlesPageFilters/ArticlesPageFilters';
-import { Loader } from 'shared/ui/Loader';
 import { useSelector } from 'react-redux';
+import { Virtuoso, VirtuosoGrid } from 'react-virtuoso';
+import { useTranslation } from 'react-i18next';
+import classNames from '@/shared/lib/classNames/classNames';
+import { fetchNextArticlesPage } from '@/pages/ArticlesPage/model/services/fetchNextArticlesPage/fetchNextArticlesPage';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
+import { ArticlesPageFilters } from '@/pages/ArticlesPage/ui/ArticlesPageFilters/ArticlesPageFilters';
+import { Loader } from '@/shared/ui/Loader';
 import {
   getArticlesPageInitialItemIndex,
   getArticlesPageStatus,
-} from 'pages/ArticlesPage/model/selectors/articlesPageSelectors';
-import { Virtuoso, VirtuosoGrid } from 'react-virtuoso';
-import { articlesPageActions } from 'pages/ArticlesPage/model/slice/articlesPageSlice';
-import { useTranslation } from 'react-i18next';
+} from '@/pages/ArticlesPage/model/selectors/articlesPageSelectors';
+import { articlesPageActions } from '@/pages/ArticlesPage/model/slice/articlesPageSlice';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 import cls from './ArticleList.module.scss';
 import { Article, ArticleView } from '../../model/types/article';
