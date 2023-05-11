@@ -9,11 +9,12 @@ import cls from './Drawer.module.scss';
 import { Portal } from '../../Portal';
 
 interface DrawerProps {
-    className?: string;
-    children: ReactNode;
-    isOpen?: boolean;
-    onClose?: () => void;
-    lazy?: boolean;
+    className?: string
+    children: ReactNode
+    isOpen?: boolean
+    onClose?: () => void
+    lazy?: boolean
+    inverted?: boolean
 }
 
 const height = window.innerHeight - 100;
@@ -25,6 +26,7 @@ export const DrawerContent = memo((props: DrawerProps) => {
     onClose,
     isOpen,
     lazy,
+    inverted,
   } = props;
 
   const { theme } = useTheme();
@@ -84,10 +86,19 @@ export const DrawerContent = memo((props: DrawerProps) => {
 
   return (
     <Portal>
-      <div className={classNames(cls.Drawer, className, theme, 'app_drawer')}>
+      <div className={classNames(
+        cls.Drawer,
+        className,
+        theme,
+        'app_drawer',
+      )}
+      >
         <Overlay />
         <Spring.a.div
-          className={cls.sheet}
+          className={classNames(
+            cls.sheet,
+            inverted && cls.inverted,
+          )}
           style={{ display, bottom: `calc(-100vh + ${height - 100}px)`, y }}
           {...bind()}
         >

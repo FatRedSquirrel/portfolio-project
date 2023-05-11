@@ -25,6 +25,7 @@ export const Popover = (props: PopoverProps) => {
     )}
     >
       <HPopover.Button
+        as='div'
         className={cls.trigger}
       >
         {trigger}

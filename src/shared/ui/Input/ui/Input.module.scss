@@ -1,11 +1,5 @@
 .InputWrapper {
   display: flex;
-
-  @media screen and (width <= 650px) {
-    align-items: center;
-    flex-direction: column;
-    gap: 10px;
-  }
 }
 
 .placeholder {

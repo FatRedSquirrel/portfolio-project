@@ -1,2 +1,2 @@
-export { VStack } from './VStack';
-export { HStack } from './HStack';
+export { HStack } from './HStack/HStack';
+export { VStack } from './VStack/VStack';

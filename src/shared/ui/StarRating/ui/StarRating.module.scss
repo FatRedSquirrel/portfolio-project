@@ -1,0 +1,17 @@
+.star {
+  stroke: var(--main-color);
+  fill: none;
+  cursor: pointer;
+
+  &.hovered {
+    fill: var(--main-color);
+  }
+
+  &.selected {
+    fill: var(--main-color);
+  }
+
+  &.noCursor {
+    cursor: auto;
+  }
+}

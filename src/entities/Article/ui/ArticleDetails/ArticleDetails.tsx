@@ -21,6 +21,7 @@ import cls from './ArticleDetails.module.scss';
 import CodeBlock from '../components/CodeBlock';
 import TextBlock from '../components/TextBlock';
 import ImageBlock from '../components/ImageBlock';
+import { StarRating } from '@/shared/ui/StarRating';
 
 const reducers = {
   articleDetails: articleDetailsReducer,

@@ -5,7 +5,7 @@ import { ThemeSwitcher } from '@/shared/ui/ThemeSwitcher';
 import { LangSwitcher } from '@/shared/ui/LangSwitcher';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import { SidebarItemType } from '@/widgets/Sidebar/model/types/sidebar';
-import { VStack } from '@/shared/ui/Stack/VStack';
+import { VStack } from '@/shared/ui/Stack';
 import cls from './Sidebar.module.scss';
 import { getSidebarItems } from '../../model/selectors/getSidebarItems';
 import { SidebarItem } from '../SidebarItem/SidebarItem';

@@ -1,32 +1,23 @@
-import { ReactNode } from 'react';
+import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
 import classNames from '@/shared/lib/classNames/classNames';
 import cls from './Flex.module.scss';
 
-export type FlexJustify = 'start' | 'end' | 'center' | 'between';
-export type FlexAlign = 'start' | 'end' | 'center';
+export type FlexJustify = 'start' | 'center' | 'end' | 'between';
+export type FlexAlign = 'start' | 'center' | 'end';
 export type FlexDirection = 'row' | 'column';
 export type FlexGap = '4' | '8' | '16' | '32';
 
-export interface FlexProps {
-  className?: string
-  children?: ReactNode
-  justify?: FlexJustify
-  align?: FlexAlign
-  direction: FlexDirection
-  gap?: FlexGap
-}
-
 const justifyClasses: Record<FlexJustify, string> = {
   start: cls.justifyStart,
-  end: cls.justifyEnd,
   center: cls.justifyCenter,
+  end: cls.justifyEnd,
   between: cls.justifyBetween,
 };
 
 const alignClasses: Record<FlexAlign, string> = {
   start: cls.alignStart,
-  end: cls.alignEnd,
   center: cls.alignCenter,
+  end: cls.alignEnd,
 };
 
 const directionClasses: Record<FlexDirection, string> = {
@@ -41,6 +32,18 @@ const gapClasses: Record<FlexGap, string> = {
   32: cls.gap32,
 };
 
+type DivProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+
+export interface FlexProps extends DivProps {
+    className?: string;
+    children: ReactNode;
+    justify?: FlexJustify;
+    align?: FlexAlign;
+    direction: FlexDirection;
+    gap?: FlexGap;
+    max?: boolean;
+}
+
 export const Flex = (props: FlexProps) => {
   const {
     className,
@@ -49,21 +52,20 @@ export const Flex = (props: FlexProps) => {
     align = 'center',
     direction = 'row',
     gap,
+    max,
   } = props;
 
+  const classes = [
+    className,
+    justifyClasses[justify],
+    alignClasses[align],
+    directionClasses[direction],
+    gap && gapClasses[gap],
+    max && cls.max,
+  ];
+
   return (
-    <div
-      className={
-        classNames(
-          cls.flex,
-          justifyClasses[justify],
-          alignClasses[align],
-          directionClasses[direction],
-          gap && gapClasses[gap],
-          className,
-        )
-      }
-    >
+    <div className={classNames(cls.Flex, ...classes)}>
       {children}
     </div>
   );
