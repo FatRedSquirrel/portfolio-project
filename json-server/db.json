@@ -1007,6 +1007,12 @@
       "articleId": "4",
       "userId": "2",
       "id": "qF88YzP"
+    },
+    {
+      "text": "123",
+      "articleId": "5",
+      "userId": "1",
+      "id": "xZIEQMx"
     }
   ],
   "users": [
@@ -1053,6 +1059,87 @@
       "country": "USA",
       "city": "Moscow",
       "firstname": "xasan"
+    }
+  ],
+  "article-ratings": [
+    {
+      "id": "1",
+      "rate": 4,
+      "feedback": "Хорошая статья",
+      "userId": "1",
+      "articleId": "1"
+    },
+    {
+      "id": "2",
+      "rate": 4,
+      "feedback": "Хорошая статья",
+      "userId": "1",
+      "articleId": "2"
+    },
+    {
+      "userId": "1",
+      "articleId": "3",
+      "rate": 3,
+      "feedback": "",
+      "id": "I7ofk1u"
+    },
+    {
+      "userId": "1",
+      "articleId": "9",
+      "rate": 5,
+      "feedback": "asdasdasdasd",
+      "id": "Y7MhPzo"
+    },
+    {
+      "userId": "1",
+      "articleId": "10",
+      "rate": 1,
+      "feedback": "отстой",
+      "id": "II0a75O"
+    },
+    {
+      "userId": "1",
+      "articleId": "7",
+      "rate": 3,
+      "feedback": "",
+      "id": "bcPnbbZ"
+    },
+    {
+      "userId": "1",
+      "articleId": "19",
+      "rate": 4,
+      "feedback": "",
+      "id": "BuGgbwF"
+    },
+    {
+      "userId": "1",
+      "articleId": "18",
+      "rate": 4,
+      "feedback": "",
+      "id": "ldwSHKP"
+    },
+    {
+      "userId": "1",
+      "articleId": "5",
+      "rate": 4,
+      "feedback": "123",
+      "id": "_PWyNc_"
+    }
+  ],
+  "profile-ratings": [
+    {
+      "id": "1",
+      "rate": 4,
+      "feedback": "Хорошая статья",
+      "userId": "1",
+      "profileId": "1"
+    },
+    {
+      "id": "2",
+      "rate": 4,
+      "feedback": "Хорошая статья",
+      "userId": "1",
+      "profileId": "2"
     }
   ]
 }

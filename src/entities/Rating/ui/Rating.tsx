@@ -1,5 +1,5 @@
 import {
-  ChangeEvent, useCallback, useMemo, useState,
+  ChangeEvent, useCallback, useEffect, useMemo, useState,
 } from 'react';
 import { BrowserView, MobileView } from 'react-device-detect';
 import { Card } from '@/shared/ui/Card/Card';
@@ -17,7 +17,7 @@ interface RatingProps {
   className?: string
   title?: string
   feedbackTitle?: string
-  hasFeedback?: boolean
+  rate?: number
   onCancel?: (starsCount: number) => void
   onAccept?: (starsCount: number, feedback?: string) => void
 }
@@ -27,23 +27,30 @@ export const Rating = (props: RatingProps) => {
     className,
     title,
     feedbackTitle,
-    hasFeedback = true,
+    rate,
     onCancel,
     onAccept,
   } = props;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [startCount, setStartCount] = useState(0);
+  const [starsCount, setStarsCount] = useState(rate || 0);
   const [feedback, setFeedback] = useState('');
 
+  useEffect(() => {
+    if (rate) {
+      setStarsCount(rate);
+    }
+    // eslint-disable-next-line
+  }, [rate]);
+
   const selectStars = useCallback((selectedStarsCount: number) => {
-    setStartCount(selectedStarsCount);
-    if (hasFeedback) {
+    setStarsCount(selectedStarsCount);
+    if (feedbackTitle) {
       setIsModalOpen(true);
     } else {
       onAccept?.(selectedStarsCount);
     }
-  }, [hasFeedback, onAccept]);
+  }, [feedbackTitle, onAccept]);
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -51,20 +58,20 @@ export const Rating = (props: RatingProps) => {
 
   const handleAcept = useCallback(() => {
     closeModal();
-    onAccept?.(startCount, feedback);
-  }, [feedback, onAccept, startCount]);
+    onAccept?.(starsCount, feedback);
+  }, [feedback, onAccept, starsCount]);
 
   const handleCancel = useCallback(() => {
     closeModal();
-    onCancel?.(startCount);
-  }, [onCancel, startCount]);
+    onCancel?.(starsCount);
+  }, [onCancel, starsCount]);
 
   const handleFeedbackChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFeedback(e.target.value);
   };
 
   const modalContent = useMemo(() => (
-    <VStack max gap='32'>
+    <VStack className={cls.modalContent} max gap='16'>
       <Text title={feedbackTitle} />
       <Input
         value={feedback}
@@ -82,7 +89,11 @@ export const Rating = (props: RatingProps) => {
     >
       <VStack align='center' gap='8'>
         <Text title={title} />
-        <StarRating size={40} onSelect={selectStars} />
+        <StarRating
+          size={40}
+          selectedStars={starsCount}
+          onSelect={selectStars}
+        />
       </VStack>
       <BrowserView>
         <Modal isOpen={isModalOpen} onClose={handleCancel} lazy>

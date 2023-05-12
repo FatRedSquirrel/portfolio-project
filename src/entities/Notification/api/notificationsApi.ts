@@ -1,7 +1,7 @@
 import { rtkApi } from '@/shared/api/rtkApi';
 import { Notification } from '../model/types/notifications';
 
-const noftificationsApi = rtkApi.injectEndpoints({
+const notificationsApi = rtkApi.injectEndpoints({
   endpoints: (build) => ({
     getNotifications: build.query<Notification[], null>({
       query: () => ({
@@ -11,4 +11,4 @@ const noftificationsApi = rtkApi.injectEndpoints({
   }),
 });
 
-export const useNotifications = noftificationsApi.useGetNotificationsQuery;
+export const useNotifications = notificationsApi.useGetNotificationsQuery;

@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import classNames from '@/shared/lib/classNames/classNames';
 
 import StarIcon from '@/shared/assets/icons/star.svg';
@@ -19,11 +19,18 @@ export const StarRating = memo((props: StarRatingProps) => {
     className,
     onSelect,
     size = 30,
-    selectedStars = 0,
+    selectedStars,
   } = props;
 
   const [currentStarCount, setCurrentStarCount] = useState(0);
-  const [isSelected, setIsSelected] = useState(Boolean(selectedStars));
+  const [isSelected, setIsSelected] = useState(false);
+
+  useEffect(() => {
+    if (selectedStars) {
+      setCurrentStarCount(selectedStars);
+      setIsSelected(true);
+    }
+  }, [selectedStars]);
 
   const onHover = (starsCount: number) => () => {
     if (!isSelected) {
@@ -58,7 +65,7 @@ export const StarRating = memo((props: StarRatingProps) => {
           className={classNames(
             cls.star,
             star <= currentStarCount && cls.hovered,
-            star <= selectedStars && cls.selected,
+            star <= currentStarCount && cls.selected,
             isSelected && cls.noCursor,
           )}
           key={index}

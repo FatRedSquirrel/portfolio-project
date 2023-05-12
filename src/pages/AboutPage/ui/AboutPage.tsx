@@ -8,10 +8,6 @@ const AboutPage = () => {
   return (
     <Page>
       О сайте
-      <Rating
-        title='Оставьте отзыв о статье'
-        feedbackTitle='Оставьте отзыв о статье'
-      />
     </Page>
   );
 };

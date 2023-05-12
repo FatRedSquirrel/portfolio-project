@@ -13,6 +13,7 @@ import { ArticleComments } from '@/features/articleComments';
 import {
   articleRecommendationsReducer,
 } from '../../model/slice/articleRecommendationsSlice';
+import { ArticleRating } from '@/features/articleRating';
 
 const reducers: ReducersList = {
   articleComments: articleCommentsReducer,
@@ -24,6 +25,7 @@ const ArticleDetailsPage = () => (
     <Page>
       <ArticleDetailsPageHeader />
       <ArticleDetails />
+      <ArticleRating />
       <ArticleRecommendationsList />
       <ArticleComments />
     </Page>
