@@ -41,8 +41,6 @@ export const ArticleList = (props: ArticleListProps) => {
   const dispatch = useAppDispatch();
   const initialItemIndex = useSelector(getArticlesPageInitialItemIndex);
 
-  const virtuoso = useRef(null);
-
   const loadNextPart = () => {
     dispatch(fetchNextArticlesPage());
   };
@@ -117,7 +115,6 @@ export const ArticleList = (props: ArticleListProps) => {
     view === ArticleView.GRID
       ? (
         <VirtuosoGrid
-          ref={virtuoso}
           style={{ height: '100%' }}
           data={articles}
           endReached={loadNextPart}
@@ -132,7 +129,6 @@ export const ArticleList = (props: ArticleListProps) => {
       : (
         <Virtuoso
           initialTopMostItemIndex={initialItemIndex}
-          ref={virtuoso}
           style={{ height: '100%' }}
           data={articles}
           endReached={loadNextPart}

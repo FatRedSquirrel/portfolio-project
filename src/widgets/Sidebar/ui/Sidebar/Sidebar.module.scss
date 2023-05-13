@@ -1,46 +1,43 @@
 .Sidebar {
-    height: calc(100vh - var(--navbar-height));
-    width: var(--sidebar-width);
-    background: var(--main-color);
-    position: relative;
-    transition: width 0.3s;
+  width: var(--sidebar-width);
+  height: calc(100vh - var(--navbar-height));
+  position: relative;
+  transition: width 0.3s;
+  background: var(--main-color);
 }
 
 .switchers {
-    position: absolute;
-    bottom: 20px;
-    display: flex;
-    justify-content: center;
-    width: 100%;
+  width: 100%;
+  position: absolute;
+  bottom: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .lang {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
 .collapseBtn {
-    position: absolute;
-    right: -32px;
-    bottom: 32px;
+  position: absolute;
+  right: -32px;
+  bottom: 32px;
 }
 
 .items {
-    margin-top: 20px;
-    margin-left: 30px;
-    //display: flex;
-    //flex-direction: column;
-    //gap: 10px;
+  margin-top: 20px;
+  margin-left: 30px;
 }
 
 .collapsed {
-    width: var(--sidebar-width-collapsed);
+  width: var(--sidebar-width-collapsed);
 
-    .switchers {
-        flex-direction: column;
-        align-items: center;
-    }
+  .switchers {
+    align-items: center;
+    flex-direction: column;
+  }
 
-    .lang {
-        margin-left: 0;
-    }
+  .lang {
+    margin-left: 0;
+  }
 }
