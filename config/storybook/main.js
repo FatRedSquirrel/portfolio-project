@@ -6,10 +6,11 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
-    'storybook-addon-mock/register',
+    // 'storybook-addon-mock/register',
   ],
   framework: '@storybook/react',
   core: {
     builder: 'webpack5',
   },
+  typescript: { reactDocgen: false },
 };
