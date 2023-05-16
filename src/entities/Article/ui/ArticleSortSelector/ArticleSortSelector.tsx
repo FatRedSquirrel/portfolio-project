@@ -1,6 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import classNames from '@/shared/lib/classNames/classNames';
-import { Select } from '@/shared/ui/Select';
 import { SelectOption } from '@/shared/ui/Select/ui/Select';
 import { ArticleSortField } from '@/entities/Article/model/types/article';
 import { SortOrder } from '@/shared/types';

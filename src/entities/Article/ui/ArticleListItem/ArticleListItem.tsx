@@ -7,7 +7,7 @@ import useHover from '@/shared/lib/hooks/useHover';
 import { Avatar } from '@/shared/ui/Avatar';
 import { Button } from '@/shared/ui/Button';
 import { AppLink } from '@/shared/ui/AppLink';
-import { RoutePath } from '@/shared/const/router';
+import { RoutePath, getRouteArticle } from '@/shared/const/router';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { articlesPageActions } from '@/pages/ArticlesPage/model/slice/articlesPageSlice';
 import TextBlock from '../components/TextBlock';
@@ -85,7 +85,7 @@ export const ArticleListItem = (props: ArticleListItemProps) => {
           <div className={cls.footer}>
             <AppLink
               target={target}
-              to={RoutePath.article_details + article.id}
+              to={getRouteArticle(article.id)}
             >
               <Button onClick={setInitialItemIndex}>
                 Читать далее...
