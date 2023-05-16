@@ -58,13 +58,13 @@ export const ArticleSortSelector = (props: ArticleSortSelectorProps) => {
         items={sortFieldOptions}
         defaultValue='Выберите значение'
         value={sort}
-        onChange={changeSort as (value: string) => void}
+        onChange={changeSort}
       />
       <ListBox
         items={orderOptions}
         defaultValue='Выберите значение'
         value={order}
-        onChange={changeOrder as (value: string) => void}
+        onChange={changeOrder}
       />
     </div>
   );

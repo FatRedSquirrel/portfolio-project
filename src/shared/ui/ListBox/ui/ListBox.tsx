@@ -15,19 +15,19 @@ export interface ListBoxItem {
 
 type DropdownDirection = 'top' | 'bottom';
 
-interface ListBoxProps {
+interface ListBoxProps<T> {
   className?: string
   items?: ListBoxItem[]
-  value?: string
+  value?: T
   defaultValue?: string
   label?: string
   readonly?: boolean
   direction?: DropdownDirection
   style?: CSSProperties
-  onChange?: (value: string) => void
+  onChange?: (value: T) => void
 }
 
-export const ListBox = (props: ListBoxProps) => {
+export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
   const {
     className,
     items,

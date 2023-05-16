@@ -1,5 +1,4 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { StateSchema } from '@/app/providers/StoreProvider';
 import { getUserAuthData } from '@/entities/User';
 import { RoutePath } from '@/shared/const/router';
 import AboutIcon from '@/shared/assets/icons/about-20-20.svg';
