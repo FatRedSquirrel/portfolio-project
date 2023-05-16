@@ -7,7 +7,7 @@ import useHover from '@/shared/lib/hooks/useHover';
 import { Avatar } from '@/shared/ui/Avatar';
 import { Button } from '@/shared/ui/Button';
 import { AppLink } from '@/shared/ui/AppLink';
-import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
+import { RoutePath } from '@/shared/const/router';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { articlesPageActions } from '@/pages/ArticlesPage/model/slice/articlesPageSlice';
 import TextBlock from '../components/TextBlock';

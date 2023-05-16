@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import {
   getUserAuthData, isUserAdmin, isUserManager, userActions,
 } from '@/entities/User';
-import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
+import { RoutePath } from '@/shared/const/router';
 import { Dropdown } from '@/shared/ui/Dropdown';
 import { Avatar } from '@/shared/ui/Avatar';
 
