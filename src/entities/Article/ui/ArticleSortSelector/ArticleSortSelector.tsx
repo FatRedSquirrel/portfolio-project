@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { SelectOption } from '@/shared/ui/Select/ui/Select';
 import { ArticleSortField } from '@/entities/Article/model/types/article';
-import { SortOrder } from '@/shared/types';
+import { SortOrder } from '@/shared/types/filter';
 import { ListBox } from '@/shared/ui/ListBox';
 import cls from './ArticleSortSelector.module.scss';
 

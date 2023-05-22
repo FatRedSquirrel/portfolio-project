@@ -5,8 +5,6 @@ import {
   profileReducer,
 } from '@/entities/Profile';
 import { Page } from '@/widgets/Page';
-import { Drawer } from '@/shared/ui/Drawer';
-import { NotificationsList } from '@/entities/Notification';
 import ProfilePageHeader from './ProfilePageHeader/ProfilePageHeader';
 import ProfilePageErrors from './ProfilePageErrors';
 
@@ -21,7 +19,7 @@ const ProfilePage = () => {
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <Page>
+      <Page dataTestid='ProfilePage'>
         <ProfilePageHeader />
         <ProfilePageErrors />
         <ProfileCard id={id} />

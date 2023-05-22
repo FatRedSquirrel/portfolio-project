@@ -1,9 +1,7 @@
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Page } from '@/widgets/Page';
 
 const AdminPanelPage = () => (
-  <Page>
+  <Page dataTestid='AdminPanelPage'>
     AdminPanelPage
   </Page>
 );
