@@ -3553,13 +3553,6 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-i18next@^8.1.0":
-  "integrity" "sha512-d4xhcjX5b3roNMObRNMfb1HinHQlQLPo8xlDj60dnHeeAw2bBymR2cy/l1giJpHzo/ZFgSvgVUvIWr4kCrenCg=="
-  "resolved" "https://registry.npmjs.org/@types/react-i18next/-/react-i18next-8.1.0.tgz"
-  "version" "8.1.0"
-  dependencies:
-    "react-i18next" "*"
-
 "@types/react-router-dom@^5.3.3":
   "integrity" "sha512-kpqnYK4wcdm5UaWI3fLcELopqLrHgLqNsdpHauzlQktfkHL3npOSwtj1Uz9oKBAzs7lFtVkV8j83voAz2D8fhw=="
   "resolved" "https://registry.npmjs.org/@types/react-router-dom/-/react-router-dom-5.3.3.tgz"
@@ -11984,7 +11977,7 @@
     "is-plain-object" "5.0.0"
     "react-is" "17.0.2"
 
-"react-i18next@*", "react-i18next@^12.2.2":
+"react-i18next@^12.2.2":
   "integrity" "sha512-KBB6buBmVKXUWNxXHdnthp+38gPyBT46hJCAIQ8rX19NFL/m2ahte2KARfIDf2tMnSAL7wwck6eDOd/9zn6aFg=="
   "resolved" "https://registry.npmjs.org/react-i18next/-/react-i18next-12.2.2.tgz"
   "version" "12.2.2"

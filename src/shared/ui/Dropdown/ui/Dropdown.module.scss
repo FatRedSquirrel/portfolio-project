@@ -58,32 +58,3 @@
     background-color: var(--secondary-color);
   }
 }
-
-// Transition
-.enter {
-  transition: 100ms ease-out;
-}
-
-.enterFrom {
-  transform: scale(0.95);
-  opacity: 0;
-}
-
-.enterTo {
-  transform: scale(1);
-  opacity: 1;
-}
-
-.leave {
-  transition: 75ms ease-out;
-}
-
-.leaveFrom {
-  transform: scale(1);
-  opacity: 1;
-}
-
-.leaveTo {
-  transform: scale(0.95);
-  opacity: 0;
-}

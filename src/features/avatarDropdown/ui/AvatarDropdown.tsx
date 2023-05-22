@@ -10,12 +10,9 @@ import {
 import { RoutePath } from '@/shared/const/router';
 import { Dropdown } from '@/shared/ui/Dropdown';
 import { Avatar } from '@/shared/ui/Avatar';
+import cls from './index.module.scss';
 
-interface AvatarDropdownProps {
-
-}
-
-export const AvatarDropdown = (props: AvatarDropdownProps) => {
+export const AvatarDropdown = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
@@ -53,8 +50,9 @@ export const AvatarDropdown = (props: AvatarDropdownProps) => {
     <Dropdown
       trigger={(
         <Avatar
+          className={cls.avatar}
           size={40}
-          src={authData?.avatar || ''}
+          src={authData?.avatar}
         />
       )}
       items={items}

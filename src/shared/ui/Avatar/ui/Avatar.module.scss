@@ -1,4 +1,7 @@
 .avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 100%;
   overflow: hidden;
 
@@ -18,18 +21,17 @@
   background-color: #eee;
 
   &::before {
-    content: "?";
-    position: absolute;
     width: 100%;
     height: 100%;
-    font-size: 18px;
-    color: #333;
-    left: 0;
+    position: absolute;
     top: 0;
+    left: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 24px;
     font-weight: 700;
+    content: "?";
+    color: #333;
   }
 }
