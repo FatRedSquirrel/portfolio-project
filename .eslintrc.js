@@ -23,8 +23,10 @@ module.exports = {
     'i18next',
     'react-hooks',
     'ulbi-tv-plugin',
+    'unused-imports',
   ],
   rules: {
+    'unused-imports/no-unused-imports': 'error',
     'react/jsx-indent': [2, 2],
     'react/jsx-indent-props': [2, 2],
     indent: [2, 2],
