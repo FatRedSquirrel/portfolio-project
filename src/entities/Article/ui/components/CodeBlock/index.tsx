@@ -12,7 +12,7 @@ const CodeBlock = ({ block, className }: CodeBlockProps) => {
 
   return (
     <div className={className}>
-      <div className={cls.code}>
+      <div>
         <Code text={code} />
       </div>
     </div>
