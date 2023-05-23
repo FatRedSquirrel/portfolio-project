@@ -12,7 +12,7 @@ concurrency:
   group: "pages"
   cancel-in-progress: true
 jobs:
-  build-and-ui-testing:
+  build-and-testing:
     runs-on: ubuntu-latest
     concurrency: ci-${{ github.ref }}
     environment:
@@ -60,7 +60,7 @@ jobs:
         if: always()
         uses: actions/deploy-pages@v1
 
-  checks:
+  checks (linting):
     runs-on: ubuntu-latest
     strategy:
       matrix:

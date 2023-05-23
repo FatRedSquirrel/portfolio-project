@@ -1,15 +1,15 @@
 .code {
   padding: 20px;
   position: relative;
+  overflow: auto;
   color: var(--code-color);
   background: var(--code-bg);
-  overflow: auto;
 }
 
 .copyBtn {
   position: absolute;
-  right: 20px;
   top: 20px;
+  right: 20px;
 
   svg {
     stroke: var(--code-color);
