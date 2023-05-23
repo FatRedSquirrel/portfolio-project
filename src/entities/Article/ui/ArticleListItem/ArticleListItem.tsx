@@ -7,7 +7,7 @@ import useHover from '@/shared/lib/hooks/useHover';
 import { Avatar } from '@/shared/ui/Avatar';
 import { Button } from '@/shared/ui/Button';
 import { AppLink } from '@/shared/ui/AppLink';
-import { RoutePath, getRouteArticle } from '@/shared/const/router';
+import { getRouteArticle } from '@/shared/const/router';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import TextBlock from '../components/TextBlock';
 import {

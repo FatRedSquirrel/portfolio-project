@@ -1,4 +1,4 @@
-import { ReactNode, useMemo } from 'react';
+import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
 import { UserRole, getUserAuthData, getUserRoles } from '@/entities/User';

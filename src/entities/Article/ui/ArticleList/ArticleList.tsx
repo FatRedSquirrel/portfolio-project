@@ -1,4 +1,4 @@
-import { HTMLAttributeAnchorTarget, useMemo, useRef } from 'react';
+import { HTMLAttributeAnchorTarget } from 'react';
 import { useSelector } from 'react-redux';
 import { Virtuoso, VirtuosoGrid } from 'react-virtuoso';
 import { useTranslation } from 'react-i18next';
@@ -9,7 +9,6 @@ import { ArticlesPageFilters } from '@/pages/ArticlesPage/ui/ArticlesPageFilters
 import { Loader } from '@/shared/ui/Loader';
 import {
   getArticlesPageInitialItemIndex,
-  getArticlesPageStatus,
 } from '@/pages/ArticlesPage/model/selectors/articlesPageSelectors';
 import { articlesPageActions } from '@/pages/ArticlesPage/model/slice/articlesPageSlice';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';

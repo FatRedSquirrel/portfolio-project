@@ -1,4 +1,4 @@
-import { ReactNode, useCallback } from 'react';
+import { useCallback } from 'react';
 import classNames from '@/shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import CopyIcon from '@/shared/assets/icons/copy.svg';

@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
-import { Select } from '@/shared/ui/Select';
 import { ListBox } from '@/shared/ui/ListBox';
 import { Currency } from '../../model/types/currency';
 

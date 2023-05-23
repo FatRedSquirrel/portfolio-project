@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect } from 'react';
+import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { DynamicModuleLoader } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
@@ -21,7 +21,6 @@ import cls from './ArticleDetails.module.scss';
 import CodeBlock from '../components/CodeBlock';
 import TextBlock from '../components/TextBlock';
 import ImageBlock from '../components/ImageBlock';
-import { StarRating } from '@/shared/ui/StarRating';
 
 const reducers = {
   articleDetails: articleDetailsReducer,

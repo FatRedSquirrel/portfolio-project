@@ -1,6 +1,4 @@
 import { ReactNode } from 'react';
-import { useDrag } from '@use-gesture/react';
-import { a, useSpring, config } from '@react-spring/web';
 import classNames from '@/shared/lib/classNames/classNames';
 import { Portal } from '@/shared/ui/Portal';
 import { useTheme } from '@/app/providers/ThemeProvider';

@@ -1,7 +1,6 @@
 import {
   ImgHTMLAttributes, ReactElement, memo, useEffect, useState,
 } from 'react';
-import _ from 'lodash';
 
 interface AppImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   className?: string
