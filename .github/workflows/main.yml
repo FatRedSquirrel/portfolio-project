@@ -60,7 +60,7 @@ jobs:
         if: always()
         uses: actions/deploy-pages@v1
 
-  checks (linting):
+  checks-linting:
     runs-on: ubuntu-latest
     strategy:
       matrix:
