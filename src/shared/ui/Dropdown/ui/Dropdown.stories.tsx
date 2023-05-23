@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 import { Button } from '@/shared/ui/Button';
 import { Dropdown } from './Dropdown';
 
@@ -8,7 +8,7 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof Dropdown>;
+} as Meta<typeof Dropdown>;
 
 const items = [
   {
@@ -22,7 +22,7 @@ const items = [
   },
 ];
 
-const Template: ComponentStory<typeof Dropdown> = (args) => <Dropdown {...args} />;
+const Template: StoryFn<typeof Dropdown> = (args) => <Dropdown {...args} />;
 
 export const DropRight = Template.bind({});
 DropRight.args = {

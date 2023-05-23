@@ -2,38 +2,26 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    jest: true,
+    jest: true
   },
-  extends: [
-    'plugin:react/recommended',
-    'airbnb',
-    'plugin:i18next/recommended',
-  ],
+  extends: ['plugin:react/recommended', 'airbnb', 'plugin:i18next/recommended', 'plugin:storybook/recommended'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
-      jsx: true,
+      jsx: true
     },
     ecmaVersion: 'latest',
-    sourceType: 'module',
+    sourceType: 'module'
   },
-  plugins: [
-    'react',
-    '@typescript-eslint',
-    'i18next',
-    'react-hooks',
-    'ulbi-tv-plugin',
-    'unused-imports',
-  ],
+  plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks', 'ulbi-tv-plugin', 'unused-imports'],
   rules: {
     'unused-imports/no-unused-imports': 'error',
     'react/jsx-indent': [2, 2],
     'react/jsx-indent-props': [2, 2],
     indent: [2, 2],
-    'react/jsx-filename-extension': [
-      2,
-      { extensions: ['.js', '.jsx', '.tsx'] },
-    ],
+    'react/jsx-filename-extension': [2, {
+      extensions: ['.js', '.jsx', '.tsx']
+    }],
     'linebreak-style': 'off',
     'react/no-array-index-key': 'off',
     'import/no-unresolved': 'off',
@@ -51,23 +39,23 @@ module.exports = {
     'max-len': 'off',
     'jsx-a11y/no-static-element-interactions': 'off',
     'jsx-a11y/click-events-have-key-events': 'off',
-    'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
-    'react-hooks/exhaustive-deps': 'error', // Checks effect dependencies,
+    'react-hooks/rules-of-hooks': 'error',
+    // Checks rules of Hooks
+    'react-hooks/exhaustive-deps': 'error',
+    // Checks effect dependencies,
     'no-param-reassign': 'off',
     'no-undef': 'off',
-    'jsx-quotes': 'off',
+    'jsx-quotes': 'off'
   },
   globals: {
     __IS_DEV__: true,
-    __API__: true,
+    __API__: true
   },
-  overrides: [
-    {
-      files: ['**/src/**/*.{test,stories}.{ts,tsx}'],
-      rules: {
-        'i18next/no-literal-string': 'off',
-        'max-len': 'off',
-      },
-    },
-  ],
+  overrides: [{
+    files: ['**/src/**/*.{test,stories}.{ts,tsx}'],
+    rules: {
+      'i18next/no-literal-string': 'off',
+      'max-len': 'off'
+    }
+  }]
 };

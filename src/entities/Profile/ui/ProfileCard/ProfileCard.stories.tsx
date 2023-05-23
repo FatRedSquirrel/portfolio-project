@@ -1,4 +1,4 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ProfileCard } from './ProfileCard';
 
@@ -8,9 +8,9 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof ProfileCard>;
+} as Meta<typeof ProfileCard>;
 
-const Template: ComponentStory<typeof ProfileCard> = (args) => <ProfileCard {...args} />;
+const Template: StoryFn<typeof ProfileCard> = (args) => <ProfileCard {...args} />;
 
 export const Readonly = Template.bind({});
 Readonly.args = {};

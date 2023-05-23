@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from '@/app/providers/ThemeProvider';
 import ProfilePage from '@/pages/ProfilePage/ui/ProfilePage';
@@ -13,9 +13,9 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof ProfilePage>;
+} as Meta<typeof ProfilePage>;
 
-const Template: ComponentStory<typeof ProfilePage> = (args) => <ProfilePage />;
+const Template: StoryFn<typeof ProfilePage> = (args) => <ProfilePage />;
 
 export const Normal = Template.bind({});
 Normal.args = {};
@@ -38,18 +38,18 @@ Normal.decorators = [StoreDecorator({
 export const Dark = Template.bind({});
 Dark.args = {};
 Dark.decorators = [ThemeDecorator(Theme.DARK),
-  StoreDecorator({
-    profile: {
-      error: null,
-      form: {
-        firstname: 'Олег',
-        lastname: 'Козлов',
-        age: 21,
-        currency: Currency.RUB,
-        country: Country.Japan,
-        city: 'Москва',
-        username: 'disciplinedMonster?',
-        avatar: 'https://img2.akspic.ru/attachments/crops/9/3/9/9/6/169939/169939-anime-zenicu_agacuma-ubijca_demonov_kimetsu_no_yaiba-lyudi_v_prirode-multfilm-1920x1080.jpg',
-      },
+StoreDecorator({
+  profile: {
+    error: null,
+    form: {
+      firstname: 'Олег',
+      lastname: 'Козлов',
+      age: 21,
+      currency: Currency.RUB,
+      country: Country.Japan,
+      city: 'Москва',
+      username: 'disciplinedMonster?',
+      avatar: 'https://img2.akspic.ru/attachments/crops/9/3/9/9/6/169939/169939-anime-zenicu_agacuma-ubijca_demonov_kimetsu_no_yaiba-lyudi_v_prirode-multfilm-1920x1080.jpg',
     },
-  })];
+  },
+})];

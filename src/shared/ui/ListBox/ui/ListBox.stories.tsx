@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 
 import { ListBox } from './ListBox';
 
@@ -8,7 +8,7 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof ListBox>;
+} as Meta<typeof ListBox>;
 
 const items = Array(3).fill(true).map((item, index) => ({
   value: `item${index + 1}`,
@@ -17,7 +17,7 @@ const items = Array(3).fill(true).map((item, index) => ({
 
 const { value } = items[0];
 
-const Template: ComponentStory<typeof ListBox> = (args) => <ListBox {...args} />;
+const Template: StoryFn<typeof ListBox> = (args) => <ListBox {...args} />;
 
 export const BottomDirection = Template.bind({});
 BottomDirection.args = {
