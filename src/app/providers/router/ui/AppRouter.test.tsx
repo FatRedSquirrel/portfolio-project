@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react';
 import { componentRender } from '@/shared/lib/tests/componentRender/componentRender';
 import AppRouter from './AppRouter';
-import { getRouteAbout, getRouteAdmin, getRouteProfile } from '@/shared/const/router';
+import { getRouteAbout, getRouteAdmin, getRouteArticles, getRouteProfile } from '@/shared/const/router';
 import { UserRole } from '@/entities/User';
 
 describe('app/router/AppRouter', () => {
@@ -34,7 +34,7 @@ describe('app/router/AppRouter', () => {
 
   test('Доступ к закрытой странице для авторизованного пользователя', async () => {
     componentRender(<AppRouter />, {
-      route: getRouteProfile('1'),
+      route: getRouteArticles(),
       initialState: {
         user: {
           _inited: true,
@@ -43,7 +43,7 @@ describe('app/router/AppRouter', () => {
       },
     });
 
-    const page = await screen.findByTestId('ProfilePage');
+    const page = await screen.findByTestId('ArticlesPage');
     expect(page).toBeInTheDocument();
   });
 

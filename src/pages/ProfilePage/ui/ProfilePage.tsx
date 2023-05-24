@@ -13,7 +13,7 @@ const reducers: ReducersList = {
 };
 
 const ProfilePage = () => {
-  const { id } = useParams<{id: string}>();
+  const { id } = useParams<{ id: string }>();
 
   if (!id) return null;
 

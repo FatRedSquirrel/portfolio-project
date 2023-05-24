@@ -10,7 +10,7 @@ const reducers: ReducersList = {
 
 const ArticlesPage = () => (
   <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
-    <Page>
+    <Page dataTestid='ArticlesPage'>
       <ArticlesInfiniteList />
     </Page>
   </DynamicModuleLoader>
