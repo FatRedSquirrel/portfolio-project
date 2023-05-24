@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Article, ArticleView } from '@/entities/Article';
 import { ArticleListItemSkeleton } from '@/entities/Article/ui/ArticleListItem/ArticleListItemSkeleton';
 import { ArticleListItem } from './ArticleListItem';
@@ -82,35 +82,43 @@ const article = {
   ],
 } as Article;
 
-export default {
+const meta: Meta<typeof ArticleListItem> = {
   title: 'entities/article/ArticleListItem',
   component: ArticleListItem,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-} as Meta<typeof ArticleListItem>;
+}
 
-const Template: StoryFn<typeof ArticleListItem> = (args) => <ArticleListItem {...args} />;
-const LoadingTemplate: StoryFn<typeof ArticleListItemSkeleton> = (args) => <ArticleListItemSkeleton {...args} />;
+export default meta;
 
-export const GridView = Template.bind({});
-GridView.args = {
-  article,
-  view: ArticleView.GRID,
-};
+export const GridView = {
+  render: () => (
+    <ArticleListItem
+      article={article}
+      view={ArticleView.GRID}
+    />
+  )
+}
 
-export const GridViewLoading = LoadingTemplate.bind({});
-GridViewLoading.args = {
-  view: ArticleView.GRID,
-};
+export const GridViewLoading = {
+  render: () => (
+    <ArticleListItemSkeleton
+      view={ArticleView.GRID}
+    />
+  )
+}
 
-export const ListView = Template.bind({});
-ListView.args = {
-  article,
-  view: ArticleView.LIST,
-};
+export const ListView = {
+  render: () => (
+    <ArticleListItem
+      article={article}
+      view={ArticleView.LIST}
+    />
+  )
+}
 
-export const ListViewLoading = LoadingTemplate.bind({});
-ListViewLoading.args = {
-  view: ArticleView.LIST,
-};
+export const ListViewLoading = {
+  render: () => (
+    <ArticleListItemSkeleton
+      view={ArticleView.LIST}
+    />
+  )
+}

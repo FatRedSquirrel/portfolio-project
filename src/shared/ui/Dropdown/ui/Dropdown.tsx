@@ -3,7 +3,7 @@ import { CSSProperties, Fragment, ReactNode } from 'react';
 import classNames from '@/shared/lib/classNames/classNames';
 import cls from './Dropdown.module.scss';
 
-type DropdownDirection = 'left' | 'right';
+export type DirectionDropdown = 'left' | 'right';
 
 interface DropdownItem {
   disabled?: boolean
@@ -17,7 +17,7 @@ interface DropdownProps {
   className?: string
   items: DropdownItem[]
   trigger: ReactNode
-  direction?: DropdownDirection
+  direction?: DirectionDropdown
 }
 
 export const Dropdown = (props: DropdownProps) => {

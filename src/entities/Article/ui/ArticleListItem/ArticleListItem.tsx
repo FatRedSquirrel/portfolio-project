@@ -36,8 +36,6 @@ export const ArticleListItem = (props: ArticleListItemProps) => {
     setInitialItemIndex,
   } = props;
 
-  const dispatch = useAppDispatch();
-
   const [isHovered, bindHover] = useHover();
 
   const types = useMemo(() => (

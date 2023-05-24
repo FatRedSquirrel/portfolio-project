@@ -3,13 +3,14 @@ import path from 'path';
 import { buildCssLoader } from '../config/build/loaders/buildCssLoader';
 
 export default {
-  stories: ['../../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: ['@storybook/addon-links', {
     name: '@storybook/addon-essentials',
     options: {
       backgrounds: false
     }
-  }, '@storybook/addon-interactions', 'storybook-addon-mock', 'storybook-addon-themes'],
+    // }, '@storybook/addon-interactions', 'storybook-addon-mock', 'storybook-addon-themes'],
+  }, '@storybook/addon-interactions', 'storybook-addon-themes'],
   framework: {
     name: '@storybook/react-webpack5',
     options: {}
@@ -19,7 +20,8 @@ export default {
       build: '',
       html: '',
       entry: '',
-      src: path.resolve(__dirname, '..', '..', 'src'),
+      // src: path.resolve(__dirname, '..', '..', 'src'),
+      src: path.resolve(__dirname, '..', 'src'),
       locales: '',
       buildLocales: ''
     };

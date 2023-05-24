@@ -13,7 +13,7 @@ export interface ListBoxItem {
   disabled?: boolean
 }
 
-type DropdownDirection = 'top' | 'bottom';
+export type DirectionListbox = 'top' | 'bottom';
 
 interface ListBoxProps<T> {
   className?: string
@@ -22,7 +22,7 @@ interface ListBoxProps<T> {
   defaultValue?: string
   label?: string
   readonly?: boolean
-  direction?: DropdownDirection
+  direction?: DirectionListbox
   style?: CSSProperties
   onChange?: (value: T) => void
 }

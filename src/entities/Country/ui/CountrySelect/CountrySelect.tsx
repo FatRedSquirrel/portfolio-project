@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
 import { ListBox } from '@/shared/ui/ListBox';
 import { Country } from '../../model/types/country';
+import { DirectionListbox } from '@/shared/ui/ListBox';
 
 const options = [
   { value: Country.USA, content: Country.USA },
@@ -37,7 +38,6 @@ export const CountrySelect = memo((props: CountrySelectProps) => {
       value={value}
       defaultValue={t('Выберите страну') as string}
       readonly={readonly}
-      direction='top'
       onChange={changeHandler}
     />
   );

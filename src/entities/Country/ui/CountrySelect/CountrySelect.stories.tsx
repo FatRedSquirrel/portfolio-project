@@ -12,4 +12,5 @@ export default {
 const Template: StoryFn<typeof CountrySelect> = (args) => <CountrySelect {...args} />;
 
 export const Primary = Template.bind({});
+
 Primary.args = {};
