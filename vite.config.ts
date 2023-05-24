@@ -17,4 +17,7 @@ export default defineConfig({
     __API__: JSON.stringify('http://localhost:8000'),
     __PROJECT__: JSON.stringify('frontend'),
   },
+  server: {
+    port: 3000,
+  },
 });
