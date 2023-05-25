@@ -1029,6 +1029,10 @@
       "roles": [
         "ADMIN"
       ],
+      "features": {
+        "isArticleRatingEnabled": true,
+        "isArticleRecommendationsEnabled": true
+      },
       "avatar": "https://mobimg.b-cdn.net/v3/fetch/0f/0fa2ad47af6d1440a1662c1651724ab0.jpeg"
     },
     {
@@ -1038,6 +1042,10 @@
       "roles": [
         "VIEWER"
       ],
+      "features": {
+        "isArticleRatingEnabled": false,
+        "isArticleRecommendationsEnabled": false
+      },
       "avatar": "https://www.hdwallpapers.in/download/boy_zenitsu_agatsuma_hd_demon_slayer_kimetsu_no_yaiba-HD.jpg"
     },
     {
@@ -1047,6 +1055,10 @@
       "roles": [
         "ADMIN"
       ],
+      "features": {
+        "isArticleRatingEnabled": true,
+        "isArticleRecommendationsEnabled": true
+      },
       "avatar": "https://www.hdwallpapers.in/download/boy_zenitsu_agatsuma_hd_demon_slayer_kimetsu_no_yaiba-HD.jpg"
     }
   ],

@@ -14,22 +14,28 @@ import {
   articleRecommendationsReducer,
 } from '../../model/slice/articleRecommendationsSlice';
 import { ArticleRating } from '@/features/articleRating';
+import { getFeatureFlag } from '@/shared/features';
 
 const reducers: ReducersList = {
   articleComments: articleCommentsReducer,
   articleRecommendations: articleRecommendationsReducer,
 };
 
-const ArticleDetailsPage = () => (
-  <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-    <Page>
-      <ArticleDetailsPageHeader />
-      <ArticleDetails />
-      <ArticleRating />
-      <ArticleRecommendationsList />
-      <ArticleComments />
-    </Page>
-  </DynamicModuleLoader>
-);
+const ArticleDetailsPage = () => {
+  const isArticleRatingEnabled = getFeatureFlag('isArticleRatingEnabled');
+  const isArticleRecommendationsEnabled = getFeatureFlag('isArticleRecommendationsEnabled');
+
+  return (
+    <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+      <Page>
+        <ArticleDetailsPageHeader />
+        <ArticleDetails />
+        {isArticleRatingEnabled && <ArticleRating />}
+        {isArticleRecommendationsEnabled && <ArticleRecommendationsList />}
+        <ArticleComments />
+      </Page>
+    </DynamicModuleLoader>
+  );
+};
 
 export default memo(ArticleDetailsPage);

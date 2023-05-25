@@ -1,4 +1,5 @@
 {
   "window.zoomLevel": 0.8,
-  "files.eol": "\n"
+  "files.eol": "\n",
+  "synthwave84.disableGlow": true
 }
