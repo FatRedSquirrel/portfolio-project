@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { ReactElement, memo } from 'react';
 import { ArticleDetails } from '@/entities/Article';
 import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import {
@@ -14,15 +14,20 @@ import {
   articleRecommendationsReducer,
 } from '../../model/slice/articleRecommendationsSlice';
 import { ArticleRating } from '@/features/articleRating';
-import { getFeatureFlag } from '@/shared/features';
+import { getFeatureFlag, toggleFeatures } from '@/shared/features';
 
 const reducers: ReducersList = {
   articleComments: articleCommentsReducer,
   articleRecommendations: articleRecommendationsReducer,
 };
 
+const rating = toggleFeatures<ReactElement>({
+  name: 'isArticleRatingEnabled',
+  on: () => <ArticleRating />,
+  off: () => <div>нет рейтинга</div>,
+});
+
 const ArticleDetailsPage = () => {
-  const isArticleRatingEnabled = getFeatureFlag('isArticleRatingEnabled');
   const isArticleRecommendationsEnabled = getFeatureFlag('isArticleRecommendationsEnabled');
 
   return (
@@ -30,7 +35,7 @@ const ArticleDetailsPage = () => {
       <Page>
         <ArticleDetailsPageHeader />
         <ArticleDetails />
-        {isArticleRatingEnabled && <ArticleRating />}
+        {rating}
         {isArticleRecommendationsEnabled && <ArticleRecommendationsList />}
         <ArticleComments />
       </Page>
