@@ -5,33 +5,11 @@
   border-radius: 100%;
   overflow: hidden;
 
-  img {
+  img,
+  svg {
     width: 100%;
     height: 100%;
 
     object-fit: cover;
-  }
-}
-
-.empty {
-  position: relative;
-
-  border: 1px solid rgb(167, 167, 167);
-
-  background-color: #eee;
-
-  &::before {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    font-weight: 700;
-    content: "?";
-    color: #333;
   }
 }

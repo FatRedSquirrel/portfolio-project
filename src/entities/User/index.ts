@@ -13,6 +13,8 @@ export {
   useJsonSettingsByKey,
 } from './model/selectors/jsonSettings';
 
+export { saveJsonSettings } from './model/services/saveJsonSettings';
+
 export {
   userReducer,
   userActions,
