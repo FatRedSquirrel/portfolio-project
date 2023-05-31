@@ -4,9 +4,7 @@ import {
 import { Theme, ThemeContext } from '../lib/ThemeContext';
 import { useJsonSettings } from '@/entities/User';
 
-interface ThemeProviderProps {
-    initialTheme?: Theme;
-    children: ReactNode
+interface ThemeProviderProps {initialTheme?: Theme;children: ReactNode
 }
 
 const ThemeProvider = (props: ThemeProviderProps) => {
@@ -15,16 +13,12 @@ const ThemeProvider = (props: ThemeProviderProps) => {
     children,
   } = props;
 
-  const { theme: defaultTheme = Theme.LIGHT } = useJsonSettings();
-  const [isThemeInited, setIsThemeInited] = useState(false);
-  const [theme, setTheme] = useState<Theme>(initialTheme || defaultTheme);
+  const { theme: defaultTheme } = useJsonSettings();
+  const [theme, setTheme] = useState<Theme>(defaultTheme || initialTheme || Theme.LIGHT);
 
   useEffect(() => {
-    if (!isThemeInited) {
-      setTheme(defaultTheme);
-      setIsThemeInited(true);
-    }
-  }, [defaultTheme, isThemeInited]);
+    setTheme(defaultTheme || Theme.LIGHT);
+  }, [defaultTheme]);
 
   const defaultProps = useMemo(() => ({
     theme,
