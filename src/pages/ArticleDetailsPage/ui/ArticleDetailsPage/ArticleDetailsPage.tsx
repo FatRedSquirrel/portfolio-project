@@ -1,4 +1,5 @@
-import { ReactElement, memo } from 'react';
+import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ArticleDetails } from '@/entities/Article';
 import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import {
@@ -14,28 +15,29 @@ import {
   articleRecommendationsReducer,
 } from '../../model/slice/articleRecommendationsSlice';
 import { ArticleRating } from '@/features/articleRating';
-import { getFeatureFlag, toggleFeatures } from '@/shared/features';
+import { ToggleFeatures, getFeatureFlag } from '@/shared/features';
+import cls from './ArticleDetailsPage.module.scss';
 
 const reducers: ReducersList = {
   articleComments: articleCommentsReducer,
   articleRecommendations: articleRecommendationsReducer,
 };
 
-const rating = toggleFeatures<ReactElement>({
-  name: 'isArticleRatingEnabled',
-  on: () => <ArticleRating />,
-  off: () => <div>нет рейтинга</div>,
-});
-
 const ArticleDetailsPage = () => {
   const isArticleRecommendationsEnabled = getFeatureFlag('isArticleRecommendationsEnabled');
+
+  const { t } = useTranslation();
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
       <Page>
         <ArticleDetailsPageHeader />
         <ArticleDetails />
-        {rating}
+        <ToggleFeatures
+          feature='isArticleRatingEnabled'
+          on={<ArticleRating />}
+          off={<div className={cls.noRating}>{t('Оценка статей скоро появится! (feature flags)')}</div>}
+        />
         {isArticleRecommendationsEnabled && <ArticleRecommendationsList />}
         <ArticleComments />
       </Page>

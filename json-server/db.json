@@ -1051,7 +1051,8 @@
         "isArticleRecommendationsEnabled": false
       },
       "jsonSettings": {
-        "theme": "app_dark_theme"
+        "theme": "app_light_theme",
+        "isArticlesPageWasOpened": true
       },
       "avatar": "https://www.hdwallpapers.in/download/boy_zenitsu_agatsuma_hd_demon_slayer_kimetsu_no_yaiba-HD.jpg"
     },
