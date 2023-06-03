@@ -12,6 +12,7 @@ import { pageActions } from '../model/slice/pageSlice';
 import { getPageScrollByPath } from '../model/selectors/pageSelectors';
 import cls from './Page.module.scss';
 import { TestProps } from '@/shared/types/tests';
+import { toggleFeatures } from '@/shared/features';
 
 interface PageProps extends TestProps {
   className?: string
@@ -54,7 +55,14 @@ export const Page = (props: PageProps) => {
     <section
       data-testid={dataTestid}
       ref={wrapperRef}
-      className={classNames(cls.page, className)}
+      className={classNames(
+        toggleFeatures({
+          name: 'isAppRedesigned',
+          on: () => cls.PageRedesigned,
+          off: () => cls.page,
+        }),
+        className,
+      )}
       onScroll={handleScroll}
     >
       {children}

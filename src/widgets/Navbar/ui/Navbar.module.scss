@@ -1,32 +1,26 @@
 .Navbar {
   width: 100%;
   height: var(--navbar-height);
-  padding: 0 40px;
+  padding: 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--secondary-color);
-  background: var(--main-color);
+  background: var(--inverted-bg-color);
 }
 
+.NavbarRedesigned {
+  padding: 16px;
+}
+
+.links,
 .actions {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.logo {
-  p {
-    font-weight: 800;
-    color: var(--secondary-color);
-  }
-}
-
-.createArticleLink {
-  border-color: var(--secondary-color);
-  color: var(--secondary-color);
-}
-
-.loginBtn {
   margin-left: auto;
+}
+
+.mainLink {
+  margin-right: 15px;
+}
+
+.appName {
+  width: var(--sidebar-width);
+  margin-left: 15px;
 }

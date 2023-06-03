@@ -1031,7 +1031,8 @@
       ],
       "features": {
         "isArticleRatingEnabled": true,
-        "isArticleRecommendationsEnabled": true
+        "isArticleRecommendationsEnabled": true,
+        "isAppRedesigned": true
       },
       "jsonSettings": {
         "theme": "app_dark_theme",
@@ -1048,7 +1049,8 @@
       ],
       "features": {
         "isArticleRatingEnabled": false,
-        "isArticleRecommendationsEnabled": false
+        "isArticleRecommendationsEnabled": false,
+        "isAppRedesigned": false
       },
       "jsonSettings": {
         "theme": "app_light_theme",
@@ -1065,7 +1067,8 @@
       ],
       "features": {
         "isArticleRatingEnabled": true,
-        "isArticleRecommendationsEnabled": true
+        "isArticleRecommendationsEnabled": true,
+        "isAppRedesigned": false
       },
       "jsonSettings": {
         "theme": "app_dark_theme"

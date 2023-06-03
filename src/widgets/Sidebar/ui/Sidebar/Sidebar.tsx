@@ -9,6 +9,8 @@ import { VStack } from '@/shared/ui/Stack';
 import cls from './Sidebar.module.scss';
 import { getSidebarItems } from '../../model/selectors/getSidebarItems';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
+import { ToggleFeatures } from '@/shared/features';
+import { AppLogo } from '@/shared/ui/AppLogo';
 
 interface SidebarProps {
     className?: string;
@@ -32,38 +34,55 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
   )), [items, collapsed]);
 
   return (
-    <menu
-      data-testid="sidebar"
-      className={classNames(
-        cls.Sidebar,
-        collapsed && cls.collapsed,
-        className,
+    <ToggleFeatures
+      feature='isAppRedesigned'
+      on={(
+        <menu
+          data-testid="sidebar"
+          className={classNames(
+            cls.SidebarRedesigned,
+            collapsed && cls.collapsed,
+            className,
+          )}
+        >
+          <AppLogo className={cls.appLogo} />
+        </menu>
       )}
-    >
-      <Button
-        data-testid="sidebar-toggle"
-        onClick={onToggle}
-        className={cls.collapseBtn}
-        theme={ButtonTheme.BACKGROUND_INVERTED}
-        size={ButtonSize.L}
-        square
-      >
-        {collapsed ? '>' : '<'}
-      </Button>
-      <VStack
-        align='start'
-        gap='16'
-        className={cls.items}
-      >
-        {itemsList}
-      </VStack>
-      <div className={cls.switchers}>
-        <ThemeSwitcher />
-        <LangSwitcher
-          short={collapsed}
-          className={cls.lang}
-        />
-      </div>
-    </menu>
+      off={(
+        <menu
+          data-testid="sidebar"
+          className={classNames(
+            cls.Sidebar,
+            collapsed && cls.collapsed,
+            className,
+          )}
+        >
+          <Button
+            data-testid="sidebar-toggle"
+            onClick={onToggle}
+            className={cls.collapseBtn}
+            theme={ButtonTheme.BACKGROUND_INVERTED}
+            size={ButtonSize.L}
+            square
+          >
+            {collapsed ? '>' : '<'}
+          </Button>
+          <VStack
+            align='start'
+            gap='16'
+            className={cls.items}
+          >
+            {itemsList}
+          </VStack>
+          <div className={cls.switchers}>
+            <ThemeSwitcher />
+            <LangSwitcher
+              short={collapsed}
+              className={cls.lang}
+            />
+          </div>
+        </menu>
+      )}
+    />
   );
 });
