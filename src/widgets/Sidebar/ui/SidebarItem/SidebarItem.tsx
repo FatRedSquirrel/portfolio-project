@@ -1,11 +1,13 @@
 import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
 import { useSelector } from 'react-redux';
-import { AppLink, AppLinkTheme } from '@/shared/ui/deprecated/AppLink';
+import { AppLink as AppLinkDeprecated, AppLinkTheme } from '@/shared/ui/deprecated/AppLink';
+import { AppLink } from '@/shared/ui/redesigned/AppLink';
 import classNames from '@/shared/lib/classNames/classNames';
 import { getUserAuthData } from '@/entities/User';
 import cls from './SidebarItem.module.scss';
 import { SidebarItemType } from '../../model/types/sidebar';
+import { ToggleFeatures } from '@/shared/features';
 
 interface SidebarItemProps {
     item: SidebarItemType;
@@ -27,20 +29,42 @@ export const SidebarItem = memo((props: SidebarItemProps) => {
   }
 
   return (
-    <AppLink
-      theme={AppLinkTheme.SECONDARY}
-      to={item.path}
-      className={
-        classNames(
-          cls.item,
-          collapsed && cls.collapsed,
-        )
-      }
-    >
-      <item.Icon className={cls.icon} />
-      <span className={cls.link}>
-        {t(item.text)}
-      </span>
-    </AppLink>
+    <ToggleFeatures
+      feature='isAppRedesigned'
+      on={(
+        <AppLink
+          to={item.path}
+          activeClassname={cls.active}
+          className={
+            classNames(
+              cls.itemRedesigned,
+              collapsed && cls.collapsedRedesigned,
+            )
+          }
+        >
+          <item.Icon className={cls.icon} />
+          <span className={cls.link}>
+            {t(item.text)}
+          </span>
+        </AppLink>
+      )}
+      off={(
+        <AppLinkDeprecated
+          theme={AppLinkTheme.SECONDARY}
+          to={item.path}
+          className={
+            classNames(
+              cls.item,
+              collapsed && cls.collapsed,
+            )
+          }
+        >
+          <item.Icon className={cls.icon} />
+          <span className={cls.link}>
+            {t(item.text)}
+          </span>
+        </AppLinkDeprecated>
+      )}
+    />
   );
 });
