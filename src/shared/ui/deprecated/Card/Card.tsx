@@ -13,6 +13,9 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
   theme?: CardTheme
 }
 
+/**
+ * @deprecated
+ */
 export const Card = (props: CardProps) => {
   const {
     className,

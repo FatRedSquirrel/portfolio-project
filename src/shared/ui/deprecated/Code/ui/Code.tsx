@@ -9,6 +9,9 @@ interface CodeProps {
   text: string
 }
 
+/**
+ * @deprecated
+ */
 export const Code = (props: CodeProps) => {
   const {
     className,

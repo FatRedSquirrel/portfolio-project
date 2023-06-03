@@ -27,6 +27,9 @@ interface ListBoxProps<T> {
   onChange?: (value: T) => void
 }
 
+/**
+ * @deprecated
+ */
 export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
   const {
     className,

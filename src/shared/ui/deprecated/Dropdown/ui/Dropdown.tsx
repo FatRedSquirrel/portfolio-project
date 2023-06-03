@@ -20,6 +20,9 @@ interface DropdownProps {
   direction?: DirectionDropdown
 }
 
+/**
+ * @deprecated
+ */
 export const Dropdown = (props: DropdownProps) => {
   const {
     style,

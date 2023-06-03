@@ -29,6 +29,9 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
     children?: ReactNode;
 }
 
+/**
+ * @deprecated
+ */
 export const Button = memo((props: ButtonProps) => {
   const {
     className,

@@ -9,6 +9,9 @@ interface ThemeSwitcherProps {
     className?: string;
 }
 
+/**
+ * @deprecated
+ */
 export const ThemeSwitcher = memo(({ className }: ThemeSwitcherProps) => {
   const dispatch = useAppDispatch();
 

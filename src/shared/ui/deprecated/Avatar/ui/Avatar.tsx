@@ -12,6 +12,9 @@ interface AvatarProps {
   alt?: string
 }
 
+/**
+ * @deprecated
+ */
 export const Avatar = (props: AvatarProps) => {
   const {
     className,
