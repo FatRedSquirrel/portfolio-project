@@ -6,7 +6,7 @@ import { initArticlesPage } from '@/pages/ArticlesPage/model/services/initArticl
 import { getArticles } from '@/pages/ArticlesPage/model/slice/articlesPageSlice';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
-import { Text } from '@/shared/ui/Text';
+import { Text } from '@/shared/ui/deprecated/Text';
 
 const ArticlesInfiniteList = () => {
   const dispatch = useAppDispatch();

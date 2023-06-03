@@ -1,5 +1,5 @@
-import { Card } from '@/shared/ui/Card/Card';
-import { Skeleton } from '@/shared/ui/Skeleton/ui/Skeleton';
+import { Card } from '@/shared/ui/deprecated/Card/Card';
+import { Skeleton } from '@/shared/ui/deprecated/Skeleton/ui/Skeleton';
 
 import {
   ArticleView,

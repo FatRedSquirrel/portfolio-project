@@ -1,21 +1,20 @@
 import { CSSProperties, HTMLAttributeAnchorTarget, useMemo } from 'react';
 import classNames from '@/shared/lib/classNames/classNames';
-import { Text } from '@/shared/ui/Text';
+import { Text } from '@/shared/ui/deprecated/Text';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
-import { Card } from '@/shared/ui/Card/Card';
+import { Card } from '@/shared/ui/deprecated/Card/Card';
 import useHover from '@/shared/lib/hooks/useHover';
-import { Avatar } from '@/shared/ui/Avatar';
-import { Button } from '@/shared/ui/Button';
-import { AppLink } from '@/shared/ui/AppLink';
+import { Avatar } from '@/shared/ui/deprecated/Avatar';
+import { Button } from '@/shared/ui/deprecated/Button';
+import { AppLink } from '@/shared/ui/deprecated/AppLink';
 import { getRouteArticle } from '@/shared/const/router';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import TextBlock from '../components/TextBlock';
 import {
   Article, ArticleBlockText, ArticleBlockType, ArticleView,
 } from '../../model/types/article';
 import cls from './ArticleListItem.module.scss';
-import { AppImage } from '@/shared/ui/AppImage';
-import { Skeleton } from '@/shared/ui/Skeleton/ui/Skeleton';
+import { AppImage } from '@/shared/ui/deprecated/AppImage';
+import { Skeleton } from '@/shared/ui/deprecated/Skeleton/ui/Skeleton';
 
 interface ArticleListItemProps {
   style?: CSSProperties

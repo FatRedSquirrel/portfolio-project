@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { Page } from '@/widgets/Page';
-import { Text } from '@/shared/ui/Text';
+import { Text } from '@/shared/ui/deprecated/Text';
 
 interface ArticleEditPageProps {
     className?: string

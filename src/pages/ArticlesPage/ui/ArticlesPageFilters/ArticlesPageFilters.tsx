@@ -5,12 +5,12 @@ import {
   ArticleView, ArticleViewSelector, ArticleSortSelector, ArticleSortField, ArticleType,
 } from '@/entities/Article';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { Card } from '@/shared/ui/Card/Card';
-import { Input } from '@/shared/ui/Input';
+import { Card } from '@/shared/ui/deprecated/Card/Card';
+import { Input } from '@/shared/ui/deprecated/Input';
 import { SortOrder } from '@/shared/types/filter';
 import useDebounce from '@/shared/lib/hooks/useDebounce';
 import { ArticleTypeTabs } from '@/entities/Article/ui/ArticleTypeTabs/ArticleTypeTabs';
-import { TabItem } from '@/shared/ui/Tabs/ui/Tabs';
+import { TabItem } from '@/shared/ui/deprecated/Tabs/ui/Tabs';
 import classNames from '@/shared/lib/classNames/classNames';
 import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
 import {

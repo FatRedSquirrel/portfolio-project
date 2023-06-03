@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
-import { ListBox } from '@/shared/ui/ListBox';
+import { ListBox } from '@/shared/ui/deprecated/ListBox';
 import { Currency } from '../../model/types/currency';
 
 const options = [

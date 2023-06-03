@@ -6,7 +6,7 @@ import classNames from '@/shared/lib/classNames/classNames';
 import { fetchNextArticlesPage } from '@/pages/ArticlesPage/model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { ArticlesPageFilters } from '@/pages/ArticlesPage/ui/ArticlesPageFilters/ArticlesPageFilters';
-import { Loader } from '@/shared/ui/Loader';
+import { Loader } from '@/shared/ui/deprecated/Loader';
 import {
   getArticlesPageInitialItemIndex,
 } from '@/pages/ArticlesPage/model/selectors/articlesPageSelectors';

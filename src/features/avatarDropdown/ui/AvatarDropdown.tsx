@@ -8,8 +8,8 @@ import {
   getUserAuthData, isUserAdmin, isUserManager, userActions,
 } from '@/entities/User';
 import { RoutePath } from '@/shared/const/router';
-import { Dropdown } from '@/shared/ui/Dropdown';
-import { Avatar } from '@/shared/ui/Avatar';
+import { Dropdown } from '@/shared/ui/deprecated/Dropdown';
+import { Avatar } from '@/shared/ui/deprecated/Avatar';
 import cls from './index.module.scss';
 
 export const AvatarDropdown = () => {

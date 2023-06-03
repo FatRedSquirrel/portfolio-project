@@ -1,8 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
-import { ListBox } from '@/shared/ui/ListBox';
+import { ListBox } from '@/shared/ui/deprecated/ListBox';
 import { Country } from '../../model/types/country';
-import { DirectionListbox } from '@/shared/ui/ListBox';
 
 const options = [
   { value: Country.USA, content: Country.USA },
