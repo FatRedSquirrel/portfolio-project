@@ -27,6 +27,9 @@ interface TextProps {
     size?: TextSize
 }
 
+/**
+ * @deprecated
+ */
 export const Text = memo((props: TextProps) => {
   const {
     className,
