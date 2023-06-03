@@ -31,7 +31,7 @@ export const NotificationsButton = (props: NotificationsButtonProps) => {
           className={cls.trigger}
           onClick={openDrawer}
         >
-          <NotificationsIcon className={cls.notifications} />
+          <NotificationsIcon />
         </Button>
       )}
       off={(
