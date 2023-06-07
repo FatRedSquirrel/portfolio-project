@@ -2,7 +2,7 @@ import { Avatar } from '@/shared/ui/deprecated/Avatar';
 import { Text } from '@/shared/ui/deprecated/Text';
 import { Skeleton } from '@/shared/ui/deprecated/Skeleton/ui/Skeleton';
 import { AppLink } from '@/shared/ui/deprecated/AppLink';
-import { RoutePath } from '@/shared/const/router';
+import { getRouteProfile } from '@/shared/const/router';
 import classNames from '@/shared/lib/classNames/classNames';
 import { Comment } from '../../model/types/comment';
 import cls from './CommentCard.module.scss';
@@ -38,7 +38,7 @@ export const CommentCard = (props: CommentProps) => {
 
   return (
     <div className={cls.comment}>
-      <AppLink to={`${RoutePath.profile}/${comment.user.id}`} className={cls.comment__header}>
+      <AppLink to={getRouteProfile(comment.user.id)} className={cls.comment__header}>
         <Avatar size={40} src={comment.user.avatar} />
         <Text title={comment.user.username} />
       </AppLink>

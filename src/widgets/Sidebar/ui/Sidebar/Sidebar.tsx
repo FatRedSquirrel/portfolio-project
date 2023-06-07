@@ -11,7 +11,7 @@ import { getSidebarItems } from '../../model/selectors/getSidebarItems';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import { ToggleFeatures } from '@/shared/features';
 import { AppLogo } from '@/shared/ui/redesigned/AppLogo';
-import { Button } from '@/shared/ui/redesigned/Button';
+import { Icon } from '@/shared/ui/redesigned/Icon';
 import ArrowIcon from '@/shared/assets/icons/arrow-bottom.svg';
 
 interface SidebarProps {
@@ -55,13 +55,12 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
           >
             {itemsList}
           </VStack>
-          <Button
-            variant='clear'
+          <Icon
             className={cls.collapseBtn}
+            Svg={ArrowIcon}
+            clickable
             onClick={onToggle}
-          >
-            <ArrowIcon />
-          </Button>
+          />
           <div className={cls.switchers}>
             <ThemeSwitcher />
             <LangSwitcher className={cls.lang} />

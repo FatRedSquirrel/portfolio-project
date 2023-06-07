@@ -1,7 +1,7 @@
-import { NavLink, LinkProps } from 'react-router-dom';
+import { LinkProps, NavLink } from 'react-router-dom';
 import { memo, ReactNode } from 'react';
-import classNames from '@/shared/lib/classNames/classNames';
 import cls from './AppLink.module.scss';
+import classNames from '@/shared/lib/classNames/classNames';
 
 export type AppLinkVariant = 'primary' | 'red';
 
@@ -9,7 +9,7 @@ interface AppLinkProps extends LinkProps {
     className?: string;
     variant?: AppLinkVariant;
     children?: ReactNode;
-    activeClassname?: string;
+    activeClassName?: string;
 }
 
 export const AppLink = memo((props: AppLinkProps) => {
@@ -18,7 +18,7 @@ export const AppLink = memo((props: AppLinkProps) => {
     className,
     children,
     variant = 'primary',
-    activeClassname = '',
+    activeClassName = '',
     ...otherProps
   } = props;
 
@@ -27,9 +27,9 @@ export const AppLink = memo((props: AppLinkProps) => {
       to={to}
       className={({ isActive }) => classNames(
         cls.AppLink,
+        isActive && activeClassName,
         cls[variant],
         className,
-        isActive && activeClassname,
       )}
       {...otherProps}
     >

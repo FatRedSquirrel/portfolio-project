@@ -6,7 +6,7 @@ import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
 import { saveJsonSettings } from '@/entities/User';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { ToggleFeatures } from '@/shared/features';
-import cls from './ThemeSwitcher.module.scss';
+import { Icon } from '@/shared/ui/redesigned/Icon';
 
 interface ThemeSwitcherProps {
     className?: string;
@@ -28,15 +28,7 @@ export const ThemeSwitcher = memo(({ className }: ThemeSwitcherProps) => {
   return (
     <ToggleFeatures
       feature="isAppRedesigned"
-      on={(
-        <Button
-          theme={ButtonTheme.CLEAR}
-          className={cls.button}
-          onClick={handleToggleTheme}
-        >
-          <ThemeIcon />
-        </Button>
-      )}
+      on={<Icon Svg={ThemeIcon} clickable onClick={handleToggleTheme} />}
       off={(
         <Button
           theme={ButtonTheme.CLEAR}

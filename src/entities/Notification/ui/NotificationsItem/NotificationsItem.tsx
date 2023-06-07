@@ -1,35 +1,67 @@
+import { memo } from 'react';
 import classNames from '@/shared/lib/classNames/classNames';
-import { Text } from '@/shared/ui/deprecated/Text';
-import { AppLink } from '@/shared/ui/deprecated/AppLink';
-import { Notification } from '../../model/types/notifications';
+import { Card as CardDeprecated, CardTheme } from '@/shared/ui/deprecated/Card';
+import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text';
+import { Text } from '@/shared/ui/redesigned/Text';
 import cls from './NotificationsItem.module.scss';
+import { Notification } from '../../model/types/notifications';
+import { ToggleFeatures } from '@/shared/features';
+import { Card } from '@/shared/ui/redesigned/Card';
 
-interface NotificationsItemProps {
-  className?: string
-  item: Notification
+interface NotificationItemProps {
+    className?: string;
+    item: Notification;
 }
 
-const NotificationsItem = (props: NotificationsItemProps) => {
-  const {
-    className,
-    item,
-  } = props;
+export const NotificationsItem = memo((props: NotificationItemProps) => {
+  const { className, item } = props;
 
-  return (
-    <AppLink
-      to={item.href ?? '#'}
-      className={classNames(
-        cls.item,
-        className,
+  const content = (
+    <ToggleFeatures
+      feature="isAppRedesigned"
+      on={(
+        <Card
+          className={classNames(
+            cls.NotificationItem,
+            className,
+          )}
+        >
+          <Text
+            title={item.title}
+            text={item.description}
+            size='s'
+          />
+        </Card>
       )}
-    >
-      <Text
-        title={item.title}
-        text={item.description}
-        className={cls.item__text}
-      />
-    </AppLink>
+      off={(
+        <CardDeprecated
+          theme={CardTheme.OUTLINED}
+          className={classNames(
+            cls.NotificationItem,
+            className,
+          )}
+        >
+          <TextDeprecated
+            title={item.title}
+            text={item.description}
+          />
+        </CardDeprecated>
+      )}
+    />
   );
-};
 
-export default NotificationsItem;
+  if (item.href) {
+    return (
+      <a
+        className={cls.link}
+        target="_blank"
+        href={item.href}
+        rel="noreferrer"
+      >
+        {content}
+      </a>
+    );
+  }
+
+  return content;
+});

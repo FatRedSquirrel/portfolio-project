@@ -2,7 +2,7 @@ import { CSSProperties, HTMLAttributeAnchorTarget, useMemo } from 'react';
 import classNames from '@/shared/lib/classNames/classNames';
 import { Text } from '@/shared/ui/deprecated/Text';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
-import { Card } from '@/shared/ui/deprecated/Card/Card';
+import { Card } from '@/shared/ui/deprecated/Card';
 import useHover from '@/shared/lib/hooks/useHover';
 import { Avatar } from '@/shared/ui/deprecated/Avatar';
 import { Button } from '@/shared/ui/deprecated/Button';
@@ -74,7 +74,7 @@ export const ArticleListItem = (props: ArticleListItemProps) => {
           <div className={cls.image}>
             <AppImage
               src={article.img}
-              fallBack={
+              fallback={
                 <Skeleton width='100%' height={200} />
               }
             />
@@ -113,7 +113,7 @@ export const ArticleListItem = (props: ArticleListItemProps) => {
         <div className={cls.image}>
           <AppImage
             src={article.img}
-            fallBack={
+            fallback={
               <Skeleton width={200} height={200} />
             }
           />

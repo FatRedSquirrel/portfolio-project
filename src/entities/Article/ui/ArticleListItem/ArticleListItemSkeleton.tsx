@@ -1,4 +1,4 @@
-import { Card } from '@/shared/ui/deprecated/Card/Card';
+import { Card } from '@/shared/ui/deprecated/Card';
 import { Skeleton } from '@/shared/ui/deprecated/Skeleton/ui/Skeleton';
 
 import {

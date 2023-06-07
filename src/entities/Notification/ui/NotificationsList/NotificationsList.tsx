@@ -2,7 +2,7 @@ import classNames from '@/shared/lib/classNames/classNames';
 import { Skeleton } from '@/shared/ui/deprecated/Skeleton/ui/Skeleton';
 import { useNotifications } from '../../api/notificationsApi';
 import cls from './NotificationsList.module.scss';
-import NotificationsItem from '../NotificationsItem/NotificationsItem';
+import { NotificationsItem } from '../NotificationsItem/NotificationsItem';
 
 interface NotificationsListProps {
   className?: string
@@ -14,7 +14,7 @@ export const NotificationsList = (props: NotificationsListProps) => {
   } = props;
 
   const {
-    data: notifications, isLoading, isError, error,
+    data: notifications, isLoading,
   } = useNotifications(null, {
     pollingInterval: 5000,
   });
@@ -40,7 +40,7 @@ export const NotificationsList = (props: NotificationsListProps) => {
     )}
     >
       {(notifications && notifications.length) ? (
-        notifications.map((item, index) => (
+        notifications.map((item) => (
           <NotificationsItem
             key={item.id}
             item={item}

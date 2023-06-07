@@ -7,10 +7,13 @@ import { useNavigate } from 'react-router-dom';
 import {
   getUserAuthData, isUserAdmin, isUserManager, userActions,
 } from '@/entities/User';
-import { RoutePath } from '@/shared/const/router';
-import { Dropdown } from '@/shared/ui/deprecated/Dropdown';
-import { Avatar } from '@/shared/ui/deprecated/Avatar';
-import cls from './index.module.scss';
+import { RoutePath, getRouteProfile } from '@/shared/const/router';
+import { Dropdown as DropdownDeprecated } from '@/shared/ui/deprecated/Dropdown';
+import { Avatar as AvatarDeprecated } from '@/shared/ui/deprecated/Avatar';
+import { Avatar } from '@/shared/ui/redesigned/Avatar';
+import { Dropdown } from '@/shared/ui/redesigned/Popups';
+import cls from './AvatarDropdown.module.scss';
+import { ToggleFeatures } from '@/shared/features';
 
 export const AvatarDropdown = () => {
   const { t } = useTranslation();
@@ -36,7 +39,7 @@ export const AvatarDropdown = () => {
       }] : []),
       {
         content: t('Профиль'),
-        onClick: () => navigate(`${RoutePath.profile}/${authData?.id}`),
+        onClick: () => navigate(getRouteProfile(authData?.id || '')),
       },
       {
         content: t('Выйти'),
@@ -47,15 +50,33 @@ export const AvatarDropdown = () => {
   );
 
   return (
-    <Dropdown
-      trigger={(
-        <Avatar
-          className={cls.avatar}
-          size={40}
-          src={authData?.avatar}
+    <ToggleFeatures
+      feature="isAppRedesigned"
+      off={(
+        <DropdownDeprecated
+          trigger={(
+            <AvatarDeprecated
+              className={cls.avatar}
+              size={40}
+              src={authData?.avatar}
+            />
+          )}
+          items={items}
         />
       )}
-      items={items}
+      on={(
+        <Dropdown
+          direction='bottom left'
+          trigger={(
+            <Avatar
+              size={48}
+              src={authData?.avatar}
+              className={cls.avatarRedesigned}
+            />
+          )}
+          items={items}
+        />
+      )}
     />
   );
 };

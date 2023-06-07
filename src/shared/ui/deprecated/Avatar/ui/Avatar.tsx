@@ -52,7 +52,7 @@ export const Avatar = (props: AvatarProps) => {
     >
       <AppImage
         className={className}
-        fallBack={fallBack}
+        fallback={fallBack}
         errorFallback={errorFallback}
         src={src}
         alt={alt}

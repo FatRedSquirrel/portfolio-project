@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { BrowserView, MobileView } from 'react-device-detect';
 import NotificationsIcon from '@/shared/assets/icons/notification.svg';
-import { Popover } from '@/shared/ui/deprecated/Popover';
+import { Popover as PopoverDeprecated } from '@/shared/ui/deprecated/Popover';
 import { NotificationsList } from '@/entities/Notification';
 import { Button as ButtonDeprecated, ButtonTheme } from '@/shared/ui/deprecated/Button';
 import { Drawer } from '@/shared/ui/deprecated/Drawer';
 import cls from './NotificationsButton.module.scss';
 import { ToggleFeatures } from '@/shared/features';
-import { Button } from '@/shared/ui/redesigned/Button';
+import { Icon } from '@/shared/ui/redesigned/Icon';
+import { Popover } from '@/shared/ui/redesigned/Popups';
 
 interface NotificationsButtonProps { }
 
@@ -26,13 +27,11 @@ export const NotificationsButton = (props: NotificationsButtonProps) => {
     <ToggleFeatures
       feature='isAppRedesigned'
       on={(
-        <Button
-          variant='clear'
-          className={cls.trigger}
+        <Icon
+          Svg={NotificationsIcon}
+          clickable
           onClick={openDrawer}
-        >
-          <NotificationsIcon />
-        </Button>
+        />
       )}
       off={(
         <ButtonDeprecated
@@ -48,11 +47,26 @@ export const NotificationsButton = (props: NotificationsButtonProps) => {
   return (
     <>
       <BrowserView>
-        <Popover
-          trigger={trigger}
-        >
-          <NotificationsList />
-        </Popover>
+        <ToggleFeatures
+          feature="isAppRedesigned"
+          on={(
+            <Popover
+              className={cls.popoverRedesigned}
+              direction='bottom left'
+              trigger={trigger}
+            >
+              <NotificationsList />
+            </Popover>
+          )}
+          off={(
+            <PopoverDeprecated
+              trigger={trigger}
+            >
+              <NotificationsList />
+            </PopoverDeprecated>
+          )}
+        />
+
       </BrowserView>
       <MobileView>
         {trigger}

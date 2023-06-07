@@ -8,6 +8,7 @@ import { getUserAuthData } from '@/entities/User';
 import cls from './SidebarItem.module.scss';
 import { SidebarItemType } from '../../model/types/sidebar';
 import { ToggleFeatures } from '@/shared/features';
+import { Icon } from '@/shared/ui/redesigned/Icon';
 
 interface SidebarItemProps {
     item: SidebarItemType;
@@ -34,7 +35,7 @@ export const SidebarItem = memo((props: SidebarItemProps) => {
       on={(
         <AppLink
           to={item.path}
-          activeClassname={cls.active}
+          activeClassName={cls.active}
           className={
             classNames(
               cls.itemRedesigned,
@@ -42,7 +43,8 @@ export const SidebarItem = memo((props: SidebarItemProps) => {
             )
           }
         >
-          <item.Icon className={cls.icon} />
+          <Icon Svg={item.Icon} className={cls.icon} />
+          {/* <item.Icon className={cls.icon} /> */}
           <span className={cls.link}>
             {t(item.text)}
           </span>

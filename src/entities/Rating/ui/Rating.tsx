@@ -2,7 +2,7 @@ import {
   ChangeEvent, useCallback, useEffect, useMemo, useState,
 } from 'react';
 import { BrowserView, MobileView } from 'react-device-detect';
-import { Card } from '@/shared/ui/deprecated/Card/Card';
+import { Card } from '@/shared/ui/deprecated/Card';
 import { Text } from '@/shared/ui/deprecated/Text';
 import classNames from '@/shared/lib/classNames/classNames';
 import cls from './Rating.module.scss';
