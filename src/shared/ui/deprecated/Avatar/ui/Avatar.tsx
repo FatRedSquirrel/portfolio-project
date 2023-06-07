@@ -2,7 +2,7 @@ import { CSSProperties, useMemo } from 'react';
 import classNames from '@/shared/lib/classNames/classNames';
 import cls from './Avatar.module.scss';
 import UserIcon from '@/shared/assets/icons/user-filled.svg';
-import { AppImage } from '../../AppImage';
+import { AppImage } from '@/shared/ui/redesigned/AppImage';
 import { Skeleton } from '../../Skeleton/ui/Skeleton';
 
 interface AvatarProps {

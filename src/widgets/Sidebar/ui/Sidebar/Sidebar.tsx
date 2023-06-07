@@ -5,7 +5,7 @@ import { ThemeSwitcher } from '@/shared/ui/deprecated/ThemeSwitcher';
 import { LangSwitcher } from '@/shared/ui/deprecated/LangSwitcher';
 import { Button as ButtonDeprecated, ButtonSize, ButtonTheme } from '@/shared/ui/deprecated/Button';
 import { SidebarItemType } from '@/widgets/Sidebar/model/types/sidebar';
-import { VStack } from '@/shared/ui/deprecated/Stack';
+import { VStack } from '@/shared/ui/redesigned/Stack';
 import cls from './Sidebar.module.scss';
 import { getSidebarItems } from '../../model/selectors/getSidebarItems';
 import { SidebarItem } from '../SidebarItem/SidebarItem';

@@ -7,7 +7,7 @@ import { Text } from '@/shared/ui/deprecated/Text';
 import classNames from '@/shared/lib/classNames/classNames';
 import cls from './Rating.module.scss';
 import { StarRating } from '@/shared/ui/deprecated/StarRating';
-import { HStack, VStack } from '@/shared/ui/deprecated/Stack';
+import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 import { Modal } from '@/shared/ui/deprecated/Modal';
 import { Input } from '@/shared/ui/deprecated/Input';
 import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
