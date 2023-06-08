@@ -1,0 +1,31 @@
+.MainLayout {
+  display: grid;
+  grid-template-areas:
+            'left content right';
+  grid-template-columns: min-content 1fr min-content;
+}
+
+
+.left {
+  grid-area: left;
+}
+
+.content {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 16px;
+  grid-area: content;
+  justify-self: center;
+}
+
+.right{
+  grid-area: right;
+}
+
+.left,
+.right {
+  height: fit-content;
+  position: sticky;
+  top: 32px;
+}
+

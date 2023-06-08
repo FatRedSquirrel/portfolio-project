@@ -7,7 +7,10 @@
 
   &Loading {
     width: 280px;
-    padding: 10px 0;
+    padding: 8px 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
   }
 
   &::-webkit-scrollbar {

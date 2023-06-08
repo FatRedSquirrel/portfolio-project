@@ -15,6 +15,7 @@ import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkele
 import cls from './ArticleList.module.scss';
 import { Article, ArticleView } from '../../model/types/article';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
+import { ToggleFeatures } from '@/shared/features';
 
 interface ArticleListProps {
     className?: string
@@ -111,32 +112,64 @@ export const ArticleList = (props: ArticleListProps) => {
   }
 
   return (
-    view === ArticleView.GRID
-      ? (
-        <VirtuosoGrid
-          style={{ height: '100%' }}
-          data={articles}
-          endReached={loadNextPart}
-          itemContent={renderArticle}
-          listClassName={classNames(cls.ArticleList, cls[view])}
-          components={{
-            Header,
-            Footer,
-          }}
-        />
-      )
-      : (
-        <Virtuoso
-          initialTopMostItemIndex={initialItemIndex}
-          style={{ height: '100%' }}
-          data={articles}
-          endReached={loadNextPart}
-          itemContent={renderArticle}
-          components={{
-            Header,
-            Footer,
-          }}
-        />
-      )
+    <ToggleFeatures
+      feature='isAppRedesigned'
+      on={(
+        view === ArticleView.GRID
+          ? (
+            <VirtuosoGrid
+              style={{ height: '100%' }}
+              data={articles}
+              endReached={loadNextPart}
+              itemContent={renderArticle}
+              listClassName={classNames(cls.ArticleList, cls[view])}
+              components={{
+                Footer,
+              }}
+            />
+          )
+          : (
+            <Virtuoso
+              initialTopMostItemIndex={initialItemIndex}
+              style={{ height: '100%' }}
+              data={articles}
+              endReached={loadNextPart}
+              itemContent={renderArticle}
+              components={{
+                Footer,
+              }}
+            />
+          )
+      )}
+      off={(
+        view === ArticleView.GRID
+          ? (
+            <VirtuosoGrid
+              style={{ height: '100%' }}
+              data={articles}
+              endReached={loadNextPart}
+              itemContent={renderArticle}
+              listClassName={classNames(cls.ArticleList, cls[view])}
+              components={{
+                Header,
+                Footer,
+              }}
+            />
+          )
+          : (
+            <Virtuoso
+              initialTopMostItemIndex={initialItemIndex}
+              style={{ height: '100%' }}
+              data={articles}
+              endReached={loadNextPart}
+              itemContent={renderArticle}
+              components={{
+                Header,
+                Footer,
+              }}
+            />
+          )
+      )}
+    />
   );
 };
