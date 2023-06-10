@@ -34,7 +34,6 @@ const ArticlesPage = () => (
             </Page>
           )}
         />
-
       )}
     />
   </DynamicModuleLoader>

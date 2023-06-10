@@ -5,7 +5,7 @@ import { ArticleType } from '@/entities/Article/model/types/article';
 import cls from './Tabs.module.scss';
 
 export interface TabItem<T> {
-  value: T
+  value: string
   content: ReactNode
 }
 

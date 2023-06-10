@@ -1,9 +1,9 @@
 import { memo } from 'react';
 import { ArticlesFilters } from '@/widgets/ArticlesFilters';
-import { useArticleFilters } from '../../lib/hooks/useArticleFilters';
+import { useArticleFilters } from '../../lib/useArticleFilters';
 
 interface FiltersContainerProps {
-    className?: string;
+  className?: string;
 }
 
 export const FiltersContainer = memo((props: FiltersContainerProps) => {

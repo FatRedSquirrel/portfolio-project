@@ -1,5 +1,7 @@
 .MainLayout {
+  height: 100%;
   display: grid;
+  gap: 16px;
   grid-template-areas:
             'left content right';
   grid-template-columns: min-content 1fr min-content;
@@ -12,8 +14,9 @@
 
 .content {
   width: 100%;
-  max-width: 1200px;
-  padding: 0 16px;
+
+  // max-width: 1200px;
+  padding: 0;
   grid-area: content;
   justify-self: center;
 }
