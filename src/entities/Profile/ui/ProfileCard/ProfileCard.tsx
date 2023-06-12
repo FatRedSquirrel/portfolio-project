@@ -1,190 +1,65 @@
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
-import { ChangeEvent, useCallback } from 'react';
-import classNames from '@/shared/lib/classNames/classNames';
-import { Text, TextAlign, TextTheme } from '@/shared/ui/deprecated/Text';
-import { Input } from '@/shared/ui/deprecated/Input';
-import { Loader } from '@/shared/ui/deprecated/Loader';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { Avatar } from '@/shared/ui/deprecated/Avatar';
-import { Currency, CurrencySelect } from '@/entities/Currency';
-import { Country, CountrySelect } from '@/entities/Country';
-import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
+import { ChangeEvent } from 'react';
+import { Currency } from '@/entities/Currency';
+import { Country } from '@/entities/Country';
+import { Profile } from '../../model/types/profile';
+import { ToggleFeatures } from '@/shared/features';
 import {
-  getProfileError,
-} from '../../model/selectors/getProfileError/getProfileError';
+  ProfileCardDeprecated,
+  ProfileCardDeprecatedError,
+  ProfileCardDeprecatedLoader,
+} from '../ProfileCardDeprecated/ProfileCardDeprecated';
 import {
-  fetchProfileData,
-} from '../../model/services/fetchProfileData/fetchProfileData';
-import {
-  getProfileForm,
-} from '../../model/selectors/getProfileForm/getProfileForm';
-import {
-  getProfileIsLoading,
-} from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';
-import {
-  getProfileReadonly,
-} from '../../model/selectors/getProfileReadonly/getProfileReadonly';
-import {
-  profileActions,
-} from '../../model/slice/profileSlice';
-import cls from './ProfileCard.module.scss';
+  ProfileCardRedesigned,
+  ProfileCardRedesignedError,
+  ProfileCardRedesignedSkeleton,
+} from '../ProfileCardRedesigned/ProfileCardRedesigned';
 
-interface ProfileCardProps {
-    className?: string
-    id: string
+export interface ProfileCardProps {
+    className?: string;
+    data?: Profile;
+    error?: string;
+    isLoading?: boolean;
+    readonly?: boolean;
+    onChangeLastname?: (e: ChangeEvent<HTMLInputElement>) => void;
+    onChangeFirstname?: (e: ChangeEvent<HTMLInputElement>) => void;
+    onChangeCity?: (e: ChangeEvent<HTMLInputElement>) => void;
+    onChangeAge?: (e: ChangeEvent<HTMLInputElement>) => void;
+    onChangeUsername?: (e: ChangeEvent<HTMLInputElement>) => void;
+    onChangeAvatar?: (e: ChangeEvent<HTMLInputElement>) => void;
+    onChangeCurrency?: (currency: Currency) => void;
+    onChangeCountry?: (country: Country) => void;
 }
 
 export const ProfileCard = (props: ProfileCardProps) => {
-  const {
-    className,
-    id,
-  } = props;
-
-  const { t } = useTranslation('profile');
-
-  const dispatch = useAppDispatch();
-
-  const data = useSelector(getProfileForm);
-  const isLoading = useSelector(getProfileIsLoading);
-  const error = useSelector(getProfileError);
-  const readonly = useSelector(getProfileReadonly);
-
-  useInitialEffect(() => {
-    if (id) {
-      dispatch(fetchProfileData(id));
-    }
-  }, []);
-
-  const onFirstnameChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(profileActions.updateProfile({ firstname: e.target.value }));
-  }, [dispatch]);
-
-  const onLastnameChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(profileActions.updateProfile({ lastname: e.target.value }));
-  }, [dispatch]);
-
-  const onAgeChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    // Checking if input value is number
-    if (!/^[0-9]+$/.test(value) && value !== '') {
-      return;
-    }
-
-    dispatch(profileActions.updateProfile({ age: Number(value || 0) }));
-  }, [dispatch]);
-
-  const onCityChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(profileActions.updateProfile({ city: e.target.value }));
-  }, [dispatch]);
-
-  const onUsernameChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(profileActions.updateProfile({ username: e.target.value }));
-  }, [dispatch]);
-
-  const onAvatarChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(profileActions.updateProfile({ avatar: e.target.value }));
-  }, [dispatch]);
-
-  const onCurrencyChange = useCallback((currency: Currency) => {
-    dispatch(profileActions.updateProfile({ currency }));
-  }, [dispatch]);
-
-  const onCountryChange = useCallback((country: Country) => {
-    dispatch(profileActions.updateProfile({ country }));
-  }, [dispatch]);
+  const { isLoading, error } = props;
+  const { t } = useTranslation();
 
   if (isLoading) {
     return (
-      <div className={classNames(cls.ProfileCard, className, cls.loading)}>
-        <Loader />
-      </div>
+      <ToggleFeatures
+        feature="isAppRedesigned"
+        on={<ProfileCardRedesignedSkeleton />}
+        off={<ProfileCardDeprecatedLoader />}
+      />
     );
   }
 
   if (error) {
     return (
-      <div className={classNames(cls.ProfileCard, className, cls.error)}>
-        <Text
-          theme={TextTheme.ERROR}
-          title={t('Произошла ошибка при закрузке профиля') as string}
-          text={t('Попробуйте обновить страницу') as string}
-          align={TextAlign.CENTER}
-        />
-      </div>
+      <ToggleFeatures
+        feature="isAppRedesigned"
+        on={<ProfileCardRedesignedError />}
+        off={<ProfileCardDeprecatedError />}
+      />
     );
   }
 
   return (
-    <div
-      className={
-        classNames(
-          cls.ProfileCard,
-          className,
-          cls.data,
-          !readonly && cls.editing,
-        )
-      }
-    >
-      <div className={cls.avatarWrapper}>
-        <div className={cls.border}>
-          <Avatar
-            src={data?.avatar}
-            size={200}
-            alt='Аватар пользователя'
-          />
-        </div>
-      </div>
-      <form className={cls.form}>
-        <Input
-          value={data?.firstname}
-          placeholder={t('Имя') as string}
-          readonly={readonly}
-          onChange={onFirstnameChange}
-          data-testid="ProfileCard.firstname"
-        />
-        <Input
-          value={data?.lastname}
-          placeholder={t('Фамилия') as string}
-          readonly={readonly}
-          onChange={onLastnameChange}
-          data-testid="ProfileCard.lastname"
-        />
-        <Input
-          value={data?.age}
-          placeholder={t('Возраст') as string}
-          readonly={readonly}
-          onChange={onAgeChange}
-        />
-        <Input
-          value={data?.city}
-          placeholder={t('Город') as string}
-          readonly={readonly}
-          onChange={onCityChange}
-        />
-        <Input
-          value={data?.username}
-          placeholder={t('Имя пользователя') as string}
-          readonly={readonly}
-          onChange={onUsernameChange}
-        />
-        <Input
-          value={data?.avatar}
-          placeholder={t('Ссылка на аватар') as string}
-          readonly={readonly}
-          onChange={onAvatarChange}
-        />
-        <CurrencySelect
-          value={data?.currency}
-          onChange={onCurrencyChange}
-          readonly={readonly}
-        />
-        <CountrySelect
-          value={data?.country}
-          onChange={onCountryChange}
-          readonly={readonly}
-        />
-      </form>
-    </div>
+    <ToggleFeatures
+      feature="isAppRedesigned"
+      on={<ProfileCardRedesigned {...props} />}
+      off={<ProfileCardDeprecated {...props} />}
+    />
   );
 };

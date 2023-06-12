@@ -46,8 +46,8 @@ export function ListBox<T extends string>(props: ListBoxProps<T>) {
   const selectedItem = _.find(items, { value });
 
   return (
-    <HStack gap="4">
-      {label && <span>{`${label}>`}</span>}
+    <HStack gap="8">
+      {label && <span>{label}</span>}
       <HListBox
         disabled={readonly}
         as="div"

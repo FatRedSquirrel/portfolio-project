@@ -19,13 +19,5 @@ export const validateProfileData = (profile?: Profile) => {
     errors.push(ValidateProfileError.INCORRECT_AGE);
   }
 
-  if (!city) {
-    errors.push(ValidateProfileError.INCORRECT_CITY);
-  }
-
-  if (!username) {
-    errors.push(ValidateProfileError.INCORRECT_USERNAME);
-  }
-
   return errors;
 };

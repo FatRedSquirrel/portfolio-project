@@ -13,9 +13,7 @@ const ProfilePageErrors = () => {
 
   const validationErrorsTranslations = {
     [ValidateProfileError.INCORRECT_USER_DATA]: t('Фамилия и имя обязательны'),
-    [ValidateProfileError.INCORRECT_USERNAME]: t('Имя пользователя не указано'),
     [ValidateProfileError.INCORRECT_AGE]: t('Возраст указан некорректно'),
-    [ValidateProfileError.INCORRECT_CITY]: t('Город не указан'),
     [ValidateProfileError.NO_DATA]: t('Нет данных'),
     [ValidateProfileError.SERVER_ERROR]: t('Серверная ошибка'),
   };
@@ -27,7 +25,8 @@ const ProfilePageErrors = () => {
             <Text
               key={err}
               theme={TextTheme.ERROR}
-              text={validationErrorsTranslations[err]}
+              // @ts-ignore
+              text={validationErrorsTranslations[err as any]}
             />
           ))}
     </div>

@@ -1,10 +1,22 @@
 .InputWrapper {
   width: 100%;
-  padding: 0 16px;
+  padding: 8px 16px;
   display: flex;
-  align-items: center; 
+  align-items: center;
   border: 2px solid var(--icon-redesigned);
   border-radius: 48px;
+}
+
+.s {
+  height: 32px;
+}
+
+.m {
+  height: 38px;
+}
+
+.l {
+  height: 44px;
 }
 
 .addonLeft, .addonRight {
@@ -29,7 +41,6 @@
 
 .input {
   width: 100%;
-  font-size: 14px;
   border: none;
   outline: none;
   color: var(--text-redesigned);
@@ -38,8 +49,11 @@
   &::placeholder {
     color: var(--hint-redesigned);
   }
-}
 
+  &__label {
+    white-space: nowrap;
+  }
+}
 
 .readonly {
   opacity: 0.7;
