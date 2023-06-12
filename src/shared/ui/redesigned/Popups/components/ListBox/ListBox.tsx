@@ -9,8 +9,8 @@ import cls from './ListBox.module.scss';
 import { mapDirectionClass } from '../../styles/consts';
 import popupCls from '../../styles/popup.module.scss';
 import { Icon } from '../../../Icon';
-import ArrowIcon from '@/shared/assets/icons/arrow-bottom.svg';
 import TickIcon from '@/shared/assets/icons/tick.svg';
+import ArrowIcon from '@/shared/assets/icons/arrow-bottom.svg';
 
 export interface ListBoxItem {
     value: string;
@@ -68,12 +68,14 @@ export function ListBox<T extends string>(props: ListBoxProps<T>) {
               className={cls.triggerButton}
               variant='filled'
               disabled={readonly}
+              addonRight={(
+                <Icon
+                  className={open ? cls.arrowActive : ''}
+                  Svg={ArrowIcon}
+                />
+              )}
             >
               {selectedItem?.content ?? defaultValue}
-              <Icon
-                className={open ? cls.arrowReversed : ''}
-                Svg={ArrowIcon}
-              />
             </Button>
           )}
         </HListBox.Button>

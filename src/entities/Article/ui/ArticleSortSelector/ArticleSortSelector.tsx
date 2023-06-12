@@ -31,26 +31,26 @@ export const ArticleSortSelector = (props: ArticleSortSelectorProps) => {
   const orderOptions: SelectOption<SortOrder>[] = [
     {
       value: 'asc',
-      content: t('возрастанию'),
+      content: t('Возрастанию'),
     },
     {
       value: 'desc',
-      content: t('убыванию'),
+      content: t('Убыванию'),
     },
   ];
 
   const sortFieldOptions: SelectOption<ArticleSortField>[] = [
     {
       value: ArticleSortField.CREATED,
-      content: t('дате'),
+      content: t('Дате'),
     },
     {
       value: ArticleSortField.TITLE,
-      content: t('названию'),
+      content: t('Названию'),
     },
     {
       value: ArticleSortField.VIEWS,
-      content: t('просмотрам'),
+      content: t('Просмотрам'),
     },
   ];
 
@@ -76,7 +76,7 @@ export const ArticleSortSelector = (props: ArticleSortSelectorProps) => {
       on={(
         <div className={cls.sort}>
           <Text text='Сортировать по:' />
-          <VStack gap='16'>
+          <VStack gap='8'>
             <ListBox
               items={sortFieldOptions}
               defaultValue='Выберите значение'
