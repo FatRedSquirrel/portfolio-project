@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { useCallback } from 'react';
+import { ChangeEvent, useCallback } from 'react';
 import {
   getArticlesPageOrder,
   getArticlesPageSearch,
@@ -56,8 +56,8 @@ export function useArticleFilters() {
   );
 
   const onChangeSearch = useCallback(
-    (search: string) => {
-      dispatch(articlesPageActions.setSearch(search));
+    (e: ChangeEvent<HTMLInputElement>) => {
+      dispatch(articlesPageActions.setSearch(e.target.value));
       dispatch(articlesPageActions.setPage(1));
       debouncedFetchData();
     },

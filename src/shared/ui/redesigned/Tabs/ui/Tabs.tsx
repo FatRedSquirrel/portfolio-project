@@ -3,6 +3,7 @@ import { classNamesRedesigned } from '@/shared/lib/classNames/classNames';
 import { Card } from '../../Card';
 import cls from './Tabs.module.scss';
 import { Flex, FlexDirection } from '../../Stack/Flex/Flex';
+import { ArticleType } from '@/entities/Article';
 
 export interface TabItem {
     value: string;
@@ -13,7 +14,7 @@ interface TabsProps {
     className?: string;
     tabs: TabItem[];
     value: string;
-    onTabClick: (tab: TabItem) => void;
+    onTabClick: (tab: ArticleType) => void;
     direction?: FlexDirection;
 }
 
@@ -23,7 +24,7 @@ export const Tabs = memo((props: TabsProps) => {
   } = props;
 
   const clickHandle = useCallback(
-    (tab: TabItem) => () => {
+    (tab: ArticleType) => () => {
       onTabClick(tab);
     },
     [onTabClick],
@@ -45,7 +46,7 @@ export const Tabs = memo((props: TabsProps) => {
               [cls.selected]: isSelected,
             })}
             key={tab.value}
-            onClick={clickHandle(tab)}
+            onClick={clickHandle(tab.value as ArticleType)}
             border="round"
           >
             {tab.content}

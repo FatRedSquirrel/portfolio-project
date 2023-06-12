@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { ChangeEvent, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import classNames from '@/shared/lib/classNames/classNames';
 import cls from './ArticlesFilters.module.scss';
@@ -15,7 +15,7 @@ interface ArticlesFiltersProps {
     order: SortOrder;
     type: ArticleType;
     search: string;
-    onChangeSearch: (value: string) => void;
+    onChangeSearch: (e: ChangeEvent<HTMLInputElement>) => void;
     onChangeOrder: (newOrder: SortOrder) => void;
     onChangeSort: (newSort: ArticleSortField) => void;
     onChangeType: (type: ArticleType) => void;

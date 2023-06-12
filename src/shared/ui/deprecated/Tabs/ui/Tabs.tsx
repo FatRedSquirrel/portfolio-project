@@ -13,7 +13,7 @@ interface TabsProps<T> {
   className?: string
   tabs: TabItem<T>[]
   value: ArticleType
-  onTabClick: (tab: TabItem<T>) => void
+  onTabClick: (tab: ArticleType) => void
 }
 
 /**
@@ -27,22 +27,28 @@ export const Tabs = <T extends string>(props: TabsProps<T>) => {
     onTabClick,
   } = props;
 
-  const clickHandler = (tab: TabItem<T>) => () => {
+  const clickHandler = (tab: ArticleType) => () => {
     onTabClick(tab);
   };
 
   return (
     <div className={classNames(cls.tabs, className)}>
-      {tabs.map((tab, index) => (
-        <Card
-          onClick={clickHandler(tab)}
-          theme={tab.value === value ? CardTheme.NORMAL : CardTheme.OUTLINED}
-          className={classNames(cls.tab)}
-          key={index}
-        >
-          {tab.content}
-        </Card>
-      ))}
+      {tabs.map((tab, index) => {
+        const isSelceted = tab.value === value;
+        return (
+          <Card
+            onClick={clickHandler(tab.value as ArticleType)}
+            theme={isSelceted ? CardTheme.NORMAL : CardTheme.OUTLINED}
+            className={classNames(
+              cls.tab,
+              isSelceted && cls.selected,
+            )}
+            key={index}
+          >
+            {tab.content}
+          </Card>
+        );
+      })}
     </div>
   );
 };

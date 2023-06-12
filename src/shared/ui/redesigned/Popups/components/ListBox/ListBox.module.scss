@@ -8,16 +8,31 @@
   &.disabled {
     pointer-events: none;
   }
+
+  &Button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 }
 
 .options {
+  margin-top: 10px;
   position: absolute;
   border-radius: 12px;
   box-shadow: 4px 4px 8px var(--dark-bg-redesigned);
   z-index: 10000;
-  background: var(--dark-bg-redesigned-bg);
+  background: var(--dark-bg-redesigned);
 }
 
 .item {
   padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.arrowReversed {
+  transform: rotate(180deg);
 }
