@@ -1,6 +1,11 @@
-.appLogoWrapper {
-  height: 80px;
+.appLogo {
   position: relative;
+  z-index: 10;
+
+  &Wrapper {
+    height: 80px;
+    position: relative;
+  }
 }
 
 .gradientBig {
