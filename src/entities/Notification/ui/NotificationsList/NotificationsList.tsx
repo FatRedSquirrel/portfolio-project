@@ -26,9 +26,9 @@ export const NotificationsList = (props: NotificationsListProps) => {
         className,
       )}
       >
-        <Skeleton width='100%' height='60px' border={12} />
-        <Skeleton width='100%' height='60px' border={12} />
-        <Skeleton width='100%' height='60px' border={12} />
+        <Skeleton width='100%' height='60px' border='12px' />
+        <Skeleton width='100%' height='60px' border='12px' />
+        <Skeleton width='100%' height='60px' border='12px' />
       </div>
     );
   }

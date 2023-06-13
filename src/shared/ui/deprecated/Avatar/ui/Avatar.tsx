@@ -32,7 +32,7 @@ export const Avatar = (props: AvatarProps) => {
     <Skeleton
       width={size}
       height={size}
-      border={100}
+      border='100px'
     />
   );
   const errorFallback = (
