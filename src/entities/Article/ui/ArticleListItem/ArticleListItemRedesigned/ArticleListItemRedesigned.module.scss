@@ -1,0 +1,24 @@
+
+.LIST {
+  .img {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: contain;
+    }
+  }
+
+  .textBlock {
+    height: 72px;
+    overflow: hidden;
+  }
+
+  margin-bottom: 30px;
+}
