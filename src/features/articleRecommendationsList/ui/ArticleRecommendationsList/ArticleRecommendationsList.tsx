@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
 import { Text } from '@/shared/ui/deprecated/Text';
 import { TextSize } from '@/shared/ui/deprecated/Text/ui/Text';
-import { ArticleList } from '@/entities/Article';
+import { ArticleList, ArticleView } from '@/entities/Article';
 import classNames from '@/shared/lib/classNames/classNames';
 import { useArticleRecommendationsList } from '../../api/articleRecommendationsApi';
 import cls from './ArticleRecommendationsList.module.scss';
@@ -34,6 +34,7 @@ export const ArticleRecommendationsList = memo((props: ArticleRecommendationsLis
         title={t('Рекомендуем') as string}
       />
       <ArticleList
+        view={ArticleView.GRID}
         recommendations
         articles={articles}
         status={isLoading ? 'loading' : 'idle'}
