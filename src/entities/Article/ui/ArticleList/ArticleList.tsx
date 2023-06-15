@@ -122,7 +122,7 @@ export const ArticleList = (props: ArticleListProps) => {
               data={articles}
               endReached={loadNextPart}
               itemContent={renderArticle}
-              listClassName={classNames(cls.ArticleList, cls[view])}
+              listClassName={classNames(cls.ArticleListRedesigned, cls[view])}
               components={{
                 Footer,
               }}
