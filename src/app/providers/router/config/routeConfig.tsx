@@ -10,11 +10,16 @@ import { UserRole } from '@/entities/User';
 import { ForbiddenPage } from '@/pages/ForbiddenPage';
 import { AppRoutes, RoutePath } from '@/shared/const/router';
 import { AppRoutesProps } from '@/shared/types/router';
+import { SettingsPage } from '@/pages/SettingsPage';
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
   [AppRoutes.MAIN]: {
     path: RoutePath.main,
     element: <MainPage />,
+  },
+  [AppRoutes.SETTINGS]: {
+    path: RoutePath.settings,
+    element: <SettingsPage />,
   },
   [AppRoutes.ABOUT]: {
     path: RoutePath.about,

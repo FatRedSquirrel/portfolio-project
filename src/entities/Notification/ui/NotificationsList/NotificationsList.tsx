@@ -1,8 +1,10 @@
 import classNames from '@/shared/lib/classNames/classNames';
-import { Skeleton } from '@/shared/ui/deprecated/Skeleton/ui/Skeleton';
+import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton/ui/Skeleton';
+import { Skeleton as SkeletonRedesigned } from '@/shared/ui/redesigned/Skeleton';
 import { useNotifications } from '../../api/notificationsApi';
 import cls from './NotificationsList.module.scss';
 import { NotificationsItem } from '../NotificationsItem/NotificationsItem';
+import { toggleFeatures } from '@/shared/features';
 
 interface NotificationsListProps {
   className?: string
@@ -17,6 +19,12 @@ export const NotificationsList = (props: NotificationsListProps) => {
     data: notifications, isLoading,
   } = useNotifications(null, {
     pollingInterval: 5000,
+  });
+
+  const Skeleton = toggleFeatures({
+    name: 'isAppRedesigned',
+    on: () => SkeletonRedesigned,
+    off: () => SkeletonDeprecated,
   });
 
   if (isLoading) {

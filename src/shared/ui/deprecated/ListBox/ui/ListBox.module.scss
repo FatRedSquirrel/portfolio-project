@@ -33,15 +33,28 @@
   left: 0;
   border-radius: 12px;
   outline: none;
+  overflow: hidden;
   box-shadow: 0 5px 10px var(--accent-color);
   z-index: 10000;
   background: var(--main-color);
 
-  &.bottom {
+  &BottomLeft {
     top: 100%;
+    right: 0;
   }
-
-  &.top {
+  
+  &BottomRight {
+    top: 100%;
+    left: 0;
+  }
+  
+  &TopRight {
+    bottom: 100%;
+    left: 0;
+  }
+  
+  &TopLeft {
+    right: 0;
     bottom: 100%;
   }
 }

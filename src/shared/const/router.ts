@@ -1,5 +1,6 @@
 export enum AppRoutes {
   MAIN = 'main',
+  SETTINGS = 'settings',
   ABOUT = 'about',
   PROFILE = 'profile',
   ARTICLES = 'articles',
@@ -13,6 +14,7 @@ export enum AppRoutes {
 }
 
 export const getRouteMain = () => '/';
+export const getRouteSettings = () => '/settings';
 export const getRouteAbout = () => '/about';
 export const getRouteProfile = (id: string) => `/profile/${id}`;
 export const getRouteArticles = () => '/articles';
@@ -26,6 +28,7 @@ export const getRouteNotfound = () => '*';
 
 export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.MAIN]: getRouteMain(),
+  [AppRoutes.SETTINGS]: getRouteSettings(),
   [AppRoutes.ABOUT]: getRouteAbout(),
   [AppRoutes.PROFILE]: getRouteProfile(':id'),
   [AppRoutes.ARTICLES]: getRouteArticles(),

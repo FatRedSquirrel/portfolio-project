@@ -6,14 +6,13 @@ import { Listbox } from '@headlessui/react';
 import classNames from '@/shared/lib/classNames/classNames';
 import DropDownArrow from '@/shared/assets/icons/arrow-bottom.svg';
 import cls from './ListBox.module.scss';
+import { DropdownDirection } from '@/shared/types/ui';
 
 export interface ListBoxItem {
   value: string
   content: ReactNode
   disabled?: boolean
 }
-
-export type DirectionListbox = 'top' | 'bottom';
 
 interface ListBoxProps<T> {
   className?: string
@@ -22,7 +21,7 @@ interface ListBoxProps<T> {
   defaultValue?: string
   label?: string
   readonly?: boolean
-  direction?: DirectionListbox
+  direction?: DropdownDirection
   style?: CSSProperties
   onChange?: (value: T) => void
 }
@@ -38,7 +37,7 @@ export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
     defaultValue,
     label,
     readonly,
-    direction = 'bottom',
+    direction = 'bottom left',
     style,
     onChange,
   } = props;
@@ -46,6 +45,13 @@ export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
   const getSelectedOptionLabel = (value: string) => {
     const item = items?.find((item) => item.value === value);
     return item?.content ?? '';
+  };
+
+  const directionClass: Record<DropdownDirection, string> = {
+    'bottom left': cls.optionsBottomLeft,
+    'bottom right': cls.optionsBottomRight,
+    'top right': cls.optionsTopRight,
+    'top left': cls.optionsTopLeft,
   };
 
   return (
@@ -76,6 +82,7 @@ export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
             classNames(
               cls.options,
               cls[direction],
+              directionClass[direction],
             )
           }
         >

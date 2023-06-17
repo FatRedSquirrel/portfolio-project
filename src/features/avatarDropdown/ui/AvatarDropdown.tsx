@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import {
   getUserAuthData, isUserAdmin, isUserManager, userActions,
 } from '@/entities/User';
-import { RoutePath, getRouteProfile } from '@/shared/const/router';
+import { RoutePath, getRouteProfile, getRouteSettings } from '@/shared/const/router';
 import { Dropdown as DropdownDeprecated } from '@/shared/ui/deprecated/Dropdown';
 import { Avatar as AvatarDeprecated } from '@/shared/ui/deprecated/Avatar';
 import { Avatar } from '@/shared/ui/redesigned/Avatar';
@@ -40,6 +40,10 @@ export const AvatarDropdown = () => {
       {
         content: t('Профиль'),
         onClick: () => navigate(getRouteProfile(authData?.id || '')),
+      },
+      {
+        content: t('Настройки'),
+        onClick: () => navigate(getRouteSettings()),
       },
       {
         content: t('Выйти'),
