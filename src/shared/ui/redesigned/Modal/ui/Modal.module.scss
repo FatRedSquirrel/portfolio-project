@@ -6,8 +6,21 @@
   pointer-events: none;
   z-index: var(--modal-z-index);
   opacity: 0;
-  color: var(--main-color);
   inset: 0;
+
+  &Redesigned {
+    .content {
+      color: var(--main-color);
+      background: var(--light-bg-redesigned);
+    }
+  }
+  
+  &Deprecated {
+    .content {
+      color: var(--main-color);
+      background: var(--secondary-color);
+    }
+  }
 }
 
 .overlay {
@@ -26,7 +39,6 @@
   transform: scale(0.5);
   border-radius: 12px;
   z-index: var(--modal-z-index);
-  background: var(--secondary-color);
 }
 
 .opened {

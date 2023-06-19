@@ -5,6 +5,7 @@ import { useTheme } from '@/app/providers/ThemeProvider';
 import { Overlay } from '@/shared/ui/redesigned/Overlay';
 import { useModal } from '@/shared/lib/hooks/useModal';
 import cls from './Modal.module.scss';
+import { toggleFeatures } from '@/shared/features';
 
 interface ModalProps {
     className?: string;
@@ -16,9 +17,6 @@ interface ModalProps {
 
 const ANIMATION_DELAY = 300;
 
-/**
- * @deprecated
- */
 export const Modal = (props: ModalProps) => {
   const {
     className,
@@ -42,13 +40,17 @@ export const Modal = (props: ModalProps) => {
   }
 
   return (
-    <Portal>
+    <Portal element={document.getElementById('app') ?? document.body}>
       <div className={
         classNames(
           cls.Modal,
           className,
           cls[theme],
-          'app_modal',
+          toggleFeatures({
+            name: 'isAppRedesigned',
+            on: () => cls.ModalRedesigned,
+            off: () => cls.ModalDeprecated,
+          }),
           isOpen && cls.opened,
           isClosing && cls.isClosing,
         )

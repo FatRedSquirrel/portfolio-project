@@ -50,7 +50,6 @@ export const CurrencySelect = memo((props: CurrencySelectProps) => {
       )}
       off={(
         <ListBoxDeprecated
-          direction='bottom'
           {...ListBoxProps}
         />
       )}

@@ -3,15 +3,10 @@
 @import "themes/normal";
 @import "themes/dark";
 
-.app,
-.app_modal,
-.app_drawer {
-  font: var(--font-m);
-  color: var(--main-color);
-}
-
 .app {
   min-height: 100vh;
+  font: var(--font-m);
+  color: var(--main-color);
   background: var(--secondary-color);
 }
 

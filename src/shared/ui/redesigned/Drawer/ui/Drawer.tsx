@@ -7,6 +7,7 @@ import { AnimationProvider, useAnimationLibs } from '@/shared/lib/components/Ani
 import { Overlay } from '@/shared/ui/redesigned/Overlay';
 import cls from './Drawer.module.scss';
 import { Portal } from '@/shared/ui/redesigned/Portal';
+import { toggleFeatures } from '@/shared/features';
 
 interface DrawerProps {
     className?: string
@@ -85,12 +86,16 @@ export const DrawerContent = memo((props: DrawerProps) => {
   const display = y.to((py) => (py < height ? 'block' : 'none'));
 
   return (
-    <Portal>
+    <Portal element={document.getElementById('app') ?? document.body}>
       <div className={classNames(
         cls.Drawer,
         className,
         theme,
-        'app_drawer',
+        toggleFeatures({
+          name: 'isAppRedesigned',
+          on: () => cls.DrawerRedesigned,
+          off: () => cls.DrawerDeprecated,
+        }),
       )}
       >
         <Overlay />
@@ -119,9 +124,6 @@ const DrawerAsync = (props: DrawerProps) => {
   return <DrawerContent {...props} />;
 };
 
-/**
- * @deprecated
- */
 export const Drawer = (props: DrawerProps) => (
   <AnimationProvider>
     <DrawerAsync {...props} />

@@ -4,7 +4,7 @@ import NotificationsIcon from '@/shared/assets/icons/notification.svg';
 import { Popover as PopoverDeprecated } from '@/shared/ui/deprecated/Popover';
 import { NotificationsList } from '@/entities/Notification';
 import { Button as ButtonDeprecated, ButtonTheme } from '@/shared/ui/deprecated/Button';
-import { Drawer } from '@/shared/ui/deprecated/Drawer';
+import { Drawer } from '@/shared/ui/redesigned/Drawer';
 import cls from './NotificationsButton.module.scss';
 import { ToggleFeatures } from '@/shared/features';
 import { Icon } from '@/shared/ui/redesigned/Icon';

@@ -32,7 +32,7 @@ TopDirection.args = {
   },
   items,
   value,
-  direction: 'top',
+  direction: 'top right',
 };
 
 export const WithLabel = Template.bind({});
