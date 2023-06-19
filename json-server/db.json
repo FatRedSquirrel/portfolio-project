@@ -1177,6 +1177,13 @@
       "rate": 4,
       "feedback": "123",
       "id": "_PWyNc_"
+    },
+    {
+      "userId": "1",
+      "articleId": "4",
+      "rate": 5,
+      "feedback": "123",
+      "id": "yl2QmrI"
     }
   ],
   "profile-ratings": [

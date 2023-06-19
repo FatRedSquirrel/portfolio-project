@@ -6,7 +6,7 @@ export type TextVariant = 'primary' | 'error' | 'accent';
 
 export type TextAlign = 'right' | 'left' | 'center';
 
-export type TextSize = 's' | 'm' | 'l';
+export type TextSize = 's' | 'm' | 'l' | 'xl';
 
 interface TextProps {
     className?: string;
@@ -22,15 +22,17 @@ interface TextProps {
 type HeaderTagType = 'h1' | 'h2' | 'h3';
 
 const mapSizeToClass: Record<TextSize, string> = {
-  s: 'size_s',
-  m: 'size_m',
-  l: 'size_l',
+  s: cls.size_s,
+  m: cls.size_m,
+  l: cls.size_l,
+  xl: cls.size_xl,
 };
 
 const mapSizeToHeaderTag: Record<TextSize, HeaderTagType> = {
   s: 'h3',
   m: 'h2',
   l: 'h1',
+  xl: 'h1',
 };
 
 export const Text = memo((props: TextProps) => {
