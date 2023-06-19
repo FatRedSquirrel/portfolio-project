@@ -10,6 +10,8 @@
   "decrement": "decrement",
   "increment": "increment",
   "throw error": "throw error",
+  "{{count}} просмотров": "",
+  "{{count}} просмотров_plural": "",
   "Аватар": "Аватар",
   "Админка": "Админка",
   "Айти": "",

@@ -17,6 +17,9 @@ import {
 import { ArticleRating } from '@/features/articleRating';
 import { ToggleFeatures, getFeatureFlag } from '@/shared/features';
 import cls from './ArticleDetailsPage.module.scss';
+import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout';
+import { DetailsContainer } from '../DetailsContainer';
+import { AdditionalInfoContainer } from '../AdditionalInfoContainer/ui/AdditionalInfoContainer';
 
 const reducers: ReducersList = {
   articleComments: articleCommentsReducer,
@@ -30,17 +33,38 @@ const ArticleDetailsPage = () => {
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <Page>
-        <ArticleDetailsPageHeader />
-        <ArticleDetails />
-        <ToggleFeatures
-          feature='isArticleRatingEnabled'
-          on={<ArticleRating />}
-          off={<div className={cls.noRating}>{t('Оценка статей скоро появится! (feature flags)')}</div>}
-        />
-        {isArticleRecommendationsEnabled && <ArticleRecommendationsList />}
-        <ArticleComments />
-      </Page>
+      <ToggleFeatures
+        feature='isAppRedesigned'
+        on={(
+          <StickyContentLayout
+            content={(
+              <Page>
+                <DetailsContainer />
+                <ArticleRating />
+                <ArticleRecommendationsList />
+                <ArticleComments />
+              </Page>
+            )}
+            right={(
+              <AdditionalInfoContainer />
+            )}
+          />
+        )}
+        off={(
+          <Page>
+            <ArticleDetailsPageHeader />
+            <ArticleDetails />
+            <ToggleFeatures
+              feature='isArticleRatingEnabled'
+              on={<ArticleRating />}
+              off={<div className={cls.noRating}>{t('Оценка статей скоро появится! (feature flags)')}</div>}
+            />
+            {isArticleRecommendationsEnabled && <ArticleRecommendationsList />}
+            <ArticleComments />
+          </Page>
+        )}
+      />
+
     </DynamicModuleLoader>
   );
 };
