@@ -1,7 +1,9 @@
 import { memo } from 'react';
-import { Text } from '@/shared/ui/deprecated/Text';
+import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text';
+import { Text } from '@/shared/ui/redesigned/Text';
 import { ArticleBlockImage } from '../../../model/types/article';
 import cls from './index.module.scss';
+import { ToggleFeatures } from '@/shared/features';
 
 interface ImageBlockProps {
   className?: string
@@ -15,7 +17,11 @@ const ImageBlock = ({ block, className }: ImageBlockProps) => {
     <div className={className}>
       <img className={cls.img} src={src} alt="" />
       {title && (
-        <Text title={title} className={cls.title} />
+        <ToggleFeatures
+          feature='isAppRedesigned'
+          on={<Text title={title} className={cls.title} />}
+          off={<TextDeprecated title={title} className={cls.title} />}
+        />
       )}
     </div>
   );

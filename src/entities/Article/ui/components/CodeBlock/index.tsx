@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { Code } from '@/shared/ui/deprecated/Code';
+import { Code } from '@/shared/ui/redesigned/Code';
 import { ArticleBlockCode } from '../../../model/types/article';
 
 interface CodeBlockProps {
@@ -12,7 +12,7 @@ const CodeBlock = ({ block, className }: CodeBlockProps) => {
 
   return (
     <div className={className}>
-      <div>
+      <div style={{ margin: '20px 0' }}>
         <Code text={code} />
       </div>
     </div>
