@@ -1019,6 +1019,18 @@
       "articleId": "4",
       "userId": "1",
       "id": "0CJoYMh"
+    },
+    {
+      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, ipsa ad rem rerum nihil placeat magni sunt? Excepturi, officiis tempora.",
+      "articleId": "18",
+      "userId": "1",
+      "id": "bLEfIBb"
+    },
+    {
+      "text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis ipsum dolorum nisi sed illum ad quo itaque commodi velit. Nihil, necessitatibus! Odio repellendus dolore vitae? Cupiditate deleniti, quisquam magni consequuntur, sunt, fuga reprehenderit maxime numquam neque voluptates dicta odit ipsam quasi facere sed ex laudantium aliquam rem a velit repellendus. Nesciunt dolorem laudantium, voluptates aspernatur autem delectus ullam eum, beatae veniam molestias eveniet, impedit ratione minus ducimus incidunt aut laborum assumenda repellat ipsam. Nihil commodi ducimus, quos atque rerum delectus excepturi aut iure vero obcaecati debitis nesciunt hic vel enim nulla repellat optio tempore eveniet, nam fuga velit nemo veritatis officia illo. Culpa voluptatum a perspiciatis, quia nemo sapiente recusandae quis ab quidem magnam ullam hic atque corrupti asperiores eligendi necessitatibus velit similique, sit est reiciendis placeat dignissimos. Eos nulla nesciunt ut at praesentium reprehenderit. Ipsa saepe illo, doloribus deserunt pariatur, optio aspernatur natus, recusandae unde quisquam inventore? Deleniti vero quam voluptatum a nobis illum, consequatur tenetur. Ex quos nesciunt veritatis explicabo eos ad inventore ipsa mollitia labore laboriosam, error quia recusandae saepe neque consectetur quasi nostrum tempora vel, voluptas doloremque nobis excepturi. Quas, fuga. Aliquid mollitia possimus, velit consequuntur vero consectetur eligendi minima quae tenetur impedit atque. Quam, ipsa.",
+      "articleId": "18",
+      "userId": "1",
+      "id": "wxYQKga"
     }
   ],
   "users": [
@@ -1035,7 +1047,7 @@
         "isAppRedesigned": true
       },
       "jsonSettings": {
-        "theme": "app_dark_theme",
+        "theme": "app_light_theme",
         "isArticlesPageWasOpened": true
       },
       "avatar": "https://mobimg.b-cdn.net/v3/fetch/0f/0fa2ad47af6d1440a1662c1651724ab0.jpeg"
@@ -1117,14 +1129,14 @@
   "article-ratings": [
     {
       "id": "1",
-      "rate": 4,
+      "rate": 0,
       "feedback": "Хорошая статья",
       "userId": "1",
       "articleId": "1"
     },
     {
       "id": "2",
-      "rate": 4,
+      "rate": 0,
       "feedback": "Хорошая статья",
       "userId": "1",
       "articleId": "2"
@@ -1132,71 +1144,114 @@
     {
       "userId": "1",
       "articleId": "3",
-      "rate": 3,
+      "rate": 0,
       "feedback": "",
       "id": "I7ofk1u"
     },
     {
       "userId": "1",
       "articleId": "9",
-      "rate": 5,
+      "rate": 0,
       "feedback": "asdasdasdasd",
       "id": "Y7MhPzo"
     },
     {
       "userId": "1",
       "articleId": "10",
-      "rate": 1,
+      "rate": 0,
       "feedback": "отстой",
       "id": "II0a75O"
     },
     {
       "userId": "1",
       "articleId": "7",
-      "rate": 3,
+      "rate": 0,
       "feedback": "",
       "id": "bcPnbbZ"
     },
     {
       "userId": "1",
       "articleId": "19",
-      "rate": 4,
+      "rate": 0,
       "feedback": "",
       "id": "BuGgbwF"
     },
     {
       "userId": "1",
       "articleId": "18",
-      "rate": 4,
+      "rate": 0,
       "feedback": "",
       "id": "ldwSHKP"
     },
     {
       "userId": "1",
       "articleId": "5",
-      "rate": 4,
+      "rate": 0,
       "feedback": "123",
       "id": "_PWyNc_"
     },
     {
       "userId": "1",
       "articleId": "4",
-      "rate": 5,
+      "rate": 0,
       "feedback": "123",
       "id": "yl2QmrI"
+    },
+    {
+      "userId": "1",
+      "articleId": "7",
+      "rate": 5,
+      "id": "q3A_mlI"
+    },
+    {
+      "userId": "1",
+      "articleId": "7",
+      "rate": 5,
+      "id": "ia2DAAx"
+    },
+    {
+      "userId": "1",
+      "articleId": "7",
+      "rate": 5,
+      "id": "1oSwV--"
+    },
+    {
+      "userId": "1",
+      "articleId": "7",
+      "rate": 5,
+      "id": "CkuvRlB"
+    },
+    {
+      "userId": "1",
+      "articleId": "7",
+      "rate": 5,
+      "id": "iLR1JAJ"
+    },
+    {
+      "userId": "1",
+      "articleId": "7",
+      "rate": 5,
+      "feedback": "",
+      "id": "YFA7xxZ"
+    },
+    {
+      "userId": "1",
+      "articleId": "7",
+      "rate": 5,
+      "id": "IXmiStT"
     }
   ],
   "profile-ratings": [
     {
       "id": "1",
-      "rate": 4,
+      "rate": 0,
       "feedback": "Хорошая статья",
       "userId": "1",
       "profileId": "1"
     },
     {
       "id": "2",
-      "rate": 4,
+      "rate": 0,
       "feedback": "Хорошая статья",
       "userId": "1",
       "profileId": "2"

@@ -4,6 +4,8 @@ import classNames from '@/shared/lib/classNames/classNames';
 import StarIcon from '@/shared/assets/icons/star.svg';
 
 import cls from './StarRating.module.scss';
+import { ToggleFeatures } from '@/shared/features';
+import { Icon } from '@/shared/ui/redesigned/Icon';
 
 interface StarRatingProps {
   className?: string
@@ -61,22 +63,46 @@ export const StarRating = memo((props: StarRatingProps) => {
       className,
     )}
     >
-      {stars.map((star, index) => (
-        <StarIcon
-          width={size}
-          height={size}
-          className={classNames(
-            cls.star,
-            star <= currentStarCount && cls.hovered,
-            star <= currentStarCount && cls.selected,
-            isSelected && cls.noCursor,
-          )}
-          key={index}
-          onMouseLeave={onLeave}
-          onMouseEnter={onHover(star)}
-          onClick={onClick(star)}
-        />
-      ))}
+      {stars.map((star, index) => {
+        const commonProps = {
+          key: index,
+          width: size,
+          height: size,
+          onMouseLeave: onLeave,
+          onMouseEnter: onHover(star),
+          onClick: onClick(star),
+        };
+
+        return (
+          <ToggleFeatures
+            feature='isAppRedesigned'
+            on={(
+              <Icon
+                className={classNames(
+                  cls.starRedesigned,
+                  star <= currentStarCount && cls.hovered,
+                  star <= currentStarCount && cls.selected,
+                  isSelected && cls.noCursor,
+                )}
+                Svg={StarIcon}
+                clickable={!isSelected}
+                {...commonProps}
+              />
+            )}
+            off={(
+              <StarIcon
+                className={classNames(
+                  cls.star,
+                  star <= currentStarCount && cls.hovered,
+                  star <= currentStarCount && cls.selected,
+                  isSelected && cls.noCursor,
+                )}
+                {...commonProps}
+              />
+            )}
+          />
+        );
+      })}
     </div>
   );
 });

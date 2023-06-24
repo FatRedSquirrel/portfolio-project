@@ -1,24 +1,44 @@
-import { Avatar } from '@/shared/ui/deprecated/Avatar';
-import { Text } from '@/shared/ui/deprecated/Text';
-import { Skeleton } from '@/shared/ui/deprecated/Skeleton/ui/Skeleton';
-import { AppLink } from '@/shared/ui/deprecated/AppLink';
+import { Avatar as AvatarDeprecated } from '@/shared/ui/deprecated/Avatar';
+import { Avatar } from '@/shared/ui/redesigned/Avatar';
+import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton/ui/Skeleton';
+import { Skeleton as SkeletonRedesigned } from '@/shared/ui/redesigned/Skeleton';
+import { AppLink as AppLinkDeprecated } from '@/shared/ui/deprecated/AppLink';
+import { AppLink as AppLinkRedesigned } from '@/shared/ui/redesigned/AppLink';
+import { Text } from '@/shared/ui/redesigned/Text';
+import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text';
 import { getRouteProfile } from '@/shared/const/router';
 import classNames from '@/shared/lib/classNames/classNames';
 import { Comment } from '../../model/types/comment';
 import cls from './CommentCard.module.scss';
+import { ToggleFeatures, toggleFeatures } from '@/shared/features';
+import { Card } from '@/shared/ui/redesigned/Card';
 
 interface CommentProps {
-  className?: string
   comment?: Comment
   isLoading?: boolean
 }
 
 export const CommentCard = (props: CommentProps) => {
   const {
-    className,
     comment,
     isLoading,
   } = props;
+
+  const Skeleton = toggleFeatures({
+    name: 'isAppRedesigned',
+    on: () => SkeletonRedesigned,
+    off: () => SkeletonDeprecated,
+  });
+
+  const AppLink = toggleFeatures({
+    name: 'isAppRedesigned',
+    on: () => AppLinkRedesigned,
+    off: () => AppLinkDeprecated,
+  });
+
+  if (!comment) {
+    return null;
+  }
 
   if (isLoading) {
     return (
@@ -32,17 +52,27 @@ export const CommentCard = (props: CommentProps) => {
     );
   }
 
-  if (!comment) {
-    return null;
-  }
-
   return (
-    <div className={cls.comment}>
-      <AppLink to={getRouteProfile(comment.user.id)} className={cls.comment__header}>
-        <Avatar size={40} src={comment.user.avatar} />
-        <Text title={comment.user.username} />
-      </AppLink>
-      <Text text={comment.text} />
-    </div>
+    <ToggleFeatures
+      feature='isAppRedesigned'
+      on={(
+        <Card padding='16'>
+          <AppLink to={getRouteProfile(comment.user.id)} className={cls.comment__header}>
+            <Avatar size={40} src={comment.user.avatar} />
+            <Text title={comment.user.username} />
+          </AppLink>
+          <Text className={cls.comment__text} text={comment.text} />
+        </Card>
+      )}
+      off={(
+        <div className={cls.comment}>
+          <AppLink to={getRouteProfile(comment.user.id)} className={cls.header}>
+            <AvatarDeprecated size={40} src={comment.user.avatar} />
+            <TextDeprecated title={comment.user.username} />
+          </AppLink>
+          <TextDeprecated text={comment.text} />
+        </div>
+      )}
+    />
   );
 };

@@ -5,9 +5,13 @@
   flex-direction: column;
   gap: 10px;
 
+  &__title {
+    margin-bottom: 20px;
+  }
+
   &__list {
-    flex-wrap: nowrap;
-    padding: 4px;
-    overflow-x: scroll;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
   }
 }

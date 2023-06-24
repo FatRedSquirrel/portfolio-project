@@ -12,8 +12,13 @@
   }
 
   &__header {
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
     gap: 15px;
+  }
+
+  &__text {
+    padding-left: 10px;
   }
 }

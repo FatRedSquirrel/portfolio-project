@@ -2,16 +2,21 @@ import {
   ChangeEvent, useCallback, useEffect, useMemo, useState,
 } from 'react';
 import { BrowserView, MobileView } from 'react-device-detect';
-import { Card } from '@/shared/ui/deprecated/Card';
-import { Text } from '@/shared/ui/deprecated/Text';
+import { Card as CardDeprecated } from '@/shared/ui/deprecated/Card';
+import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text';
+import { Text } from '@/shared/ui/redesigned/Text';
 import classNames from '@/shared/lib/classNames/classNames';
 import cls from './Rating.module.scss';
 import { StarRating } from '@/shared/ui/deprecated/StarRating';
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 import { Modal } from '@/shared/ui/redesigned/Modal';
-import { Input } from '@/shared/ui/deprecated/Input';
-import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
+import { Input as InputDeprecated } from '@/shared/ui/deprecated/Input';
+import { Input } from '@/shared/ui/redesigned/Input';
+import { Button as ButtonDeprecated, ButtonTheme } from '@/shared/ui/deprecated/Button';
+import { Button } from '@/shared/ui/redesigned/Button';
 import { Drawer } from '@/shared/ui/redesigned/Drawer';
+import { ToggleFeatures } from '@/shared/features';
+import { Card } from '@/shared/ui/redesigned/Card';
 
 interface RatingProps {
   className?: string
@@ -71,24 +76,39 @@ export const Rating = (props: RatingProps) => {
   };
 
   const modalContent = useMemo(() => (
-    <VStack className={cls.modalContent} max gap='16'>
-      <Text title={feedbackTitle} />
-      <Input
-        value={feedback}
-        onChange={handleFeedbackChange}
-        placeholder='Ваш отзыв'
-      />
-    </VStack>
+    <ToggleFeatures
+      feature='isAppRedesigned'
+      on={(
+        <VStack className={cls.modalContent} max gap='16'>
+          <Text title={feedbackTitle} />
+          <Input
+            value={feedback}
+            onChange={handleFeedbackChange}
+            placeholder='Ваш отзыв'
+          />
+        </VStack>
+      )}
+      off={(
+        <VStack className={cls.modalContent} max gap='16'>
+          <TextDeprecated title={feedbackTitle} />
+          <InputDeprecated
+            value={feedback}
+            onChange={handleFeedbackChange}
+            placeholder='Ваш отзыв'
+          />
+        </VStack>
+      )}
+    />
   ), [feedback, feedbackTitle]);
 
-  return (
-    <Card className={classNames(
-      cls.ratingCard,
-      className,
-    )}
-    >
+  const content = (
+    <>
       <VStack align='center' gap='8'>
-        <Text title={title} />
+        <ToggleFeatures
+          feature='isAppRedesigned'
+          on={<Text title={title} />}
+          off={<TextDeprecated title={title} />}
+        />
         <StarRating
           size={40}
           selectedStars={starsCount}
@@ -98,17 +118,32 @@ export const Rating = (props: RatingProps) => {
       <BrowserView>
         <Modal isOpen={isModalOpen} onClose={handleCancel} lazy>
           {modalContent}
-          <HStack max gap='16' justify='end'>
-            <Button
-              theme={ButtonTheme.OUTLINE_RED}
-              onClick={handleCancel}
-            >
-              Закрыть
-            </Button>
-            <Button onClick={handleAcept}>
-              Отправить
-            </Button>
-          </HStack>
+          <ToggleFeatures
+            feature='isAppRedesigned'
+            on={(
+              <HStack max gap='16' justify='end'>
+                <Button variant='negative' onClick={handleCancel}>
+                  Закрыть
+                </Button>
+                <Button onClick={handleAcept}>
+                  Отправить
+                </Button>
+              </HStack>
+            )}
+            off={(
+              <HStack max gap='16' justify='end'>
+                <ButtonDeprecated
+                  theme={ButtonTheme.OUTLINE_RED}
+                  onClick={handleCancel}
+                >
+                  Закрыть
+                </ButtonDeprecated>
+                <ButtonDeprecated onClick={handleAcept}>
+                  Отправить
+                </ButtonDeprecated>
+              </HStack>
+            )}
+          />
         </Modal>
       </BrowserView>
       <MobileView>
@@ -119,14 +154,56 @@ export const Rating = (props: RatingProps) => {
           lazy
         >
           {modalContent}
-          <Button
-            className={cls.sendBtnMobile}
-            onClick={handleAcept}
-          >
-            Отправить
-          </Button>
+          <ToggleFeatures
+            feature='isAppRedesigned'
+            on={(
+              <Button
+                className={cls.sendBtnMobile}
+                onClick={handleAcept}
+              >
+                Отправить
+              </Button>
+            )}
+            off={(
+              <ButtonDeprecated
+                className={cls.sendBtnMobile}
+                onClick={handleAcept}
+              >
+                Отправить
+              </ButtonDeprecated>
+            )}
+          />
         </Drawer>
       </MobileView>
-    </Card>
+    </>
+  );
+
+  return (
+    <ToggleFeatures
+      feature='isAppRedesigned'
+      on={(
+        <Card
+          padding='24'
+          border='round'
+          className={classNames(
+            cls.ratingCard,
+            className,
+          )}
+          fullWidth
+        >
+          {content}
+        </Card>
+      )}
+      off={(
+        <CardDeprecated className={classNames(
+          cls.ratingCard,
+          className,
+        )}
+        >
+          {content}
+        </CardDeprecated>
+      )}
+    />
+
   );
 };

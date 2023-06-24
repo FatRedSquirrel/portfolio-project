@@ -8,6 +8,12 @@
 
   border: 1px solid var(--main-color);
 
+  &Redesigned {
+    margin-bottom: 10px;
+    padding: 24px;
+    border: none;
+  }
+
   .input {
     flex-grow: 1;
   }

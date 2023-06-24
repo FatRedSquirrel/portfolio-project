@@ -98,7 +98,13 @@ export const ArticleList = (props: ArticleListProps) => {
 
   if (recommendations && status === 'idle') {
     return (
-      <div className={classNames(cls.ArticleList, cls.recommendations, cls[view])}>
+      <div className={classNames(
+        cls.ArticleList,
+        cls.recommendations,
+        cls[view],
+        className,
+      )}
+      >
         {articles.map((article) => (
           <ArticleListItem
             key={article.id}
@@ -122,7 +128,11 @@ export const ArticleList = (props: ArticleListProps) => {
               data={articles}
               endReached={loadNextPart}
               itemContent={renderArticle}
-              listClassName={classNames(cls.ArticleListRedesigned, cls[view])}
+              listClassName={classNames(
+                cls.ArticleListRedesigned,
+                cls[view],
+                className,
+              )}
               components={{
                 Footer,
               }}
@@ -149,7 +159,11 @@ export const ArticleList = (props: ArticleListProps) => {
               data={articles}
               endReached={loadNextPart}
               itemContent={renderArticle}
-              listClassName={classNames(cls.ArticleList, cls[view])}
+              listClassName={classNames(
+                cls.ArticleList,
+                cls[view],
+                className,
+              )}
               components={{
                 Header,
                 Footer,

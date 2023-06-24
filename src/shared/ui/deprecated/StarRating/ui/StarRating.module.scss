@@ -15,3 +15,30 @@
     cursor: auto;
   }
 }
+
+.starRedesigned {
+  cursor: pointer;
+  color: var(--accent-redesigned);
+  stroke: var(--accent-redesigned);
+  fill: none;
+
+  &.hovered {
+    fill: var(--accent-redesigned);
+    stroke: var(--accent-redesigned);
+  }
+
+  &.selected {
+    fill: var(--accent-redesigned);
+    stroke: var(--accent-redesigned);
+  }
+
+  &.noCursor {
+    cursor: auto;
+  }
+}
+
+.starRating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
