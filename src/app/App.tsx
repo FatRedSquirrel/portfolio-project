@@ -9,9 +9,10 @@ import { AppRouter } from '@/app/providers/router';
 import { Navbar } from '@/widgets/Navbar';
 import { Sidebar } from '@/widgets/Sidebar';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { PageLoader } from '@/shared/ui/deprecated/PageLoader';
 import { ToggleFeatures } from '@/shared/features';
 import { MainLayout } from '@/shared/layouts/MainLayout';
+import { AppLoaderLayout } from '@/shared/layouts/AppLoaderLayout';
+import { PageLoader } from '@/shared/ui/deprecated/PageLoader';
 
 function App() {
   const { theme } = useTheme();
@@ -26,7 +27,20 @@ function App() {
   }, [dispatch, inited]);
 
   if (!inited) {
-    return <PageLoader />;
+    return (
+      <ToggleFeatures
+        feature='isAppRedesigned'
+        on={(
+          <div
+            id='app'
+            className={classNames('app_redesigned', theme)}
+          >
+            <AppLoaderLayout />
+          </div>
+        )}
+        off={<PageLoader />}
+      />
+    );
   }
 
   return (
