@@ -17,5 +17,6 @@
   "Имя и фамилия обязательны": "First and last name are required",
   "Данные не указаны": "Data is not specified",
   "Некорректный возраст": "Incorrect age",
-  "Профиль не найден": "Profile is not found"
+  "Профиль не найден": "Profile is not found",
+  "Загрузка...": "Loading..."
 }

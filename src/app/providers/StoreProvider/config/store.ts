@@ -6,6 +6,7 @@ import { pageReducer } from '@/widgets/Page';
 import { rtkApi } from '@/shared/api/rtkApi';
 import { StateSchema, ThunkExtraArg } from './StateSchema';
 import { createReducerManager } from './reducerManager';
+import { profileReducer } from '@/entities/Profile';
 
 export function createReduxStore(
   initialState?: StateSchema,
@@ -14,6 +15,7 @@ export function createReduxStore(
   const rootReducers: ReducersMapObject<StateSchema> = {
     ...asyncReducers,
     user: userReducer,
+    profile: profileReducer,
     page: pageReducer,
     [rtkApi.reducerPath]: rtkApi.reducer,
   };

@@ -30,8 +30,19 @@
   background: none;
 
   &:hover {
-    border: 2px solid var(--red-light);
-    color: var(--red-light);
+    border-color: rgb(255, 74, 74);
+    color: var(--cancel-redesigned);
+  }
+}
+
+.success {
+  border: 2px solid var(--save-redesigned);
+  border-radius: 34px;
+  background: none;
+
+  &:hover {
+    border-color: rgb(3, 248, 3);
+    color: var(--save-redesigned);
   }
 }
 

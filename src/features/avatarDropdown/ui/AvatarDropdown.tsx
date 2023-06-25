@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import {
-  useCallback, useMemo,
+  useCallback, useEffect, useMemo, useState,
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -14,14 +14,21 @@ import { Avatar } from '@/shared/ui/redesigned/Avatar';
 import { Dropdown } from '@/shared/ui/redesigned/Popups';
 import cls from './AvatarDropdown.module.scss';
 import { ToggleFeatures } from '@/shared/features';
+import { getProfileData, getProfileIsLoading } from '@/entities/Profile';
+import { Skeleton } from '@/shared/ui/redesigned/Skeleton';
 
 export const AvatarDropdown = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
+  const [avatrarUrl, setAvatrarUrl] = useState('');
+  const [inited, setInited] = useState(false);
+
   const authData = useSelector(getUserAuthData);
   const isAdmin = useSelector(isUserAdmin);
   const isManager = useSelector(isUserManager);
+  const profileData = useSelector(getProfileData);
+  const profileLoading = useSelector(getProfileIsLoading);
 
   const isAdminPanelAvailable = isAdmin || isManager;
 
@@ -53,6 +60,18 @@ export const AvatarDropdown = () => {
     [authData?.id, isAdminPanelAvailable, navigate, onLogout, t],
   );
 
+  useEffect(() => {
+    if (!profileLoading) {
+      setInited(true);
+    }
+  }, [profileLoading]);
+
+  useEffect(() => {
+    if (!inited) {
+      setAvatrarUrl(profileData?.avatar || '');
+    }
+  }, [profileData?.avatar, inited]);
+
   return (
     <ToggleFeatures
       feature="isAppRedesigned"
@@ -62,7 +81,7 @@ export const AvatarDropdown = () => {
             <AvatarDeprecated
               className={cls.avatar}
               size={40}
-              src={authData?.avatar}
+              src={profileData?.avatar}
             />
           )}
           items={items}
@@ -71,12 +90,14 @@ export const AvatarDropdown = () => {
       on={(
         <Dropdown
           direction='bottom left'
-          trigger={(
+          trigger={inited ? (
             <Avatar
               size={48}
-              src={authData?.avatar}
+              src={avatrarUrl}
               className={cls.avatarRedesigned}
             />
+          ) : (
+            <Skeleton width={48} height={48} border='100%' />
           )}
           items={items}
         />

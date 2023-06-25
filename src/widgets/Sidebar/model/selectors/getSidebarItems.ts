@@ -1,4 +1,4 @@
-import { createSelector } from '@reduxjs/toolkit';
+import { useSelector } from 'react-redux';
 import { getUserAuthData } from '@/entities/User';
 import { RoutePath, getRouteProfile } from '@/shared/const/router';
 // deprecated sidebar icons
@@ -15,55 +15,54 @@ import ArticleIcon from '@/shared/assets/icons/article.svg';
 import { SidebarItemType } from '../types/sidebar';
 import { toggleFeatures } from '@/shared/features';
 
-export const getSidebarItems = createSelector(
-  getUserAuthData,
-  (userData): SidebarItemType[] => {
-    const items: SidebarItemType[] = [
+export const useSidebarItems = () => {
+  const authData = useSelector(getUserAuthData);
+
+  const items: SidebarItemType[] = [
+    {
+      path: RoutePath.main,
+      Icon: toggleFeatures({
+        name: 'isAppRedesigned',
+        off: () => MainIconDeprecated,
+        on: () => MainIcon,
+      }),
+      text: 'Главная',
+    },
+    {
+      path: RoutePath.about,
+      Icon: toggleFeatures({
+        name: 'isAppRedesigned',
+        off: () => AboutIconDeprecated,
+        on: () => AboutIcon,
+      }),
+      text: 'О сайте',
+    },
+  ];
+
+  if (authData) {
+    items.push(
       {
-        path: RoutePath.main,
+        path: getRouteProfile(authData?.id),
         Icon: toggleFeatures({
           name: 'isAppRedesigned',
-          off: () => MainIconDeprecated,
-          on: () => MainIcon,
+          off: () => ProfileIconDeprecated,
+          on: () => ProfileIcon,
         }),
-        text: 'Главная',
+        text: 'Профиль',
+        authOnly: true,
       },
       {
-        path: RoutePath.about,
+        path: RoutePath.articles,
         Icon: toggleFeatures({
           name: 'isAppRedesigned',
-          off: () => AboutIconDeprecated,
-          on: () => AboutIcon,
+          off: () => ArticleIconDeprecated,
+          on: () => ArticleIcon,
         }),
-        text: 'О сайте',
+        text: 'Статьи',
+        authOnly: true,
       },
-    ];
+    );
+  }
 
-    if (userData) {
-      items.push(
-        {
-          path: getRouteProfile(userData?.id),
-          Icon: toggleFeatures({
-            name: 'isAppRedesigned',
-            off: () => ProfileIconDeprecated,
-            on: () => ProfileIcon,
-          }),
-          text: 'Профиль',
-          authOnly: true,
-        },
-        {
-          path: RoutePath.articles,
-          Icon: toggleFeatures({
-            name: 'isAppRedesigned',
-            off: () => ArticleIconDeprecated,
-            on: () => ArticleIcon,
-          }),
-          text: 'Статьи',
-          authOnly: true,
-        },
-      );
-    }
-
-    return items;
-  },
-);
+  return items;
+};

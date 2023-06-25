@@ -12,12 +12,8 @@ import {
   getProfileIsLoading,
   getProfileError,
   getProfileReadonly,
-  getProfileValidationErrors, ValidateProfileError, ProfileCard, fetchProfileData, profileActions, profileReducer,
+  getProfileValidationErrors, ValidateProfileError, ProfileCard, fetchProfileData, profileActions,
 } from '@/entities/Profile';
-import {
-  DynamicModuleLoader,
-  ReducersList,
-} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { VStack } from '@/shared/ui/redesigned/Stack';
 import { EditableProfileCardHeader } from '../EditableProfileCardHeader/EditableProfileCardHeader';
 
@@ -25,10 +21,6 @@ interface EditableProfileCardProps {
     className?: string;
     id?: string;
 }
-
-const reducers: ReducersList = {
-  profile: profileReducer,
-};
 
 export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
   const { className, id } = props;
@@ -116,10 +108,9 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
   );
 
   return (
-    <DynamicModuleLoader reducers={reducers}>
-      <VStack gap="8" max className={classNamesRedesigned('', {}, [className])}>
-        <EditableProfileCardHeader />
-        {validateErrors?.length
+    <VStack gap="8" max className={classNamesRedesigned('', {}, [className])}>
+      <EditableProfileCardHeader />
+      {validateErrors?.length
                     && validateErrors.map((err) => (
                       <Text
                         key={err}
@@ -128,21 +119,20 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
                         data-testid="EditableProfileCard.Error"
                       />
                     ))}
-        <ProfileCard
-          data={formData}
-          isLoading={isLoading}
-          error={error}
-          readonly={readonly}
-          onChangeFirstname={onChangeFirstname}
-          onChangeLastname={onChangeLastname}
-          onChangeAge={onChangeAge}
-          onChangeCity={onChangeCity}
-          onChangeUsername={onChangeUsername}
-          onChangeAvatar={onChangeAvatar}
-          onChangeCurrency={onChangeCurrency}
-          onChangeCountry={onChangeCountry}
-        />
-      </VStack>
-    </DynamicModuleLoader>
+      <ProfileCard
+        data={formData}
+        isLoading={isLoading}
+        error={error}
+        readonly={readonly}
+        onChangeFirstname={onChangeFirstname}
+        onChangeLastname={onChangeLastname}
+        onChangeAge={onChangeAge}
+        onChangeCity={onChangeCity}
+        onChangeUsername={onChangeUsername}
+        onChangeAvatar={onChangeAvatar}
+        onChangeCurrency={onChangeCurrency}
+        onChangeCountry={onChangeCountry}
+      />
+    </VStack>
   );
 });

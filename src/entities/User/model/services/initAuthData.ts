@@ -3,6 +3,7 @@ import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { getUserDataByIdQuery } from '../../api/userApi';
 import { User } from '../types/user';
 import { USER_LOCALSTORAGE_KEY } from '@/shared/const/localstorage';
+import { fetchProfileData } from '@/entities/Profile';
 
 export const initAuthData = createAsyncThunk<
   User, // return type
@@ -23,6 +24,8 @@ export const initAuthData = createAsyncThunk<
 
     try {
       const userData = await dispatch(getUserDataByIdQuery(userId)).unwrap();
+
+      dispatch(fetchProfileData(userData.id));
 
       return userData;
     } catch (e) {

@@ -18,12 +18,12 @@ import { rtkApi } from '@/shared/api/rtkApi';
 
 export interface StateSchema {
     user: UserSchema
+    profile: ProfileSchema
     page: PageSchema
     [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
 
     // Асинхронные редюсеры
     loginForm?: LoginSchema
-    profile?: ProfileSchema
     articleDetails?: ArticleDetailsSchema
     addCommentForm?: AddCommentFormSchema
     articlesPage?: ArticlesPageSchema
