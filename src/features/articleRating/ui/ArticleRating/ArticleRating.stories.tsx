@@ -15,4 +15,4 @@ const Template: StoryFn<typeof ArticleRating> = (args) => <ArticleRating {...arg
 
 export const Normal = Template.bind({});
 Normal.args = {};
-Normal.decorators = [StoreDecorator({})]
+Normal.decorators = [StoreDecorator({})];

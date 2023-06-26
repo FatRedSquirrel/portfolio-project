@@ -28,6 +28,7 @@ interface InputProps extends HTMLInputProps {
   readonly?: boolean;
   addonLeft?: ReactNode;
   addonRight?: ReactNode;
+  'data-testid'?: string
   size?: InputSize;
 }
 
@@ -44,6 +45,7 @@ export const Input = memo((props: InputProps) => {
     addonRight,
     label,
     size = 'm',
+    'data-testid': dataTestId,
     ...otherProps
   } = props;
   const ref = useRef<HTMLInputElement>(null);
@@ -89,6 +91,7 @@ export const Input = memo((props: InputProps) => {
         onBlur={onBlur}
         readOnly={readonly}
         placeholder={placeholder}
+        data-testid={dataTestId}
         {...otherProps}
       />
       <div className={cls.addonRight}>{addonRight}</div>

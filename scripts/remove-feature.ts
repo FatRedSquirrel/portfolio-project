@@ -119,6 +119,7 @@ const replaceToggleComponent = (node: Node) => {
 };
 
 files.forEach((sourceFile) => {
+  // eslint-disable-next-line
   sourceFile.forEachDescendant((node) => {
     if (node.isKind(SyntaxKind.CallExpression) && isToggleFunction(node)) {
       return replaceToggleFunction(node);

@@ -2,16 +2,16 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    jest: true
+    jest: true,
   },
   extends: ['plugin:react/recommended', 'airbnb', 'plugin:i18next/recommended', 'plugin:storybook/recommended'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
-      jsx: true
+      jsx: true,
     },
     ecmaVersion: 'latest',
-    sourceType: 'module'
+    sourceType: 'module',
   },
   plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks', 'ulbi-tv-plugin', 'unused-imports'],
   rules: {
@@ -20,7 +20,7 @@ module.exports = {
     'react/jsx-indent-props': [2, 2],
     indent: [2, 2],
     'react/jsx-filename-extension': [2, {
-      extensions: ['.js', '.jsx', '.tsx']
+      extensions: ['.js', '.jsx', '.tsx'],
     }],
     'linebreak-style': 'off',
     'react/no-array-index-key': 'off',
@@ -29,7 +29,7 @@ module.exports = {
     'no-unused-vars': 'off',
     'react/require-default-props': 'off',
     'react/react-in-jsx-scope': 'off',
-    'react/jsx-props-no-spreading': 'warn',
+    'react/jsx-props-no-spreading': 'off',
     'react/function-component-definition': 'off',
     'no-shadow': 'off',
     'import/extensions': 'off',
@@ -45,17 +45,17 @@ module.exports = {
     // Checks effect dependencies,
     'no-param-reassign': 'off',
     'no-undef': 'off',
-    'jsx-quotes': 'off'
+    'jsx-quotes': 'off',
   },
   globals: {
     __IS_DEV__: true,
-    __API__: true
+    __API__: true,
   },
   overrides: [{
     files: ['**/src/**/*.{test,stories}.{ts,tsx}'],
     rules: {
       'i18next/no-literal-string': 'off',
-      'max-len': 'off'
-    }
-  }]
+      'max-len': 'off',
+    },
+  }],
 };

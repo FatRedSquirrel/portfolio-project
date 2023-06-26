@@ -6,7 +6,8 @@ import { classNamesRedesigned } from '@/shared/lib/classNames/classNames';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
 import { Currency } from '@/entities/Currency';
 import { Country } from '@/entities/Country';
-import { Text, TextTheme } from '@/shared/ui/deprecated/Text';
+import { Text as TextDeprecated, TextTheme } from '@/shared/ui/deprecated/Text';
+import { Text } from '@/shared/ui/redesigned/Text';
 import {
   getProfileForm,
   getProfileIsLoading,
@@ -16,6 +17,7 @@ import {
 } from '@/entities/Profile';
 import { VStack } from '@/shared/ui/redesigned/Stack';
 import { EditableProfileCardHeader } from '../EditableProfileCardHeader/EditableProfileCardHeader';
+import { ToggleFeatures } from '@/shared/features';
 
 interface EditableProfileCardProps {
     className?: string;
@@ -112,11 +114,23 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
       <EditableProfileCardHeader />
       {validateErrors?.length
                     && validateErrors.map((err) => (
-                      <Text
+                      <ToggleFeatures
                         key={err}
-                        theme={TextTheme.ERROR}
-                        text={validateErrorTranslates[err]}
-                        data-testid="EditableProfileCard.Error"
+                        feature='isAppRedesigned'
+                        on={(
+                          <Text
+                            variant='error'
+                            text={validateErrorTranslates[err]}
+                            data-testid="EditableProfileCard.Error"
+                          />
+                        )}
+                        off={(
+                          <TextDeprecated
+                            theme={TextTheme.ERROR}
+                            text={validateErrorTranslates[err]}
+                            data-testid="EditableProfileCard.Error"
+                          />
+                        )}
                       />
                     ))}
       <ProfileCard
