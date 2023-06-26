@@ -6,6 +6,9 @@ import { RouterDecorator } from '../../src/shared/config/storybook/RouterDecorat
 import {
   SuspenseDecorator,
 } from '../../src/shared/config/storybook/SuspenseDecorator/SuspenseDecorator';
+import {
+  FeatureFlagsDecorator,
+} from '../../src/shared/config/storybook/FeatureFlagsDecorator/FeatureFlagsDecorator';
 import { Theme } from '../../src/shared/const/theme';
 
 const preview: Preview = {
@@ -14,6 +17,7 @@ const preview: Preview = {
     ThemeDecorator(Theme.LIGHT),
     RouterDecorator,
     SuspenseDecorator,
+    FeatureFlagsDecorator({}),
   ],
 };
 
