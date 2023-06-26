@@ -1,27 +1,34 @@
 import { useTranslation } from 'react-i18next';
 import {
-  useCallback, useMemo, useState,
+  useCallback, useEffect, useMemo, useState,
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import {
   getUserAuthData, isUserAdmin, isUserManager, userActions,
 } from '@/entities/User';
-import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
-import { Dropdown } from '@/shared/ui/Dropdown';
-import { Avatar } from '@/shared/ui/Avatar';
+import { RoutePath, getRouteProfile, getRouteSettings } from '@/shared/const/router';
+import { Dropdown as DropdownDeprecated } from '@/shared/ui/deprecated/Dropdown';
+import { Avatar as AvatarDeprecated } from '@/shared/ui/deprecated/Avatar';
+import { Avatar } from '@/shared/ui/redesigned/Avatar';
+import { Dropdown } from '@/shared/ui/redesigned/Popups';
+import cls from './AvatarDropdown.module.scss';
+import { ToggleFeatures } from '@/shared/features';
+import { getProfileData, getProfileIsLoading } from '@/entities/Profile';
+import { Skeleton } from '@/shared/ui/redesigned/Skeleton';
 
-interface AvatarDropdownProps {
-
-}
-
-export const AvatarDropdown = (props: AvatarDropdownProps) => {
+export const AvatarDropdown = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
+
+  const [avatrarUrl, setAvatrarUrl] = useState('');
+  const [inited, setInited] = useState(false);
 
   const authData = useSelector(getUserAuthData);
   const isAdmin = useSelector(isUserAdmin);
   const isManager = useSelector(isUserManager);
+  const profileData = useSelector(getProfileData);
+  const profileLoading = useSelector(getProfileIsLoading);
 
   const isAdminPanelAvailable = isAdmin || isManager;
 
@@ -39,7 +46,11 @@ export const AvatarDropdown = (props: AvatarDropdownProps) => {
       }] : []),
       {
         content: t('Профиль'),
-        onClick: () => navigate(`${RoutePath.profile}/${authData?.id}`),
+        onClick: () => navigate(getRouteProfile(authData?.id || '')),
+      },
+      {
+        content: t('Настройки'),
+        onClick: () => navigate(getRouteSettings()),
       },
       {
         content: t('Выйти'),
@@ -49,15 +60,48 @@ export const AvatarDropdown = (props: AvatarDropdownProps) => {
     [authData?.id, isAdminPanelAvailable, navigate, onLogout, t],
   );
 
+  useEffect(() => {
+    if (!profileLoading) {
+      setInited(true);
+    }
+  }, [profileLoading]);
+
+  useEffect(() => {
+    if (!inited) {
+      setAvatrarUrl(profileData?.avatar || '');
+    }
+  }, [profileData?.avatar, inited]);
+
   return (
-    <Dropdown
-      trigger={(
-        <Avatar
-          size={40}
-          src={authData?.avatar || ''}
+    <ToggleFeatures
+      feature="isAppRedesigned"
+      off={(
+        <DropdownDeprecated
+          trigger={(
+            <AvatarDeprecated
+              className={cls.avatar}
+              size={40}
+              src={profileData?.avatar}
+            />
+          )}
+          items={items}
         />
       )}
-      items={items}
+      on={(
+        <Dropdown
+          direction='bottom left'
+          trigger={inited ? (
+            <Avatar
+              size={48}
+              src={avatrarUrl}
+              className={cls.avatarRedesigned}
+            />
+          ) : (
+            <Skeleton width={48} height={48} border='100%' />
+          )}
+          items={items}
+        />
+      )}
     />
   );
 };

@@ -1,0 +1,44 @@
+.star {
+  stroke: var(--main-color);
+  fill: none;
+  cursor: pointer;
+
+  &.hovered {
+    fill: var(--main-color);
+  }
+
+  &.selected {
+    fill: var(--main-color);
+  }
+
+  &.noCursor {
+    cursor: auto;
+  }
+}
+
+.starRedesigned {
+  cursor: pointer;
+  color: var(--accent-redesigned);
+  stroke: var(--accent-redesigned);
+  fill: none;
+
+  &.hovered {
+    fill: var(--accent-redesigned);
+    stroke: var(--accent-redesigned);
+  }
+
+  &.selected {
+    fill: var(--accent-redesigned);
+    stroke: var(--accent-redesigned);
+  }
+
+  &.noCursor {
+    cursor: auto;
+  }
+}
+
+.starRating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}

@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 import classNames from '@/shared/lib/classNames/classNames';
-import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
+import { RoutePath } from '@/shared/const/router';
 import { getCanEditArticle } from '@/pages/ArticleDetailsPage/model/selectors/article';
-import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink';
+import { AppLink, AppLinkTheme } from '@/shared/ui/deprecated/AppLink';
 import { getArticlesDetailsData } from '@/entities/Article';
 import cls from './ArticleDetailsPageHeader.module.scss';
 

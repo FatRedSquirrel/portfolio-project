@@ -1,4 +1,4 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { Article, ArticleView } from '@/entities/Article';
 import { ArticleList } from './ArticleList';
 
@@ -87,11 +87,11 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof ArticleList>;
+} as Meta<typeof ArticleList>;
 
 const getArticles = (length: number) => new Array(length).fill(article);
 
-const Template: ComponentStory<typeof ArticleList> = (args) => <ArticleList {...args} />;
+const Template: StoryFn<typeof ArticleList> = (args) => <ArticleList {...args} />;
 
 export const GridView = Template.bind({});
 GridView.args = {

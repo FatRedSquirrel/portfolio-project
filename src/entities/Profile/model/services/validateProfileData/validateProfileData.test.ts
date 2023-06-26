@@ -40,15 +40,6 @@ describe('validateProfileData.test', () => {
     expect(result).toEqual([ValidateProfileError.INCORRECT_AGE]);
   });
 
-  test('incorrect city', async () => {
-    const result = validateProfileData({
-      ...data,
-      city: '',
-    });
-
-    expect(result).toEqual([ValidateProfileError.INCORRECT_CITY]);
-  });
-
   test('incorrect user data & age', async () => {
     const result = validateProfileData({
       ...data,

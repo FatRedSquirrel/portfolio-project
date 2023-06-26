@@ -1,0 +1,21 @@
+.Icon {
+  color: var(--icon-redesigned);
+}
+
+.button {
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+.button:hover .Icon {
+  opacity: 1;
+  color: var(--accent-redesigned);
+}
+
+.button:active .Icon {
+  opacity: 0.7;
+}

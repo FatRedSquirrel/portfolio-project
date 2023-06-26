@@ -1,0 +1,96 @@
+.ListBox {
+  position: relative;
+
+  &.readonly {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}
+
+.trigger {
+  margin: 0;
+  padding: 10px 80px 10px 20px;
+  position: relative;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  color: var(--main-color);
+  background-color: var(--card-bg);
+
+  &__arrow {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    fill: var(--main-color);
+  }
+}
+
+.options {
+  position: absolute;
+  left: 0;
+  border-radius: 12px;
+  outline: none;
+  overflow: hidden;
+  box-shadow: 0 5px 10px var(--accent-color);
+  z-index: 10000;
+  background: var(--main-color);
+
+  &BottomLeft {
+    top: 100%;
+    right: 0;
+  }
+  
+  &BottomRight {
+    top: 100%;
+    left: 0;
+  }
+  
+  &TopRight {
+    bottom: 100%;
+    left: 0;
+  }
+  
+  &TopLeft {
+    right: 0;
+    bottom: 100%;
+  }
+}
+
+.item {
+  padding: 10px 80px 10px 20px;
+
+  cursor: pointer;
+
+  color: var(--secondary-color);
+
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  &.selected {
+    pointer-events: none;
+    color: var(--main-color);
+    background-color: var(--secondary-color);
+  }
+
+  &.active {
+    color: var(--main-color);
+    background-color: var(--secondary-color);
+  }
+}
+
+.active {
+  background: var(--inverted-primary-color);
+}
+
+.disabled {
+  opacity: 0.7;
+}
+
+.optionsTop {
+  bottom: 100%;
+}

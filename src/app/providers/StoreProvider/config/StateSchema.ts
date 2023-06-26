@@ -3,7 +3,6 @@ import {
 } from '@reduxjs/toolkit';
 import { CombinedState } from 'redux';
 import { AxiosInstance } from 'axios';
-import { CounterSchema } from '@/entities/Counter';
 import { UserSchema } from '@/entities/User';
 import { LoginSchema } from '@/features/AuthByUsername';
 import { ProfileSchema } from '@/entities/Profile';
@@ -18,14 +17,13 @@ import { PageSchema } from '@/widgets/Page';
 import { rtkApi } from '@/shared/api/rtkApi';
 
 export interface StateSchema {
-    counter: CounterSchema
     user: UserSchema
+    profile: ProfileSchema
     page: PageSchema
     [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
 
     // Асинхронные редюсеры
     loginForm?: LoginSchema
-    profile?: ProfileSchema
     articleDetails?: ArticleDetailsSchema
     addCommentForm?: AddCommentFormSchema
     articlesPage?: ArticlesPageSchema
@@ -53,5 +51,5 @@ export interface ThunkExtraArg {
 export interface ThunkConfig<T> {
     rejectValue: T;
     extra: ThunkExtraArg;
-    state: StateSchema
+    state: StateSchema;
 }

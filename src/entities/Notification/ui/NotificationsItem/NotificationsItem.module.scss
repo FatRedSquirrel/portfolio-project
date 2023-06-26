@@ -1,15 +1,19 @@
-.item {
+.NotificationItem,
+.link {
   width: 100%;
-  padding: 8px 24px;
   display: block;
+}
 
-  &:not(:last-child) {
-    border-bottom: 1px solid var(--secondary-color);
-  }
+.NotificationItem {
+  padding: 12px 26px !important;
+  pointer-events: none;
+}
 
-  &__text {
-    p {
-      color: var(--secondary-color);
+.link {
+  &:hover {
+    .NotificationItem {
+      pointer-events: none;
+      background: var(--light-bg-redesigned);
     }
   }
 }

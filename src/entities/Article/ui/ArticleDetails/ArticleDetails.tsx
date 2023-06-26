@@ -1,14 +1,16 @@
-import { memo, useCallback, useEffect } from 'react';
+import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { DynamicModuleLoader } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { Text, TextAlign, TextTheme } from '@/shared/ui/Text';
-import { Skeleton } from '@/shared/ui/Skeleton/ui/Skeleton';
-import { Avatar } from '@/shared/ui/Avatar';
+import { Text as TextDeprecated, TextAlign, TextTheme } from '@/shared/ui/deprecated/Text';
+import { Text } from '@/shared/ui/redesigned/Text';
+import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton/ui/Skeleton';
+import { Skeleton as SkeletonRedesigned } from '@/shared/ui/redesigned/Skeleton';
+import { Avatar } from '@/shared/ui/deprecated/Avatar';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
-import CalendarIcon from '@/shared/assets/icons/calendar.svg';
-import { TextSize } from '@/shared/ui/Text/ui/Text';
+import CalendarIcon from '@/shared/assets/icons/calendar-20-20.svg';
+import { TextSize } from '@/shared/ui/deprecated/Text/ui/Text';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
 import { ArticleBlock, ArticleBlockType } from '../../model/types/article';
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
@@ -21,14 +23,81 @@ import cls from './ArticleDetails.module.scss';
 import CodeBlock from '../components/CodeBlock';
 import TextBlock from '../components/TextBlock';
 import ImageBlock from '../components/ImageBlock';
+import { ToggleFeatures, toggleFeatures } from '@/shared/features';
+import { AppImage } from '@/shared/ui/redesigned/AppImage';
 
 const reducers = {
   articleDetails: articleDetailsReducer,
 };
 
-interface ArticleDetailsProps {}
+const renderBlock = (block: ArticleBlock) => {
+  switch (block.type) {
+  case ArticleBlockType.CODE:
+    return <CodeBlock key={block.id} block={block} />;
+  case ArticleBlockType.TEXT:
+    return <TextBlock key={block.id} block={block} />;
+  case ArticleBlockType.IMAGE:
+    return <ImageBlock key={block.id} className={cls.imageBlock} block={block} />;
+  default:
+    return null;
+  }
+};
 
-export const ArticleDetails = memo((props: ArticleDetailsProps) => {
+const Skeleton = toggleFeatures({
+  name: 'isAppRedesigned',
+  on: () => SkeletonRedesigned,
+  off: () => SkeletonDeprecated,
+});
+
+const Deprecated = () => {
+  const article = useSelector(getArticlesDetailsData);
+
+  return (
+    <>
+      <Avatar
+        size={200}
+        src={article?.img}
+        className={cls.avatar}
+      />
+      <TextDeprecated
+        className={cls.title}
+        title={article?.title}
+        text={article?.subtitle}
+        size={TextSize.L}
+      />
+      <div className={cls.articleInfo}>
+        <EyeIcon />
+        <Text text={article?.views.toString()} />
+      </div>
+      <div className={cls.articleInfo}>
+        <CalendarIcon />
+        <TextDeprecated text={article?.createdAt} />
+      </div>
+      <div className={cls.content}>
+        {article?.blocks.map(renderBlock)}
+      </div>
+    </>
+  );
+};
+
+const Redesigned = () => {
+  const article = useSelector(getArticlesDetailsData);
+
+  return (
+    <>
+      <Text title={article?.title} size='xl' bold />
+      <Text title={article?.subtitle} />
+      <AppImage
+        fallback={<Skeleton width="100%" height={420} border="16px" />}
+        src={article?.img}
+        className={cls.img}
+      />
+      {article?.blocks.map(renderBlock)}
+    </>
+  );
+};
+
+export const ArticleDetails = memo(() => {
   const dispatch = useAppDispatch();
 
   const { id } = useParams<{id: string}>();
@@ -43,45 +112,39 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     }
   }, [id]);
 
-  const renderBlock = useCallback((block: ArticleBlock) => {
-    switch (block.type) {
-    case ArticleBlockType.CODE:
-      return <CodeBlock key={block.id} block={block} />;
-    case ArticleBlockType.TEXT:
-      return <TextBlock key={block.id} block={block} />;
-    case ArticleBlockType.IMAGE:
-      return <ImageBlock key={block.id} className={cls.imageBlock} block={block} />;
-    default:
-      return null;
-    }
-  }, []);
+  let content;
 
-  let content = (
-    <>
-      <Avatar
-        size={200}
-        src={article?.img}
-        className={cls.avatar}
+  if (error) {
+    content = (
+      <ToggleFeatures
+        feature='isAppRedesigned'
+        on={(
+          <Text
+            title='Произошла ошибка при загрузке статьи'
+            text='Попробуйте перезагрузить страницу'
+            bold
+            size='l'
+          />
+        )}
+        off={(
+          <TextDeprecated
+            title='Произошла ошибка при загрузке статьи'
+            text='Попробуйте перезагрузить страницу'
+            align={TextAlign.CENTER}
+            theme={TextTheme.ERROR}
+          />
+        )}
       />
-      <Text
-        className={cls.title}
-        title={article?.title}
-        text={article?.subtitle}
-        size={TextSize.L}
+    );
+  } else {
+    content = (
+      <ToggleFeatures
+        feature='isAppRedesigned'
+        on={<Redesigned />}
+        off={<Deprecated />}
       />
-      <div className={cls.articleInfo}>
-        <EyeIcon />
-        <Text text={article?.views.toString()} />
-      </div>
-      <div className={cls.articleInfo}>
-        <CalendarIcon />
-        <Text text={article?.createdAt} />
-      </div>
-      <div className={cls.content}>
-        {article?.blocks.map(renderBlock)}
-      </div>
-    </>
-  );
+    );
+  }
 
   if (isLoading) {
     content = (
@@ -94,17 +157,6 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
         <Skeleton className={cls.skeleton} width="100%" height={200} />
         <Skeleton className={cls.skeleton} width="100%" height={200} />
       </>
-    );
-  }
-
-  if (error) {
-    content = (
-      <Text
-        title='Произошла ошибка при загрузке статьи'
-        text='Попробуйте перезагрузить страницу'
-        align={TextAlign.CENTER}
-        theme={TextTheme.ERROR}
-      />
     );
   }
 

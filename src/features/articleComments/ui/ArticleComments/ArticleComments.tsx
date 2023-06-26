@@ -4,8 +4,9 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import classNames from '@/shared/lib/classNames/classNames';
 import { AddCommentFormStatus } from '@/entities/addCommentForm/model/types/addCommentForm';
-import { Text } from '@/shared/ui/Text';
-import { TextSize } from '@/shared/ui/Text/ui/Text';
+import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text';
+import { Text } from '@/shared/ui/redesigned/Text';
+import { TextSize } from '@/shared/ui/deprecated/Text/ui/Text';
 import { CommentList } from '@/entities/Comment';
 import { getArticleComments } from '@/pages/ArticleDetailsPage/model/slice/articleDetailsCommentsSlice';
 import { getArticleCommentsIsLoading } from '@/pages/ArticleDetailsPage';
@@ -15,6 +16,7 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
 import { fetchArticleComments } from '@/pages/ArticleDetailsPage/model/services/fetchArticleComments';
 import cls from './ArticleComments.module.scss';
+import { ToggleFeatures } from '@/shared/features';
 
 interface ArticleCommentsProps {
     className?: string;
@@ -51,11 +53,24 @@ export const ArticleComments = memo((props: ArticleCommentsProps) => {
         )
       }
     >
-      <Text
-        size={TextSize.L}
-        className={cls.comments__title}
-        title={t('Комментарии') as string}
+      <ToggleFeatures
+        feature='isAppRedesigned'
+        on={(
+          <Text
+            size='l'
+            className={cls.comments__title}
+            title={t('Комментарии') as string}
+          />
+        )}
+        off={(
+          <TextDeprecated
+            size={TextSize.L}
+            className={cls.comments__title}
+            title={t('Комментарии') as string}
+          />
+        )}
       />
+
       <AddCommentForm sendComment={sendComment} />
       <CommentList
         isLoading={commentsIsLoading}

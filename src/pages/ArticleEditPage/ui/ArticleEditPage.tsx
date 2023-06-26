@@ -1,8 +1,6 @@
 import { useParams } from 'react-router-dom';
-import classNames from '@/shared/lib/classNames/classNames';
 import { Page } from '@/widgets/Page';
-import { Text } from '@/shared/ui/Text';
-import cls from './ArticleEditPage.module.scss';
+import { Text } from '@/shared/ui/deprecated/Text';
 
 interface ArticleEditPageProps {
     className?: string
@@ -16,7 +14,7 @@ const ArticleEditPage = (props: ArticleEditPageProps) => {
   const isEdit = !!id;
 
   return (
-    <Page className={classNames(cls.articleEditPage, className)}>
+    <Page className={className}>
       <Text
         title={`${isEdit ? 'Редактирование' : 'Создание'} статьи`}
       />

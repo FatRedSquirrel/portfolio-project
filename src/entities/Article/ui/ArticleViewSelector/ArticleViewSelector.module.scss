@@ -2,9 +2,12 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 20px;
+  gap: 10px;
 
   .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     opacity: 0.3;
 
     &:hover {
@@ -20,7 +23,25 @@
       width: 30px;
       height: 30px;
 
-      stroke: var(--main-color);
+      color: inherit;
     }
+  }
+}
+
+.viewTypeIcon {
+  width: 40px !important;
+  height: 40px !important;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+
+  &.active {
+    svg {
+      color: var(--accent-redesigned);
+    }
+
+    background-color: var(--light-bg-redesigned);
   }
 }

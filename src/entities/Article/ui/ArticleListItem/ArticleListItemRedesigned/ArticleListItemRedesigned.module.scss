@@ -1,0 +1,52 @@
+
+.GRID {
+  .card {
+    width: 240px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow: hidden;
+  }
+
+  .img {
+    width: 100%;
+    object-fit: cover;
+    min-height: 140px;
+    max-height: 140px;
+  }
+
+  .info {
+    height: 100%;
+    padding: 8px 16px 16px;
+  }
+
+  .footer {
+    height: 100%;
+    justify-content: flex-end;
+  }
+}
+
+.LIST {
+  margin-bottom: 30px;
+
+  .img {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: contain;
+    }
+  }
+
+  .textBlock {
+    height: 72px;
+    overflow: hidden;
+  }
+}

@@ -1,8 +1,10 @@
 import classNames from '@/shared/lib/classNames/classNames';
-import { Skeleton } from '@/shared/ui/Skeleton/ui/Skeleton';
-import { useNotifications } from '../../api/notofocationsApi';
+import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton/ui/Skeleton';
+import { Skeleton as SkeletonRedesigned } from '@/shared/ui/redesigned/Skeleton';
+import { useNotifications } from '../../api/notificationsApi';
 import cls from './NotificationsList.module.scss';
-import NotificationsItem from '../NotificationsItem/NotificationsItem';
+import { NotificationsItem } from '../NotificationsItem/NotificationsItem';
+import { toggleFeatures } from '@/shared/features';
 
 interface NotificationsListProps {
   className?: string
@@ -14,9 +16,15 @@ export const NotificationsList = (props: NotificationsListProps) => {
   } = props;
 
   const {
-    data: notifications, isLoading, isError, error,
+    data: notifications, isLoading,
   } = useNotifications(null, {
     pollingInterval: 5000,
+  });
+
+  const Skeleton = toggleFeatures({
+    name: 'isAppRedesigned',
+    on: () => SkeletonRedesigned,
+    off: () => SkeletonDeprecated,
   });
 
   if (isLoading) {
@@ -26,9 +34,9 @@ export const NotificationsList = (props: NotificationsListProps) => {
         className,
       )}
       >
-        <Skeleton width='100%' height='60px' border={12} />
-        <Skeleton width='100%' height='60px' border={12} />
-        <Skeleton width='100%' height='60px' border={12} />
+        <Skeleton width='100%' height='60px' border='12px' />
+        <Skeleton width='100%' height='60px' border='12px' />
+        <Skeleton width='100%' height='60px' border='12px' />
       </div>
     );
   }
@@ -40,7 +48,7 @@ export const NotificationsList = (props: NotificationsListProps) => {
     )}
     >
       {(notifications && notifications.length) ? (
-        [...notifications, ...notifications, ...notifications, ...notifications].map((item) => (
+        notifications.map((item) => (
           <NotificationsItem
             key={item.id}
             item={item}

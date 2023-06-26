@@ -7,6 +7,16 @@ export {
 } from './model/selectors/getUserInited/getUserInited';
 
 export {
+  getJsonSettings,
+  getJsonSettingsByKey,
+  useJsonSettings,
+  useJsonSettingsByKey,
+} from './model/selectors/jsonSettings';
+
+export { saveJsonSettings } from './model/services/saveJsonSettings';
+export { initAuthData } from './model/services/initAuthData';
+
+export {
   userReducer,
   userActions,
 } from './model/slice/userSlice';

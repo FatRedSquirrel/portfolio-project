@@ -1,4 +1,4 @@
-import { HTMLAttributeAnchorTarget, useMemo, useRef } from 'react';
+import { HTMLAttributeAnchorTarget } from 'react';
 import { useSelector } from 'react-redux';
 import { Virtuoso, VirtuosoGrid } from 'react-virtuoso';
 import { useTranslation } from 'react-i18next';
@@ -6,16 +6,16 @@ import classNames from '@/shared/lib/classNames/classNames';
 import { fetchNextArticlesPage } from '@/pages/ArticlesPage/model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { ArticlesPageFilters } from '@/pages/ArticlesPage/ui/ArticlesPageFilters/ArticlesPageFilters';
-import { Loader } from '@/shared/ui/Loader';
+import { Loader } from '@/shared/ui/deprecated/Loader';
 import {
   getArticlesPageInitialItemIndex,
-  getArticlesPageStatus,
 } from '@/pages/ArticlesPage/model/selectors/articlesPageSelectors';
 import { articlesPageActions } from '@/pages/ArticlesPage/model/slice/articlesPageSlice';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 import cls from './ArticleList.module.scss';
 import { Article, ArticleView } from '../../model/types/article';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
+import { ToggleFeatures } from '@/shared/features';
 
 interface ArticleListProps {
     className?: string
@@ -40,8 +40,6 @@ export const ArticleList = (props: ArticleListProps) => {
 
   const dispatch = useAppDispatch();
   const initialItemIndex = useSelector(getArticlesPageInitialItemIndex);
-
-  const virtuoso = useRef(null);
 
   const loadNextPart = () => {
     dispatch(fetchNextArticlesPage());
@@ -100,7 +98,13 @@ export const ArticleList = (props: ArticleListProps) => {
 
   if (recommendations && status === 'idle') {
     return (
-      <div className={classNames(cls.ArticleList, cls.recommendations, cls[view])}>
+      <div className={classNames(
+        cls.ArticleList,
+        cls.recommendations,
+        cls[view],
+        className,
+      )}
+      >
         {articles.map((article) => (
           <ArticleListItem
             key={article.id}
@@ -114,34 +118,72 @@ export const ArticleList = (props: ArticleListProps) => {
   }
 
   return (
-    view === ArticleView.GRID
-      ? (
-        <VirtuosoGrid
-          ref={virtuoso}
-          style={{ height: '100%' }}
-          data={articles}
-          endReached={loadNextPart}
-          itemContent={renderArticle}
-          listClassName={classNames(cls.ArticleList, cls[view])}
-          components={{
-            Header,
-            Footer,
-          }}
-        />
-      )
-      : (
-        <Virtuoso
-          initialTopMostItemIndex={initialItemIndex}
-          ref={virtuoso}
-          style={{ height: '100%' }}
-          data={articles}
-          endReached={loadNextPart}
-          itemContent={renderArticle}
-          components={{
-            Header,
-            Footer,
-          }}
-        />
-      )
+    <ToggleFeatures
+      feature='isAppRedesigned'
+      on={(
+        view === ArticleView.GRID
+          ? (
+            <VirtuosoGrid
+              style={{ height: '100%' }}
+              data={articles}
+              endReached={loadNextPart}
+              itemContent={renderArticle}
+              listClassName={classNames(
+                cls.ArticleListRedesigned,
+                cls[view],
+                className,
+              )}
+              components={{
+                Footer,
+              }}
+            />
+          )
+          : (
+            <Virtuoso
+              initialTopMostItemIndex={initialItemIndex}
+              style={{ height: '100%' }}
+              data={articles}
+              endReached={loadNextPart}
+              itemContent={renderArticle}
+              components={{
+                Footer,
+              }}
+            />
+          )
+      )}
+      off={(
+        view === ArticleView.GRID
+          ? (
+            <VirtuosoGrid
+              style={{ height: '100%' }}
+              data={articles}
+              endReached={loadNextPart}
+              itemContent={renderArticle}
+              listClassName={classNames(
+                cls.ArticleList,
+                cls[view],
+                className,
+              )}
+              components={{
+                Header,
+                Footer,
+              }}
+            />
+          )
+          : (
+            <Virtuoso
+              initialTopMostItemIndex={initialItemIndex}
+              style={{ height: '100%' }}
+              data={articles}
+              endReached={loadNextPart}
+              itemContent={renderArticle}
+              components={{
+                Header,
+                Footer,
+              }}
+            />
+          )
+      )}
+    />
   );
 };

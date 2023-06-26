@@ -46,5 +46,6 @@
     "./config/jest/setupTests.ts",
     "./src/**/*.ts",
     "./src/**/*.tsx",
+    "src/shared/config/i18n/i18n.ts",
   ]
 }

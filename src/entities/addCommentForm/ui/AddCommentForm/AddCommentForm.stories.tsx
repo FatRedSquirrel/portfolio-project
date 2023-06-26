@@ -1,4 +1,4 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import AddCommentForm from './AddCommentForm';
 
@@ -8,11 +8,11 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof AddCommentForm>;
+} as Meta<typeof AddCommentForm>;
 
-const Template: ComponentStory<typeof AddCommentForm> = (args) => <AddCommentForm {...args} />;
+const Template: StoryFn<typeof AddCommentForm> = (args) => <AddCommentForm {...args} />;
 
-const mock = (text: string) => {};
+const mock = (text: string) => { };
 
 export const Normal = Template.bind({});
 Normal.args = { sendComment: mock };

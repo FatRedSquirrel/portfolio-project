@@ -1,7 +1,6 @@
 import { memo } from 'react';
-import { Code } from '@/shared/ui/Code';
+import { Code } from '@/shared/ui/redesigned/Code';
 import { ArticleBlockCode } from '../../../model/types/article';
-import cls from './index.module.scss';
 
 interface CodeBlockProps {
   className?: string
@@ -13,7 +12,7 @@ const CodeBlock = ({ block, className }: CodeBlockProps) => {
 
   return (
     <div className={className}>
-      <div className={cls.code}>
+      <div style={{ margin: '20px 0' }}>
         <Code text={code} />
       </div>
     </div>

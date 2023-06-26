@@ -2,8 +2,10 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { ChangeEvent, useCallback } from 'react';
 import classNames from '@/shared/lib/classNames/classNames';
-import { Input } from '@/shared/ui/Input';
-import { Button } from '@/shared/ui/Button';
+import { Input as InputDeprecated } from '@/shared/ui/deprecated/Input';
+import { Input } from '@/shared/ui/redesigned/Input';
+import { Button as ButtonDeprecated } from '@/shared/ui/deprecated/Button';
+import { Button } from '@/shared/ui/redesigned/Button';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { AddCommentFormStatus } from '../../model/types/addCommentForm';
@@ -14,6 +16,8 @@ import {
   getAddCommentFormStatus,
   getAddCommentFormText,
 } from '../../model/selectors/addCommentFormSelectors';
+import { ToggleFeatures } from '@/shared/features';
+import { Card } from '@/shared/ui/redesigned/Card';
 
 interface AddCommentFormProps {
   className?: string
@@ -53,20 +57,48 @@ const AddCommentForm = (props: AddCommentFormProps) => {
 
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <div className={classNames(cls.form, className)}>
-        <Input
-          className={cls.input}
-          placeholder={t('Введите текст комментария') as string}
-          value={text}
-          onChange={handleTextChange}
-        />
-        <Button
-          onClick={handleSendComment}
-          disabled={status === AddCommentFormStatus.SENDING}
-        >
-          {t('Отправить')}
-        </Button>
-      </div>
+      <ToggleFeatures
+        feature='isAppRedesigned'
+        on={(
+          <Card
+            className={classNames(
+              cls.form,
+              cls.formRedesigned,
+              className,
+            )}
+          >
+            <Input
+              className={cls.input}
+              placeholder={t('Введите текст комментария') as string}
+              value={text}
+              onChange={handleTextChange}
+            />
+            <Button
+              onClick={handleSendComment}
+              disabled={status === AddCommentFormStatus.SENDING}
+            >
+              {t('Отправить')}
+            </Button>
+          </Card>
+        )}
+        off={(
+          <div className={classNames(cls.form, className)}>
+            <InputDeprecated
+              className={cls.input}
+              placeholder={t('Введите текст комментария') as string}
+              value={text}
+              onChange={handleTextChange}
+            />
+            <ButtonDeprecated
+              onClick={handleSendComment}
+              disabled={status === AddCommentFormStatus.SENDING}
+            >
+              {t('Отправить')}
+            </ButtonDeprecated>
+          </div>
+        )}
+      />
+
     </DynamicModuleLoader>
   );
 };

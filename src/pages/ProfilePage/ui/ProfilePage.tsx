@@ -1,32 +1,19 @@
 import { useParams } from 'react-router-dom';
-import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import {
-  ProfileCard,
-  profileReducer,
-} from '@/entities/Profile';
 import { Page } from '@/widgets/Page';
-import { Drawer } from '@/shared/ui/Drawer';
-import { NotificationsList } from '@/entities/Notification';
-import ProfilePageHeader from './ProfilePageHeader/ProfilePageHeader';
-import ProfilePageErrors from './ProfilePageErrors';
-
-const reducers: ReducersList = {
-  profile: profileReducer,
-};
+import { EditableProfileCard } from '@/features/EditableProfileCard/ui/EditableProfileCard/EditableProfileCard';
 
 const ProfilePage = () => {
-  const { id } = useParams<{id: string}>();
+  const { id } = useParams<{ id: string }>();
 
   if (!id) return null;
 
   return (
-    <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <Page>
-        <ProfilePageHeader />
+    <Page dataTestid='ProfilePage'>
+      {/* <ProfilePageHeader />
         <ProfilePageErrors />
-        <ProfileCard id={id} />
-      </Page>
-    </DynamicModuleLoader>
+        <ProfileCard /> */}
+      <EditableProfileCard id={id} />
+    </Page>
   );
 };
 

@@ -11,8 +11,10 @@ import useThrottle from '@/shared/lib/hooks/useThrottle';
 import { pageActions } from '../model/slice/pageSlice';
 import { getPageScrollByPath } from '../model/selectors/pageSelectors';
 import cls from './Page.module.scss';
+import { TestProps } from '@/shared/types/tests';
+import { toggleFeatures } from '@/shared/features';
 
-interface PageProps {
+interface PageProps extends TestProps {
   className?: string
   children: ReactNode
   onScrollEnd?: () => void
@@ -23,6 +25,7 @@ export const Page = (props: PageProps) => {
     className,
     children,
     onScrollEnd,
+    dataTestid,
   } = props;
 
   const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
@@ -50,8 +53,16 @@ export const Page = (props: PageProps) => {
 
   return (
     <section
+      data-testid={dataTestid}
       ref={wrapperRef}
-      className={classNames(cls.page, className)}
+      className={classNames(
+        toggleFeatures({
+          name: 'isAppRedesigned',
+          on: () => cls.PageRedesigned,
+          off: () => cls.page,
+        }),
+        className,
+      )}
       onScroll={handleScroll}
     >
       {children}
