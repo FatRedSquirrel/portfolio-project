@@ -75,6 +75,7 @@ export const StarRating = memo((props: StarRatingProps) => {
 
         return (
           <ToggleFeatures
+            key={index}
             feature='isAppRedesigned'
             on={(
               <Icon
