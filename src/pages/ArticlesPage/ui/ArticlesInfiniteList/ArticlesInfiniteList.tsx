@@ -1,12 +1,17 @@
 import { useSelector } from 'react-redux';
 import { ArticleList } from '@/entities/Article';
-import { getArticlesPageError, getArticlesPageStatus, getArticlesPageView } from '@/pages/ArticlesPage/model/selectors/articlesPageSelectors';
+import {
+  getArticlesPageError, getArticlesPageStatus, getArticlesPageView,
+} from '@/pages/ArticlesPage/model/selectors/articlesPageSelectors';
 import { getArticles } from '@/pages/ArticlesPage/model/slice/articlesPageSlice';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { Text } from '@/shared/ui/deprecated/Text';
 
-const ArticlesInfiniteList = () => {
-  const dispatch = useAppDispatch();
+interface ArticleInfiniteListProps {
+  className?: string;
+}
+
+const ArticlesInfiniteList = (props: ArticleInfiniteListProps) => {
+  const { className } = props;
 
   const articles = useSelector(getArticles.selectAll);
   const view = useSelector(getArticlesPageView);
@@ -27,6 +32,7 @@ const ArticlesInfiniteList = () => {
       status={status}
       view={view}
       articles={articles}
+      className={className}
     />
   );
 };

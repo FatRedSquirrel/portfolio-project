@@ -1,7 +1,5 @@
-import { memo } from 'react';
-import InfiniteScroll from 'react-infinite-scroller';
+import { memo, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { Page } from '@/widgets/Page';
 import { articlesPageReducer } from '../../model/slice/articlesPageSlice';
@@ -15,7 +13,6 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
-import { getArticlesPageStatus } from '../../model/selectors/articlesPageSelectors';
 
 const reducers: ReducersList = {
   articlesPage: articlesPageReducer,
@@ -24,17 +21,15 @@ const reducers: ReducersList = {
 const ArticlesPage = () => {
   const dispatch = useAppDispatch();
 
-  const status = useSelector(getArticlesPageStatus);
-
   const [searchParams] = useSearchParams();
+
+  const loadNextPart = useCallback(() => {
+    dispatch(fetchNextArticlesPage());
+  }, [dispatch]);
 
   useInitialEffect(() => {
     dispatch(initArticlesPage(searchParams));
   }, []);
-
-  const loadNextPart = () => {
-    dispatch(fetchNextArticlesPage());
-  };
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
@@ -53,15 +48,10 @@ const ArticlesPage = () => {
             content={(
               <Page
                 dataTestid='ArticlesPage'
+                onScrollEnd={loadNextPart}
               >
-                <InfiniteScroll
-                  pageStart={0}
-                  useWindow
-                  loadMore={() => console.log('hi')}
-                >
-                  <ArticlesInfiniteList />
-                  <ArticlePageGreeting />
-                </InfiniteScroll>
+                <ArticlesInfiniteList />
+                <ArticlePageGreeting />
               </Page>
             )}
           />

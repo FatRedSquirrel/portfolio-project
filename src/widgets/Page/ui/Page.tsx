@@ -35,8 +35,12 @@ export const Page = (props: PageProps) => {
   const scrollPosition = useSelector((state: StateSchema) => getPageScrollByPath(state, location.pathname));
 
   useInfiniteScroll({
-    wrapperRef,
     triggerRef,
+    wrapperRef: toggleFeatures({
+      name: 'isAppRedesigned',
+      on: () => undefined,
+      off: () => wrapperRef,
+    }),
     callback: onScrollEnd,
   });
 
@@ -67,12 +71,12 @@ export const Page = (props: PageProps) => {
     >
       {children}
       {onScrollEnd
-        && (
+        ? (
           <div
             className={cls.trigger}
             ref={triggerRef}
           />
-        )}
+        ) : null}
     </section>
   );
 };
