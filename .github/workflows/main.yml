@@ -14,10 +14,10 @@ concurrency:
 jobs:
   build-and-testing:
     runs-on: ubuntu-latest
-    concurrency: ci-${{ github.ref }}
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    # concurrency: ci-${{ github.ref }}
+    # environment:
+    #   name: github-pages
+    #   url: ${{ steps.deployment.outputs.page_url }}
     strategy:
       matrix:
         node-version: [ 17.x ]
