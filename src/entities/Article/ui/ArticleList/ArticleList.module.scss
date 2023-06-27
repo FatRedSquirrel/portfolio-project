@@ -27,6 +27,10 @@
 }
 
 .ArticleListRedesigned {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
   &.GRID {
     flex-wrap: wrap;
     display: flex;

@@ -50,8 +50,8 @@ export const ArticleListItemRedesigned = memo((props: ArticleListItemProps) => {
         max
         data-testid="ArticleListItem"
         className={classNamesRedesigned(cls.ArticleListItem, {}, [
-          className,
           cls[view],
+          className,
         ])}
       >
         <VStack max gap="16">

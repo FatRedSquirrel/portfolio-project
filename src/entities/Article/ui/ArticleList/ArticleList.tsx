@@ -123,32 +123,40 @@ export const ArticleList = (props: ArticleListProps) => {
       on={(
         view === ArticleView.GRID
           ? (
-            <VirtuosoGrid
-              style={{ height: '100%' }}
-              data={articles}
-              endReached={loadNextPart}
-              itemContent={renderArticle}
-              listClassName={classNames(
+            <div
+              className={classNames(
                 cls.ArticleListRedesigned,
                 cls[view],
                 className,
               )}
-              components={{
-                Footer,
-              }}
-            />
+            >
+              {articles.map((article, index) => (
+                <ArticleListItem
+                  key={index}
+                  article={article}
+                  view={view}
+                  target={target}
+                />
+              ))}
+            </div>
           )
           : (
-            <Virtuoso
-              initialTopMostItemIndex={initialItemIndex}
-              style={{ height: '100%' }}
-              data={articles}
-              endReached={loadNextPart}
-              itemContent={renderArticle}
-              components={{
-                Footer,
-              }}
-            />
+            <div
+              className={classNames(
+                cls.ArticleListRedesigned,
+                cls[view],
+                className,
+              )}
+            >
+              {articles.map((article, index) => (
+                <ArticleListItem
+                  key={index}
+                  article={article}
+                  view={view}
+                  target={target}
+                />
+              ))}
+            </div>
           )
       )}
       off={(

@@ -1,11 +1,8 @@
 import { useSelector } from 'react-redux';
-import { useSearchParams } from 'react-router-dom';
 import { ArticleList } from '@/entities/Article';
 import { getArticlesPageError, getArticlesPageStatus, getArticlesPageView } from '@/pages/ArticlesPage/model/selectors/articlesPageSelectors';
-import { initArticlesPage } from '@/pages/ArticlesPage/model/services/initArticlesPage/initArticlesPage';
 import { getArticles } from '@/pages/ArticlesPage/model/slice/articlesPageSlice';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
 import { Text } from '@/shared/ui/deprecated/Text';
 
 const ArticlesInfiniteList = () => {
@@ -15,12 +12,6 @@ const ArticlesInfiniteList = () => {
   const view = useSelector(getArticlesPageView);
   const status = useSelector(getArticlesPageStatus);
   const error = useSelector(getArticlesPageError);
-
-  const [searchParams] = useSearchParams();
-
-  useInitialEffect(() => {
-    dispatch(initArticlesPage(searchParams));
-  }, []);
 
   if (error) {
     return (
