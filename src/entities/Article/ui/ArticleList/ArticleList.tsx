@@ -32,7 +32,7 @@ export const ArticleList = (props: ArticleListProps) => {
     className,
     articles,
     status,
-    view = ArticleView.GRID,
+    view = ArticleView.LIST,
     target,
     recommendations = false,
   } = props;
@@ -45,6 +45,35 @@ export const ArticleList = (props: ArticleListProps) => {
   const loadNextPart = () => {
     dispatch(fetchNextArticlesPage());
   };
+
+  const getSkeletons = (type: 'loading' | 'fetching' = 'loading') => (
+    <ToggleFeatures
+      feature='isAppRedesigned'
+      on={(
+        <HStack
+          wrap="wrap"
+          gap="16"
+        >
+          {new Array((view === ArticleView.GRID && type === 'loading') ? 12 : 3)
+            .fill(Math.random())
+            .map((_, index) => (
+              <ArticleListItemSkeleton key={index} view={view} />
+            ))}
+        </HStack>
+      )}
+      off={(
+        <div className={classNames(cls.ArticleList, cls[view])}>
+          {
+            new Array(view === ArticleView.GRID ? 12 : 3)
+              .fill(Math.random())
+              .map((_, index) => (
+                <ArticleListItemSkeleton key={index} view={view} />
+              ))
+          }
+        </div>
+      )}
+    />
+  );
 
   // eslint-disable-next-line react/no-unstable-nested-components
   const Footer = () => {
@@ -60,17 +89,7 @@ export const ArticleList = (props: ArticleListProps) => {
         </div>
       );
     case 'loading':
-      return (
-        <div className={classNames(cls.ArticleList, cls[view])}>
-          {
-            new Array(view === ArticleView.GRID ? 4 : 3)
-              .fill(Math.random())
-              .map((_, index) => (
-                <ArticleListItemSkeleton key={index} view={view} />
-              ))
-          }
-        </div>
-      );
+      return getSkeletons();
     default:
       return null;
     }
@@ -119,17 +138,7 @@ export const ArticleList = (props: ArticleListProps) => {
   }
 
   if (status === 'loading') {
-    return (
-      <div className={classNames(cls.ArticleList, cls[view])}>
-        {
-          new Array(view === ArticleView.GRID ? 4 : 3)
-            .fill(Math.random())
-            .map((_, index) => (
-              <ArticleListItemSkeleton key={index} view={view} />
-            ))
-        }
-      </div>
-    );
+    return getSkeletons();
   }
 
   return (
@@ -137,9 +146,8 @@ export const ArticleList = (props: ArticleListProps) => {
       feature='isAppRedesigned'
       on={(
         <HStack
-          // wrap="wrap"
+          wrap="wrap"
           gap="16"
-          className={classNames(cls.ArticleListRedesigned, {}, [])}
           data-testid="ArticleList"
         >
           {articles.map((item) => (
@@ -151,7 +159,7 @@ export const ArticleList = (props: ArticleListProps) => {
               className={cls.card}
             />
           ))}
-          {/* {isLoading && getSkeletons(view)} */}
+          {status === 'fetching' && getSkeletons('fetching')}
         </HStack>
       )}
       off={(

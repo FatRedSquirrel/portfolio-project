@@ -8,6 +8,7 @@ import {
   getArticlesPageSearch,
   getArticlesPageSort,
   getArticlesPageType,
+  getArticlesPageView,
 } from '@/pages/ArticlesPage/model/selectors/articlesPageSelectors';
 import { addQueryParams } from '@/shared/lib/url/addQueryParams/addQueryParams';
 
@@ -25,6 +26,7 @@ export const fetchArticlesList = createAsyncThunk<
     const { extra, rejectWithValue, getState } = thunkApi;
     const limit = getArticlesPageLimit(getState());
 
+    const view = getArticlesPageView(getState());
     const sort = getArticlesPageSort(getState());
     const order = getArticlesPageOrder(getState());
     const search = getArticlesPageSearch(getState());
@@ -38,7 +40,7 @@ export const fetchArticlesList = createAsyncThunk<
       const { data } = await extra.api.get<Article[]>('/articles', {
         params: {
           _expand: 'user',
-          _limit: limit,
+          _limit: view === 'GRID' ? 12 : limit,
           _page: page,
           _sort: sort,
           _order: order,

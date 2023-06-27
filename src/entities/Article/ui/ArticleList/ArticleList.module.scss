@@ -25,15 +25,3 @@
 .recommendations {
   grid-template-columns: repeat(4, 1fr);
 }
-
-.ArticleListRedesigned {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-
-  &.GRID {
-    flex-wrap: wrap;
-    display: flex;
-    gap: 20px;
-  }
-}

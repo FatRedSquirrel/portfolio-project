@@ -6,7 +6,7 @@ import {
   ArticleView,
 } from '../../model/types/article';
 import cls from './ArticleListItem.module.scss';
-import { toggleFeatures } from '@/shared/features';
+import { ToggleFeatures, toggleFeatures } from '@/shared/features';
 
 interface ArticleListItemSkeletonProps {
   view: ArticleView
@@ -54,19 +54,36 @@ export const ArticleListItemSkeleton = (props: ArticleListItemSkeletonProps) => 
   }
 
   return (
-    <div
-      className={cls[view]}
-    >
-      <Card>
-        <div className={cls.image}>
-          <Skeleton width={200} height={200} />
+    <ToggleFeatures
+      feature='isAppRedesigned'
+      on={(
+        <Card border='round' className={cls.itemRedesigned} padding='0'>
+          <div className={cls.imageRedesigned}>
+            <Skeleton width={240} height={200} />
+          </div>
+          <div className={cls.infoRedesigned}>
+            <Skeleton width={100} height={16} />
+            <Skeleton width={60} height={16} />
+            <Skeleton width={150} height={16} />
+          </div>
+        </Card>
+      )}
+      off={(
+        <div
+          className={cls[view]}
+        >
+          <Card>
+            <div className={cls.image}>
+              <Skeleton width={200} height={200} />
+            </div>
+            <div className={cls.info}>
+              <Skeleton width={100} height={16} />
+              <Skeleton width={60} height={16} />
+            </div>
+            <Skeleton width={150} height={16} />
+          </Card>
         </div>
-        <div className={cls.info}>
-          <Skeleton width={100} height={16} />
-          <Skeleton width={60} height={16} />
-        </div>
-        <Skeleton width={150} height={16} />
-      </Card>
-    </div>
+      )}
+    />
   );
 };

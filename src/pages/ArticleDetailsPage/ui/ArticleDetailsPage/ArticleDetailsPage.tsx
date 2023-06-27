@@ -64,7 +64,6 @@ const ArticleDetailsPage = () => {
           </Page>
         )}
       />
-
     </DynamicModuleLoader>
   );
 };

@@ -165,3 +165,19 @@
     fill: var(--accent-color);
   }
 }
+
+.itemRedesigned {
+  padding-bottom: 10px;
+  overflow: hidden;
+}
+
+.imageRedesigned {
+  margin-bottom: 40px;
+}
+
+.infoRedesigned {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
