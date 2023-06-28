@@ -59,7 +59,7 @@ export const ArticleListItemSkeleton = (props: ArticleListItemSkeletonProps) => 
       on={(
         <Card border='round' className={cls.itemRedesigned} padding='0'>
           <div className={cls.imageRedesigned}>
-            <Skeleton width={240} height={200} />
+            <Skeleton width={268} height={200} />
           </div>
           <div className={cls.infoRedesigned}>
             <Skeleton width={100} height={16} />

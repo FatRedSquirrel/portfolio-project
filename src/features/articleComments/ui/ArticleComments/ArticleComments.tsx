@@ -17,6 +17,7 @@ import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
 import { fetchArticleComments } from '@/pages/ArticleDetailsPage/model/services/fetchArticleComments';
 import cls from './ArticleComments.module.scss';
 import { ToggleFeatures } from '@/shared/features';
+import { Card } from '@/shared/ui/redesigned/Card';
 
 interface ArticleCommentsProps {
     className?: string;

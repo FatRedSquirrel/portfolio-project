@@ -58,7 +58,7 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
     <ToggleFeatures
       feature='isAppRedesigned'
       on={(
-        <VStack gap='8'>
+        <VStack gap='8' className={cls.formRedesigned}>
           <Text title={t('Форма авторизации') as string} />
           {error && <Text text={t('Вы ввели неверный логин или пароль') as string} variant='error' />}
           <Input

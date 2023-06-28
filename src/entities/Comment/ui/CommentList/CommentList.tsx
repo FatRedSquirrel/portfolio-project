@@ -5,6 +5,7 @@ import { Comment } from '../../model/types/comment';
 import cls from './CommentList.module.scss';
 import { CommentCard } from '../CommentCard/CommentCard';
 import { ToggleFeatures } from '@/shared/features';
+import { Card } from '@/shared/ui/redesigned/Card';
 
 interface CommentListProps {
   className?: string
@@ -27,7 +28,6 @@ export const CommentList = (props: CommentListProps) => {
         <CommentCard isLoading />
         <CommentCard isLoading />
         <CommentCard isLoading />
-        {/* loading... */}
       </div>
     );
   }
@@ -50,7 +50,9 @@ export const CommentList = (props: CommentListProps) => {
           <ToggleFeatures
             feature='isAppRedesigned'
             on={(
-              <Text text={t('Комментарии отсутствуют') as string} />
+              <Card fullWidth padding='16'>
+                <Text text={t('Комментарии отсутствуют') as string} />
+              </Card>
             )}
             off={(
               <TextDeprecated text={t('Комментарии отсутствуют') as string} />
