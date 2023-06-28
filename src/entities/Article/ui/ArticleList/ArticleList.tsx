@@ -46,34 +46,13 @@ export const ArticleList = (props: ArticleListProps) => {
     dispatch(fetchNextArticlesPage());
   };
 
-  const getSkeletons = (type: 'loading' | 'fetching' = 'loading') => (
-    <ToggleFeatures
-      feature='isAppRedesigned'
-      on={(
-        <HStack
-          wrap="wrap"
-          gap="16"
-        >
-          {new Array((view === ArticleView.GRID && type === 'loading') ? 12 : 3)
-            .fill(Math.random())
-            .map((_, index) => (
-              <ArticleListItemSkeleton key={index} view={view} />
-            ))}
-        </HStack>
-      )}
-      off={(
-        <div className={classNames(cls.ArticleList, cls[view])}>
-          {
-            new Array(view === ArticleView.GRID ? 12 : 3)
-              .fill(Math.random())
-              .map((_, index) => (
-                <ArticleListItemSkeleton key={index} view={view} />
-              ))
-          }
-        </div>
-      )}
-    />
-  );
+  const getSkeletons = (type: 'loading' | 'fetching' = 'loading') => new Array(
+    (view === ArticleView.GRID && type === 'loading') ? 12 : 3,
+  )
+    .fill(true)
+    .map((_, index) => (
+      <ArticleListItemSkeleton key={index} view={view} />
+    ));
 
   // eslint-disable-next-line react/no-unstable-nested-components
   const Footer = () => {
@@ -138,7 +117,15 @@ export const ArticleList = (props: ArticleListProps) => {
   }
 
   if (status === 'loading') {
-    return getSkeletons();
+    return (
+      <HStack
+        wrap="wrap"
+        gap="16"
+        data-testid="ArticleList"
+      >
+        {getSkeletons().map((item) => item)}
+      </HStack>
+    );
   }
 
   return (
@@ -159,7 +146,7 @@ export const ArticleList = (props: ArticleListProps) => {
               className={cls.card}
             />
           ))}
-          {status === 'fetching' && getSkeletons('fetching')}
+          {status === 'fetching' && getSkeletons('fetching').map((item) => item)}
         </HStack>
       )}
       off={(
