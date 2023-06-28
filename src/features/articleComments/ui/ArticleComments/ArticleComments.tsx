@@ -70,7 +70,6 @@ export const ArticleComments = memo((props: ArticleCommentsProps) => {
           />
         )}
       />
-
       <AddCommentForm sendComment={sendComment} />
       <CommentList
         isLoading={commentsIsLoading}

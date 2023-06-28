@@ -104,7 +104,6 @@ export const ArticleDetails = memo(() => {
 
   const isLoading = useSelector(getArticlesDetailsIsLoading);
   const error = useSelector(getArticlesDetailsError);
-  const article = useSelector(getArticlesDetailsData);
 
   useInitialEffect(() => {
     if (id) {

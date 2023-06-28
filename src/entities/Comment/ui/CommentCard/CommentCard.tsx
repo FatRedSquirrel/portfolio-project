@@ -36,20 +36,34 @@ export const CommentCard = (props: CommentProps) => {
     off: () => AppLinkDeprecated,
   });
 
-  if (!comment) {
-    return null;
-  }
-
   if (isLoading) {
     return (
-      <div className={classNames(cls.comment, cls.noBorder)}>
-        <div className={cls.comment__header}>
-          <Skeleton width={30} height={30} round />
-          <Skeleton width={150} height={20} />
-        </div>
-        <Skeleton width='100%' height={40} />
-      </div>
+      <ToggleFeatures
+        feature='isAppRedesigned'
+        on={(
+          <Card padding='16'>
+            <div className={cls.comment__header}>
+              <Skeleton width={40} height={40} border='100%' />
+              <Skeleton width={150} height={30} border='5px' />
+            </div>
+            <Skeleton width='100%' height={60} border='5px' />
+          </Card>
+        )}
+        off={(
+          <div className={classNames(cls.comment, cls.noBorder)}>
+            <div className={cls.comment__header}>
+              <Skeleton width={30} height={30} round />
+              <Skeleton width={150} height={20} />
+            </div>
+            <Skeleton width='100%' height={40} />
+          </div>
+        )}
+      />
     );
+  }
+
+  if (!comment) {
+    return null;
   }
 
   return (
