@@ -1031,6 +1031,12 @@
       "articleId": "18",
       "userId": "1",
       "id": "wxYQKga"
+    },
+    {
+      "text": "123",
+      "articleId": "8",
+      "userId": "1",
+      "id": "1BuKae5"
     }
   ],
   "users": [
@@ -1048,7 +1054,7 @@
       },
       "jsonSettings": {
         "isArticlesPageWasOpened": true,
-        "theme": "app_dark_theme"
+        "theme": "app_light_theme"
       },
       "avatar": "https://mobimg.b-cdn.net/v3/fetch/0f/0fa2ad47af6d1440a1662c1651724ab0.jpeg"
     },

@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { ArticleDetails } from '@/entities/Article';
 import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import {
@@ -20,6 +21,8 @@ import cls from './ArticleDetailsPage.module.scss';
 import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout';
 import { DetailsContainer } from '../DetailsContainer';
 import { AdditionalInfoContainer } from '../AdditionalInfoContainer/ui/AdditionalInfoContainer';
+import { Button } from '@/shared/ui/redesigned/Button';
+import { getRouteArticles } from '@/shared/const/router';
 
 const reducers: ReducersList = {
   articleComments: articleCommentsReducer,
@@ -44,6 +47,13 @@ const ArticleDetailsPage = () => {
                 <ArticleRecommendationsList />
                 <ArticleComments />
               </Page>
+            )}
+            left={(
+              <Link to={getRouteArticles()}>
+                <Button className={cls.backToArticles}>
+                  {t('К статьям')}
+                </Button>
+              </Link>
             )}
             right={(
               <AdditionalInfoContainer />
