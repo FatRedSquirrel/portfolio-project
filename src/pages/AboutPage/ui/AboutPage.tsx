@@ -2,11 +2,11 @@ import { useTranslation } from 'react-i18next';
 import { Page } from '@/widgets/Page';
 
 const AboutPage = () => {
-  const { t } = useTranslation('about');
+  const { t } = useTranslation();
 
   return (
     <Page dataTestid='AboutPage'>
-      О сайте
+      {t('О сайте')}
     </Page>
   );
 };

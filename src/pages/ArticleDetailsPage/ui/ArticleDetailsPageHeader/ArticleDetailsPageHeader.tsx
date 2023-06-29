@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import classNames from '@/shared/lib/classNames/classNames';
 import { RoutePath } from '@/shared/const/router';
 import { getCanEditArticle } from '@/pages/ArticleDetailsPage/model/selectors/article';
@@ -13,6 +14,8 @@ interface ArticleDetailsPageHeaderProps {
 export const ArticleDetailsPageHeader = (props: ArticleDetailsPageHeaderProps) => {
   const { className } = props;
 
+  const { t } = useTranslation();
+
   const article = useSelector(getArticlesDetailsData);
   const canEdit = useSelector(getCanEditArticle);
 
@@ -22,7 +25,7 @@ export const ArticleDetailsPageHeader = (props: ArticleDetailsPageHeaderProps) =
         theme={AppLinkTheme.OUTLINED}
         to={RoutePath.articles}
       >
-        К списку статей
+        {t('К статьям')}
       </AppLink>
       {canEdit
         && (

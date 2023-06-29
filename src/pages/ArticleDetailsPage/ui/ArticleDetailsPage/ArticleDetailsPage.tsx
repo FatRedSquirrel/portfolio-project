@@ -69,9 +69,15 @@ const ArticleDetailsPage = () => {
             <ToggleFeatures
               feature='isArticleRatingEnabled'
               on={<ArticleRating />}
-              off={<div className={cls.noRating}>{t('Оценка статей скоро появится! (feature flags)')}</div>}
+              off={(
+                <div className={cls.noRating}>
+                  {t('Оценка статей скоро появится')}
+                  !
+                  (feature flags)
+                </div>
+              )}
             />
-            {isArticleRecommendationsEnabled && <ArticleRecommendationsList />}
+            <ArticleRecommendationsList />
             <ArticleComments />
           </Page>
         )}
