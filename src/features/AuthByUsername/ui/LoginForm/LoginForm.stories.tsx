@@ -19,6 +19,12 @@ Primary.decorators = [StoreDecorator({
   loginForm: { username: '123', password: 'asd' },
 })];
 
+export const WithError = Template.bind({});
+WithError.args = {};
+WithError.decorators = [StoreDecorator({
+  loginForm: { username: '123', password: 'asd', error: 'ERROR' },
+})];
+
 export const PrimaryRedesigned = Template.bind({});
 PrimaryRedesigned.args = {};
 PrimaryRedesigned.decorators = [
@@ -27,15 +33,3 @@ PrimaryRedesigned.decorators = [
   }),
   NewDesignDecorator,
 ];
-
-export const withError = Template.bind({});
-withError.args = {};
-withError.decorators = [StoreDecorator({
-  loginForm: { username: '123', password: 'asd', error: 'ERROR' },
-})];
-
-export const Loading = Template.bind({});
-Loading.args = {};
-Loading.decorators = [StoreDecorator({
-  loginForm: { isLoading: true },
-})];

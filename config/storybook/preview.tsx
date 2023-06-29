@@ -10,6 +10,7 @@ import {
   FeatureFlagsDecorator,
 } from '../../src/shared/config/storybook/FeatureFlagsDecorator/FeatureFlagsDecorator';
 import { Theme } from '../../src/shared/const/theme';
+import { StoreDecorator } from '../../src/shared/config/storybook/StoreDecorator/StoreDecorator';
 
 const preview: Preview = {
   decorators: [
@@ -18,6 +19,7 @@ const preview: Preview = {
     RouterDecorator,
     SuspenseDecorator,
     FeatureFlagsDecorator({}),
+    StoreDecorator({}),
   ],
 };
 
