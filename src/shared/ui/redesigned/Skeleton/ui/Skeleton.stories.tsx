@@ -15,15 +15,15 @@ export default {
 
 const Template: StoryFn<typeof Skeleton> = (args) => <Skeleton {...args} />;
 
-export const LightTheme = Template.bind({});
-LightTheme.args = {
+export const Primary = Template.bind({});
+Primary.args = {
   width: 400,
   height: 120,
 };
 
-export const DarkTheme = Template.bind({});
-DarkTheme.args = {
-  width: 400,
-  height: 120,
+export const Circle = Template.bind({});
+Circle.args = {
+  width: 200,
+  height: 200,
+  border: '100%',
 };
-DarkTheme.decorators = [ThemeDecorator(Theme.DARK)];
