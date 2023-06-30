@@ -204,6 +204,5 @@ export const Rating = (props: RatingProps) => {
         </CardDeprecated>
       )}
     />
-
   );
 };
