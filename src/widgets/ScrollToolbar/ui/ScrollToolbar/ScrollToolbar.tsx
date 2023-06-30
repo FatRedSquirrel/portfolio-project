@@ -29,10 +29,12 @@ export const ScrollToolbar = memo((props: ScrollToolbarProps) => {
   };
 
   useEffect(() => {
-    document.addEventListener('scroll', observePageScroll());
+    const scrollHandler = observePageScroll();
+
+    document.addEventListener('scroll', scrollHandler);
 
     return () => {
-      document.removeEventListener('scroll', observePageScroll());
+      document.removeEventListener('scroll', scrollHandler);
     };
   }, []);
 
