@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import classNames from '@/shared/lib/classNames/classNames';
 import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton/ui/Skeleton';
 import { Skeleton as SkeletonRedesigned } from '@/shared/ui/redesigned/Skeleton';
@@ -14,6 +15,8 @@ export const NotificationsList = (props: NotificationsListProps) => {
   const {
     className,
   } = props;
+
+  const { t } = useTranslation();
 
   const {
     data: notifications, isLoading,
@@ -55,7 +58,9 @@ export const NotificationsList = (props: NotificationsListProps) => {
           />
         ))
       ) : (
-        <div className={cls.empty}>нет уведомлений</div>
+        <div className={cls.empty}>
+          {t('Нет уведомлений')}
+        </div>
       )}
     </div>
   );
