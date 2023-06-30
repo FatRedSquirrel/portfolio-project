@@ -5,7 +5,7 @@ import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator
 import cls from './ListBox.module.scss';
 
 export default {
-  title: 'shared/redesigned/Popups/ListBox',
+  title: 'ui/redesigned/Popups/ListBox',
   component: ListBox,
   argTypes: {
     backgroundColor: { control: 'color' },

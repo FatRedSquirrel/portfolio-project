@@ -4,7 +4,7 @@ import { ArticleType } from '@/entities/Article/model/types/article';
 import { Tabs } from './Tabs';
 
 export default {
-  title: 'shared/deprecated/Tabs',
+  title: 'ui/deprecated/Tabs',
   component: Tabs,
   argTypes: {
     backgroundColor: { control: 'color' },

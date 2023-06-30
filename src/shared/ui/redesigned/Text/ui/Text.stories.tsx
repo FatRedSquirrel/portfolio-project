@@ -5,7 +5,7 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { Theme } from '@/app/providers/ThemeProvider';
 
 export default {
-  title: 'shared/redesigned/Text',
+  title: 'ui/redesigned/Text',
   component: Text,
   argTypes: {
     backgroundColor: { control: 'color' },

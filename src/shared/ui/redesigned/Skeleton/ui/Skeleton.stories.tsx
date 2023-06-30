@@ -1,11 +1,9 @@
 import { Meta, StoryFn } from '@storybook/react';
 import { Skeleton } from './Skeleton';
 import { ContainerDecorator } from '@/shared/config/storybook/ContainerDecorator';
-import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Theme } from '@/app/providers/ThemeProvider';
 
 export default {
-  title: 'shared/redesigned/Skeleton',
+  title: 'ui/redesigned/Skeleton',
   component: Skeleton,
   argTypes: {
     backgroundColor: { control: 'color' },

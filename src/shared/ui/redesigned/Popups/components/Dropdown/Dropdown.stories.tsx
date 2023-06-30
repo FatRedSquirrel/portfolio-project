@@ -5,7 +5,7 @@ import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator
 import { Button } from '../../../Button';
 
 export default {
-  title: 'shared/redesigned/Popups/Dropdown',
+  title: 'ui/redesigned/Popups/Dropdown',
   component: Dropdown,
   argTypes: {
     backgroundColor: { control: 'color' },

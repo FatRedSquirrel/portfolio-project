@@ -3,7 +3,7 @@ import { Button } from '@/shared/ui/deprecated/Button';
 import { Dropdown } from './Dropdown';
 
 export default {
-  title: 'shared/deprecated/Dropdown',
+  title: 'ui/deprecated/Dropdown',
   component: Dropdown,
   argTypes: {
     backgroundColor: { control: 'color' },

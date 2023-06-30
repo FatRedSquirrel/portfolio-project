@@ -1,13 +1,15 @@
 import { Meta, StoryFn } from '@storybook/react';
 import { Button } from './Button';
 import { Icon } from '../../Icon';
+import { ContainerDecorator } from '@/shared/config/storybook/ContainerDecorator';
 
 export default {
-  title: 'shared/redesigned/Button',
+  title: 'ui/redesigned/Button',
   component: Button,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  decorators: [ContainerDecorator({ padding: 60 })],
 } as Meta<typeof Button>;
 
 const Template: StoryFn<typeof Button> = (args) => <Button {...args} />;

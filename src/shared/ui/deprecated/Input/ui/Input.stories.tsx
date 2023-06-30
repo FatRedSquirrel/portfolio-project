@@ -3,7 +3,7 @@ import { Meta, StoryFn } from '@storybook/react';
 import { Input } from '@/shared/ui/deprecated/Input';
 
 export default {
-  title: 'shared/deprecated/Input',
+  title: 'ui/deprecated/Input',
   component: Input,
   argTypes: {
     backgroundColor: { control: 'color' },

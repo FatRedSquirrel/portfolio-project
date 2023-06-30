@@ -3,7 +3,7 @@ import { StoryFn, Meta } from '@storybook/react';
 import { ListBox } from './ListBox';
 
 export default {
-  title: 'shared/deprecated/ListBox',
+  title: 'ui/deprecated/ListBox',
   component: ListBox,
   argTypes: {
     backgroundColor: { control: 'color' },

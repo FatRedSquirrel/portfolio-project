@@ -4,12 +4,12 @@ import { Icon } from '../../Icon';
 import { ContainerDecorator } from '@/shared/config/storybook/ContainerDecorator';
 
 export default {
-  title: 'shared/redesigned/Input',
+  title: 'ui/redesigned/Input',
   component: Input,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  decorators: [ContainerDecorator({ maxWidth: 400 })],
+  decorators: [ContainerDecorator({ maxWidth: 600, padding: 60 })],
 } as Meta<typeof Input>;
 
 const Template: StoryFn<typeof Input> = (args) => <Input {...args} />;

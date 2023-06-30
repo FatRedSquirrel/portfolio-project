@@ -3,7 +3,7 @@ import { Avatar } from './Avatar';
 import image from './image.jpg';
 
 export default {
-  title: 'shared/deprecated/Avatar',
+  title: 'ui/deprecated/Avatar',
   component: Avatar,
   argTypes: {
     backgroundColor: { control: 'color' },
