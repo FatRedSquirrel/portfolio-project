@@ -24,7 +24,7 @@ export const CurrencySelect = memo((props: CurrencySelectProps) => {
     readonly,
   } = props;
 
-  const { t } = useTranslation();
+  const { t } = useTranslation('profile');
 
   const changeHandler = (value: string) => {
     onChange?.(value as Currency);
@@ -33,7 +33,7 @@ export const CurrencySelect = memo((props: CurrencySelectProps) => {
   const ListBoxProps = {
     items: options,
     value,
-    defaultValue: t('Выберите валюту') as string,
+    defaultValue: t('Валюта') as string,
     label: t('Валюта') as string,
     readonly,
     onChange: changeHandler,

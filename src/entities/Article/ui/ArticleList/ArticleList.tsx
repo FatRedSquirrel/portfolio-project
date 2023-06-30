@@ -16,6 +16,7 @@ import cls from './ArticleList.module.scss';
 import { Article, ArticleView } from '../../model/types/article';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { ToggleFeatures } from '@/shared/features';
+import { HStack } from '@/shared/ui/redesigned/Stack';
 
 interface ArticleListProps {
     className?: string
@@ -23,7 +24,7 @@ interface ArticleListProps {
     status?: 'idle' | 'loading' | 'fetching' | 'error'
     view?: ArticleView
     target?: HTMLAttributeAnchorTarget
-  recommendations?: boolean
+    recommendations?: boolean
 }
 
 export const ArticleList = (props: ArticleListProps) => {
@@ -31,7 +32,7 @@ export const ArticleList = (props: ArticleListProps) => {
     className,
     articles,
     status,
-    view = ArticleView.GRID,
+    view = ArticleView.LIST,
     target,
     recommendations = false,
   } = props;
@@ -44,6 +45,14 @@ export const ArticleList = (props: ArticleListProps) => {
   const loadNextPart = () => {
     dispatch(fetchNextArticlesPage());
   };
+
+  const getSkeletons = (type: 'loading' | 'fetching' = 'loading') => new Array(
+    (view === ArticleView.GRID && type === 'loading') ? 12 : 3,
+  )
+    .fill(true)
+    .map((_, index) => (
+      <ArticleListItemSkeleton key={index} view={view} />
+    ));
 
   // eslint-disable-next-line react/no-unstable-nested-components
   const Footer = () => {
@@ -59,17 +68,7 @@ export const ArticleList = (props: ArticleListProps) => {
         </div>
       );
     case 'loading':
-      return (
-        <div className={classNames(cls.ArticleList, cls[view])}>
-          {
-            new Array(view === ArticleView.GRID ? 4 : 3)
-              .fill(Math.random())
-              .map((_, index) => (
-                <ArticleListItemSkeleton key={index} view={view} />
-              ))
-          }
-        </div>
-      );
+      return getSkeletons();
     default:
       return null;
     }
@@ -117,39 +116,38 @@ export const ArticleList = (props: ArticleListProps) => {
     );
   }
 
+  if (status === 'loading') {
+    return (
+      <HStack
+        wrap="wrap"
+        gap="16"
+        data-testid="ArticleList"
+      >
+        {getSkeletons().map((item) => item)}
+      </HStack>
+    );
+  }
+
   return (
     <ToggleFeatures
       feature='isAppRedesigned'
       on={(
-        view === ArticleView.GRID
-          ? (
-            <VirtuosoGrid
-              style={{ height: '100%' }}
-              data={articles}
-              endReached={loadNextPart}
-              itemContent={renderArticle}
-              listClassName={classNames(
-                cls.ArticleListRedesigned,
-                cls[view],
-                className,
-              )}
-              components={{
-                Footer,
-              }}
+        <HStack
+          wrap="wrap"
+          gap="16"
+          data-testid="ArticleList"
+        >
+          {articles.map((item) => (
+            <ArticleListItem
+              article={item}
+              view={view}
+              target={target}
+              key={item.id}
+              className={cls.card}
             />
-          )
-          : (
-            <Virtuoso
-              initialTopMostItemIndex={initialItemIndex}
-              style={{ height: '100%' }}
-              data={articles}
-              endReached={loadNextPart}
-              itemContent={renderArticle}
-              components={{
-                Footer,
-              }}
-            />
-          )
+          ))}
+          {status === 'fetching' && getSkeletons('fetching').map((item) => item)}
+        </HStack>
       )}
       off={(
         view === ArticleView.GRID

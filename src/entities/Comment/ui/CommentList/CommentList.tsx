@@ -1,8 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text';
+import { Text } from '@/shared/ui/redesigned/Text';
 import { Comment } from '../../model/types/comment';
 import cls from './CommentList.module.scss';
 import { CommentCard } from '../CommentCard/CommentCard';
+import { ToggleFeatures } from '@/shared/features';
+import { Card } from '@/shared/ui/redesigned/Card';
 
 interface CommentListProps {
   className?: string
@@ -43,7 +46,19 @@ export const CommentList = (props: CommentListProps) => {
             ))}
           </div>
         )
-        : <TextDeprecated text={t('Комментарии отсутствуют') as string} />}
+        : (
+          <ToggleFeatures
+            feature='isAppRedesigned'
+            on={(
+              <Card fullWidth padding='16'>
+                <Text text={t('Комментарии отсутствуют') as string} />
+              </Card>
+            )}
+            off={(
+              <TextDeprecated text={t('Комментарии отсутствуют') as string} />
+            )}
+          />
+        )}
     </div>
   );
 };

@@ -75,7 +75,7 @@ export const ArticleSortSelector = (props: ArticleSortSelectorProps) => {
       )}
       on={(
         <div className={cls.sort}>
-          <Text text='Сортировать по:' />
+          <Text text={t('Сортировать по:') as string} />
           <VStack gap='8'>
             <ListBox
               items={sortFieldOptions}

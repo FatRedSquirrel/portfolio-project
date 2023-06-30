@@ -1,7 +1,7 @@
-import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import LoginForm from './LoginForm';
+import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 
 export default {
   title: 'features/LoginForm',
@@ -19,14 +19,17 @@ Primary.decorators = [StoreDecorator({
   loginForm: { username: '123', password: 'asd' },
 })];
 
-export const withError = Template.bind({});
-withError.args = {};
-withError.decorators = [StoreDecorator({
+export const WithError = Template.bind({});
+WithError.args = {};
+WithError.decorators = [StoreDecorator({
   loginForm: { username: '123', password: 'asd', error: 'ERROR' },
 })];
 
-export const Loading = Template.bind({});
-Loading.args = {};
-Loading.decorators = [StoreDecorator({
-  loginForm: { isLoading: true },
-})];
+export const PrimaryRedesigned = Template.bind({});
+PrimaryRedesigned.args = {};
+PrimaryRedesigned.decorators = [
+  StoreDecorator({
+    loginForm: { username: '123', password: 'asd' },
+  }),
+  NewDesignDecorator,
+];

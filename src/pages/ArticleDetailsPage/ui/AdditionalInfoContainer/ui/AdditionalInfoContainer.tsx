@@ -6,9 +6,12 @@ import { ArticleAdditionalInfo } from '@/widgets/ArticleAdditionalInfo';
 import { getArticlesDetailsData } from '@/entities/Article';
 import cls from './AdditionalInfoContainer.module.scss';
 import { getRouteArticlesEdit } from '@/shared/const/router';
+import { getArticlesDetailsIsLoading } from '@/entities/Article/model/selectors/articleDetails';
+import { Skeleton } from '@/shared/ui/redesigned/Skeleton';
 
 export const AdditionalInfoContainer = memo(() => {
   const article = useSelector(getArticlesDetailsData);
+  const isLoading = useSelector(getArticlesDetailsIsLoading);
 
   const navigate = useNavigate();
 
@@ -17,6 +20,12 @@ export const AdditionalInfoContainer = memo(() => {
       navigate(getRouteArticlesEdit(article.id));
     }
   }, [article, navigate]);
+
+  if (isLoading) {
+    return (
+      <Skeleton width={264} height={212} border='40px' />
+    );
+  }
 
   if (!article) {
     return null;

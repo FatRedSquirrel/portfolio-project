@@ -1,5 +1,6 @@
 import { Meta, StoryFn } from '@storybook/react';
 import { CommentList } from './CommentList';
+import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 
 export default {
   title: 'entities/comments/CommentList',
@@ -54,3 +55,21 @@ export const Empty = Template.bind({});
 Empty.args = {
   comments: [],
 };
+
+export const NormalRedesigned = Template.bind({});
+NormalRedesigned.args = {
+  comments,
+};
+NormalRedesigned.decorators = [NewDesignDecorator];
+
+export const LoadingRedesigned = Template.bind({});
+LoadingRedesigned.args = {
+  isLoading: true,
+};
+LoadingRedesigned.decorators = [NewDesignDecorator];
+
+export const EmptyRedesigned = Template.bind({});
+EmptyRedesigned.args = {
+  comments: [],
+};
+EmptyRedesigned.decorators = [NewDesignDecorator];

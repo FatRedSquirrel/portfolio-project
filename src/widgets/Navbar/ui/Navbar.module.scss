@@ -4,7 +4,8 @@
   padding: 20px;
   display: flex;
   align-items: center;
-  background: var(--inverted-bg-color);
+  color: var(--main-color);
+  background: var(--main-color);
 }
 
 .NavbarRedesigned {
@@ -21,6 +22,9 @@
 }
 
 .appName {
-  width: var(--sidebar-width);
-  margin-left: 15px;
+  p {
+    margin-right: 300px;
+    margin-left: 15px;
+    color: var(--secondary-color);
+  }
 }

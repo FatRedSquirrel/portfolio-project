@@ -35,6 +35,7 @@ export const Avatar = (props: AvatarProps) => {
       border='100px'
     />
   );
+
   const errorFallback = (
     <UserIcon
       width={size - 10}

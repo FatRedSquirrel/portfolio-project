@@ -104,7 +104,6 @@ export const ArticleDetails = memo(() => {
 
   const isLoading = useSelector(getArticlesDetailsIsLoading);
   const error = useSelector(getArticlesDetailsError);
-  const article = useSelector(getArticlesDetailsData);
 
   useInitialEffect(() => {
     if (id) {
@@ -149,7 +148,7 @@ export const ArticleDetails = memo(() => {
   if (isLoading) {
     content = (
       <>
-        <Skeleton className={cls.avatar} width={200} height={200} round />
+        <Skeleton className={cls.avatar} width={200} height={200} border='100%' />
         <Skeleton className={cls.title} width={300} height={32} />
         <Skeleton className={cls.skeleton} width={600} height={24} />
         <Skeleton className={cls.skeleton} width="100%" height={200} />

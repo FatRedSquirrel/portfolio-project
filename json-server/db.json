@@ -1031,6 +1031,24 @@
       "articleId": "18",
       "userId": "1",
       "id": "wxYQKga"
+    },
+    {
+      "text": "123",
+      "articleId": "8",
+      "userId": "1",
+      "id": "1BuKae5"
+    },
+    {
+      "text": "123",
+      "articleId": "5",
+      "userId": "1",
+      "id": "gP3IIOe"
+    },
+    {
+      "text": "123",
+      "articleId": "15",
+      "userId": "1",
+      "id": "8QSxZxd"
     }
   ],
   "users": [
@@ -1048,7 +1066,7 @@
       },
       "jsonSettings": {
         "isArticlesPageWasOpened": true,
-        "theme": "app_light_theme"
+        "theme": "app_dark_theme"
       },
       "avatar": "https://mobimg.b-cdn.net/v3/fetch/0f/0fa2ad47af6d1440a1662c1651724ab0.jpeg"
     },
@@ -1091,15 +1109,15 @@
   "profile": [
     {
       "id": "1",
-      "username": "123edadas",
+      "username": "123edadasrae123123",
       "avatar": "https://gamerwall.pro/uploads/posts/2022-03/1646971785_32-gamerwall-pro-p-klinok-rassekayushchii-demonov-kokushibo-a-34.jpg",
       "first": "jgh",
-      "lastname": "asf",
-      "age": 465,
-      "currency": "EUR",
-      "country": "Germany",
+      "lastname": "asf123",
+      "age": 4652,
+      "currency": "USD",
+      "country": "USA",
       "city": "Moscow",
-      "firstname": "123"
+      "firstname": "123123"
     },
     {
       "id": "2",
@@ -1245,6 +1263,13 @@
       "articleId": "1",
       "rate": 5,
       "id": "Uw_Niqs"
+    },
+    {
+      "userId": "1",
+      "articleId": "9",
+      "rate": 5,
+      "feedback": "123123",
+      "id": "qUG1aOZ"
     }
   ],
   "profile-ratings": [

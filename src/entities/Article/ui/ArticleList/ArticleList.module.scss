@@ -25,11 +25,3 @@
 .recommendations {
   grid-template-columns: repeat(4, 1fr);
 }
-
-.ArticleListRedesigned {
-  &.GRID {
-    flex-wrap: wrap;
-    display: flex;
-    gap: 20px;
-  }
-}

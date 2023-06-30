@@ -51,8 +51,8 @@
 }
 
 .app *::-webkit-scrollbar-thumb {
-  border: 2px solid var(--primary-color);  /* padding вокруг плашки */
+  border: 2px solid var(--main-color);  /* padding вокруг плашки */
   border-radius: 20px;       /* закругления плашки */
-  background-color: var(--inverted-primary-color);    /* цвет плашки */
+  background-color: var(--main-color);    /* цвет плашки */
 }
 

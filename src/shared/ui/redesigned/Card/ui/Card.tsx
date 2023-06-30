@@ -15,6 +15,7 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
     border?: CardBorder;
     fullWidth?: boolean;
     fullHeight?: boolean;
+    hoverable?: boolean
 }
 
 const mapPaddingToClass: Record<CardPadding, string> = {
@@ -34,6 +35,7 @@ export const Card = memo((props: CardProps) => {
     border = 'normalBorder',
     fullWidth,
     fullHeight,
+    hoverable,
     ...otherProps
   } = props;
 
@@ -48,6 +50,7 @@ export const Card = memo((props: CardProps) => {
         cls[variant],
         cls[paddingClass],
         cls[border],
+        hoverable && cls.hoverable,
         fullWidth && cls.fullWidth,
         fullHeight && cls.fullHeight,
       )}

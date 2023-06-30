@@ -4,11 +4,21 @@ import { routeConfig } from '@/app/providers/router/config/routeConfig';
 import { AppRoutesProps } from '@/shared/types/router';
 import { PageLoader } from '@/shared/ui/deprecated/PageLoader';
 import RequireAuth from './RequireAuth';
+import { ToggleFeatures } from '@/shared/features';
 
 const AppRouter = () => {
   const renderWithWrapper = useCallback((route: AppRoutesProps) => {
     const element = (
-      <Suspense fallback={<PageLoader />}>
+      <Suspense fallback={(
+        <ToggleFeatures
+          feature='isAppRedesigned'
+          on={<PageLoader />}
+          off={(
+            <PageLoader />
+          )}
+        />
+      )}
+      >
         {route.element}
       </Suspense>
     );

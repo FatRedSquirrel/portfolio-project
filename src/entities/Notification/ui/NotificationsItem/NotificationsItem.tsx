@@ -5,7 +5,7 @@ import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text';
 import { Text } from '@/shared/ui/redesigned/Text';
 import cls from './NotificationsItem.module.scss';
 import { Notification } from '../../model/types/notifications';
-import { ToggleFeatures } from '@/shared/features';
+import { ToggleFeatures, toggleFeatures } from '@/shared/features';
 import { Card } from '@/shared/ui/redesigned/Card';
 
 interface NotificationItemProps {
@@ -42,6 +42,7 @@ export const NotificationsItem = memo((props: NotificationItemProps) => {
           )}
         >
           <TextDeprecated
+            className={cls.text}
             title={item.title}
             text={item.description}
           />
@@ -53,7 +54,11 @@ export const NotificationsItem = memo((props: NotificationItemProps) => {
   if (item.href) {
     return (
       <a
-        className={cls.link}
+        className={toggleFeatures({
+          name: 'isAppRedesigned',
+          on: () => cls.link,
+          off: () => undefined,
+        })}
         target="_blank"
         href={item.href}
         rel="noreferrer"

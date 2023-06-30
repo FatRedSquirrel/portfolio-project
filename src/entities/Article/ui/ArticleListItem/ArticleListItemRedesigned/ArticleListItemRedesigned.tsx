@@ -50,8 +50,8 @@ export const ArticleListItemRedesigned = memo((props: ArticleListItemProps) => {
         max
         data-testid="ArticleListItem"
         className={classNamesRedesigned(cls.ArticleListItem, {}, [
-          className,
           cls[view],
+          className,
         ])}
       >
         <VStack max gap="16">
@@ -79,7 +79,7 @@ export const ArticleListItemRedesigned = memo((props: ArticleListItemProps) => {
               to={getRouteArticle(article.id)}
             >
               <Button variant="outline">
-                Читать далее...
+                {t('Читать далее...')}
               </Button>
             </AppLink>
             {views}
@@ -99,7 +99,12 @@ export const ArticleListItemRedesigned = memo((props: ArticleListItemProps) => {
         cls[view],
       ])}
     >
-      <Card padding="0" className={cls.card} border="round">
+      <Card
+        className={cls.card}
+        padding="0"
+        border="round"
+        hoverable
+      >
         <AppImage
           fallback={<Skeleton width="100%" height={200} />}
           alt={article.title}

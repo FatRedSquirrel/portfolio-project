@@ -98,7 +98,6 @@ const AddCommentForm = (props: AddCommentFormProps) => {
           </div>
         )}
       />
-
     </DynamicModuleLoader>
   );
 };

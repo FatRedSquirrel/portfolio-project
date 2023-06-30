@@ -49,9 +49,10 @@ export const ArticleViewSelector = (props: ArticleViewSelectorProps) => {
           border="round"
         >
           <HStack gap='8'>
-            {viewTypes.map((viewType) => (
+            {viewTypes.map((viewType, index) => (
               <Icon
                 clickable
+                key={index}
                 width={20}
                 height={20}
                 onClick={onClick(viewType.view)}

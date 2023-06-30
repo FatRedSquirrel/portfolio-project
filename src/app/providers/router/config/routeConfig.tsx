@@ -20,6 +20,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
   [AppRoutes.SETTINGS]: {
     path: RoutePath.settings,
     element: <SettingsPage />,
+    authOnly: true,
   },
   [AppRoutes.ABOUT]: {
     path: RoutePath.about,

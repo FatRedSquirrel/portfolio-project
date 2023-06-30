@@ -53,3 +53,15 @@
 .fullWidth{
   width: 100%;
 }
+
+.hoverable {
+  transition: opacity 200ms ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &:active {
+    opacity: 0.5;
+  }
+}

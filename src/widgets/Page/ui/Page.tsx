@@ -1,5 +1,5 @@
 import {
-  MutableRefObject, ReactNode, useRef, UIEvent,
+  MutableRefObject, ReactNode, useRef, UIEvent, useEffect,
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
@@ -17,6 +17,7 @@ import { toggleFeatures } from '@/shared/features';
 interface PageProps extends TestProps {
   className?: string
   children: ReactNode
+  noInitialScroll?: boolean
   onScrollEnd?: () => void
 }
 
@@ -25,23 +26,32 @@ export const Page = (props: PageProps) => {
     className,
     children,
     onScrollEnd,
+    noInitialScroll,
     dataTestid,
   } = props;
 
-  const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
+  const containerRef = useRef() as MutableRefObject<HTMLDivElement>;
   const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
   const dispatch = useDispatch();
   const location = useLocation();
   const scrollPosition = useSelector((state: StateSchema) => getPageScrollByPath(state, location.pathname));
 
   useInfiniteScroll({
-    wrapperRef,
     triggerRef,
+    wrapperRef: toggleFeatures({
+      name: 'isAppRedesigned',
+      on: () => undefined,
+      off: () => containerRef,
+    }),
     callback: onScrollEnd,
   });
 
   useInitialEffect(() => {
-    wrapperRef.current.scrollTop = scrollPosition;
+    containerRef.current.scrollTop = scrollPosition;
+
+    if (noInitialScroll) {
+      window.scrollTo(0, 0);
+    }
   }, []);
 
   const handleScroll = useThrottle((e: UIEvent<HTMLDivElement>) => {
@@ -54,7 +64,7 @@ export const Page = (props: PageProps) => {
   return (
     <section
       data-testid={dataTestid}
-      ref={wrapperRef}
+      ref={containerRef}
       className={classNames(
         toggleFeatures({
           name: 'isAppRedesigned',
@@ -67,12 +77,12 @@ export const Page = (props: PageProps) => {
     >
       {children}
       {onScrollEnd
-        && (
+        ? (
           <div
             className={cls.trigger}
             ref={triggerRef}
           />
-        )}
+        ) : null}
     </section>
   );
 };

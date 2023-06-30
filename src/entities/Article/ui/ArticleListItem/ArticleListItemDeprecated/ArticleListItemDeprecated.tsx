@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import classNames from '@/shared/lib/classNames/classNames';
 import { Text } from '@/shared/ui/deprecated/Text';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
@@ -24,6 +25,8 @@ export const ArticleListItemDeprecated = (props: ArticleListItemProps) => {
     style,
     setInitialItemIndex,
   } = props;
+
+  const { t } = useTranslation();
 
   const [isHovered, bindHover] = useHover();
 
@@ -81,7 +84,7 @@ export const ArticleListItemDeprecated = (props: ArticleListItemProps) => {
               to={getRouteArticle(article.id)}
             >
               <Button onClick={setInitialItemIndex}>
-                Читать далее...
+                {t('Читать далее...')}
               </Button>
             </AppLink>
             {views}

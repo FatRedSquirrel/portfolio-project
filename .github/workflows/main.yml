@@ -14,10 +14,10 @@ concurrency:
 jobs:
   build-and-testing:
     runs-on: ubuntu-latest
-    concurrency: ci-${{ github.ref }}
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    # concurrency: ci-${{ github.ref }}
+    # environment:
+    #   name: github-pages
+    #   url: ${{ steps.deployment.outputs.page_url }}
     strategy:
       matrix:
         node-version: [ 17.x ]
@@ -32,12 +32,9 @@ jobs:
       - name: build production project
         run: npm run build:prod
         if: always()
-      # - name: build storybook
-      #   run: npm run storybook:build
-      #   if: always()
-      # - name: screenshot testing
-      #   run: npm run test:ui:ci
-      #   if: always()
+      - name: build storybook
+        run: npm run storybook:build
+        if: always()
       - name: unit testing
         if: always()
         run: npm run test:unit
@@ -47,18 +44,18 @@ jobs:
       # - name: move loki
       #   run: mv .loki reports/
       #   if: always()
-      - name: Setup Pages
-        uses: actions/configure-pages@v2
-        if: always()
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        if: always()
-        with:
-          path: 'reports'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        if: always()
-        uses: actions/deploy-pages@v1
+      # - name: Setup Pages
+      #   uses: actions/configure-pages@v2
+      #   if: always()
+      # - name: Upload artifact
+      #   uses: actions/upload-pages-artifact@v1
+      #   if: always()
+      #   with:
+      #     path: 'reports'
+      # - name: Deploy to GitHub Pages
+      #   id: deployment
+      #   if: always()
+      #   uses: actions/deploy-pages@v1
 
   checks-linting:
     runs-on: ubuntu-latest

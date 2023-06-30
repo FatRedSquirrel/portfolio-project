@@ -1,4 +1,4 @@
-import { ReactNode, useEffect } from 'react';
+import { ReactNode, useEffect, useLayoutEffect } from 'react';
 import { useDispatch, useStore } from 'react-redux';
 import { Reducer } from '@reduxjs/toolkit';
 import { ReduxStoreWithManager, StateSchema, StateSchemaKey } from '@/app/providers/StoreProvider/config/StateSchema';
@@ -23,7 +23,7 @@ export const DynamicModuleLoader = (props: DynamicModuleLoaderProps) => {
   const store = useStore() as ReduxStoreWithManager;
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const mountedReducers = store.reducerManager.getReducerMap();
     Object.entries(reducers).forEach(([name, reducer]) => {
       const mounted = mountedReducers[name as StateSchemaKey];

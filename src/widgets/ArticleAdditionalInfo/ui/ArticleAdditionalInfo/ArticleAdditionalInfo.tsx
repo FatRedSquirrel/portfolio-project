@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { User } from '@/entities/User';
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 import { Avatar } from '@/shared/ui/redesigned/Avatar';
@@ -19,6 +20,8 @@ export const ArticleAdditionalInfo = memo(
       className, author, createdAt, views, onEdit,
     } = props;
 
+    const { t } = useTranslation();
+
     return (
       <VStack gap="32">
         <HStack gap="8">
@@ -26,8 +29,10 @@ export const ArticleAdditionalInfo = memo(
           <Text text={author.username} bold />
           <Text text={createdAt} />
         </HStack>
-        <Button onClick={onEdit}>Редактировать</Button>
-        <Text text={`Просмотров: ${views}`} />
+        <Button onClick={onEdit}>
+          {t('Редактировать')}
+        </Button>
+        <Text text={`${t('Просмотров')}: ${views}`} />
       </VStack>
     );
   },
