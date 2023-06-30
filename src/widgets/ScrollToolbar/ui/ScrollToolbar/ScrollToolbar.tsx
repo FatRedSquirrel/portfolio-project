@@ -1,8 +1,9 @@
-import { memo } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { classNamesRedesigned } from '@/shared/lib/classNames/classNames';
 import cls from './ScrollToolbar.module.scss';
 import { VStack } from '@/shared/ui/redesigned/Stack';
 import { ScrollToTopButton } from '@/features/scrollToTopButton';
+import { useObservePageScrool } from '@/shared/lib/hooks/useObservePageScroll';
 
 interface ScrollToolbarProps {
     className?: string;
@@ -11,6 +12,8 @@ interface ScrollToolbarProps {
 export const ScrollToolbar = memo((props: ScrollToolbarProps) => {
   const { className } = props;
 
+  const goUpShown = useObservePageScrool();
+
   return (
     <VStack
       justify="center"
@@ -18,7 +21,7 @@ export const ScrollToolbar = memo((props: ScrollToolbarProps) => {
       max
       className={classNamesRedesigned(cls.ScrollToolbar, {}, [className])}
     >
-      <ScrollToTopButton />
+      {goUpShown && <ScrollToTopButton />}
     </VStack>
   );
 });
