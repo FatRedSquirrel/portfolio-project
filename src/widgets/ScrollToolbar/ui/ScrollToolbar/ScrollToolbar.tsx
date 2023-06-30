@@ -3,6 +3,7 @@ import { classNamesRedesigned } from '@/shared/lib/classNames/classNames';
 import cls from './ScrollToolbar.module.scss';
 import { VStack } from '@/shared/ui/redesigned/Stack';
 import { ScrollToTopButton } from '@/features/scrollToTopButton';
+import { useObservePageScrool } from '@/shared/lib/hooks/useObservePageScroll';
 
 interface ScrollToolbarProps {
     className?: string;
@@ -11,32 +12,7 @@ interface ScrollToolbarProps {
 export const ScrollToolbar = memo((props: ScrollToolbarProps) => {
   const { className } = props;
 
-  const [goUpShown, setGoUpShown] = useState(false);
-
-  const observePageScroll = () => {
-    let shown = false;
-
-    return () => {
-      const offsetTop = window.scrollY;
-      if (offsetTop > 1200 && !shown) {
-        shown = true;
-        setGoUpShown(true);
-      } else if (offsetTop < 1200 && shown) {
-        shown = false;
-        setGoUpShown(false);
-      }
-    };
-  };
-
-  useEffect(() => {
-    const scrollHandler = observePageScroll();
-
-    document.addEventListener('scroll', scrollHandler);
-
-    return () => {
-      document.removeEventListener('scroll', scrollHandler);
-    };
-  }, []);
+  const goUpShown = useObservePageScrool();
 
   return (
     <VStack
