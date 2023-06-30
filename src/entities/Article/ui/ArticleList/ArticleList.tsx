@@ -137,15 +137,19 @@ export const ArticleList = (props: ArticleListProps) => {
           gap="16"
           data-testid="ArticleList"
         >
-          {articles.map((item) => (
-            <ArticleListItem
-              article={item}
-              view={view}
-              target={target}
-              key={item.id}
-              className={cls.card}
-            />
-          ))}
+          {articles && articles.length ? (
+            articles.map((item) => (
+              <ArticleListItem
+                article={item}
+                view={view}
+                target={target}
+                key={item.id}
+                className={cls.card}
+              />
+            ))
+          ) : (
+            <div>{t('Ничего не найдено')}</div>
+          )}
           {status === 'fetching' && getSkeletons('fetching').map((item) => item)}
         </HStack>
       )}

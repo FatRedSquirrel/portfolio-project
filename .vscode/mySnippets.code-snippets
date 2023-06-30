@@ -100,5 +100,11 @@
 			");"
 		],
 		"description": "create async thunk"
+	},
+	"Function as file": {
+		"prefix": "ff",
+		"body": [
+			"$TM_FILENAME_BASE"
+		]
 	}
 }
