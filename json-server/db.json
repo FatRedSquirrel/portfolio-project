@@ -1270,6 +1270,13 @@
       "rate": 5,
       "feedback": "123123",
       "id": "qUG1aOZ"
+    },
+    {
+      "userId": "1",
+      "articleId": "7",
+      "rate": 5,
+      "feedback": "123",
+      "id": "dqCXgy4"
     }
   ],
   "profile-ratings": [

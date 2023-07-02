@@ -4,6 +4,7 @@ import { Text } from '@/shared/ui/redesigned/Text';
 import { ArticleBlockImage } from '../../../model/types/article';
 import cls from './index.module.scss';
 import { ToggleFeatures } from '@/shared/features';
+import { AppImage } from '@/shared/ui/redesigned/AppImage';
 
 interface ImageBlockProps {
   className?: string
@@ -15,7 +16,7 @@ const ImageBlock = ({ block, className }: ImageBlockProps) => {
 
   return (
     <div className={className}>
-      <img className={cls.img} src={src} alt="" />
+      <AppImage className={cls.img} src={src} alt="" />
       {title && (
         <ToggleFeatures
           feature='isAppRedesigned'
