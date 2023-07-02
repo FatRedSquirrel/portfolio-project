@@ -12,7 +12,7 @@ interface ScrollToolbarProps {
 export const ScrollToolbar = memo((props: ScrollToolbarProps) => {
   const { className } = props;
 
-  const goUpShown = useObservePageScrool();
+  const goUpShown = useObservePageScrool(1200);
 
   return (
     <VStack

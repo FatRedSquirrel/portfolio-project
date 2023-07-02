@@ -1,22 +1,22 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
-export const useObservePageScrool = () => {
+export const useObservePageScrool = (offsetY: number) => {
   const [goUpShown, setGoUpShown] = useState(false);
 
-  const observePageScroll = () => {
+  const observePageScroll = useCallback(() => {
     let shown = false;
 
     return () => {
       const offsetTop = window.scrollY;
-      if (offsetTop > 1200 && !shown) {
+      if (offsetTop > offsetY && !shown) {
         shown = true;
         setGoUpShown(true);
-      } else if (offsetTop < 1200 && shown) {
+      } else if (offsetTop < offsetY && shown) {
         shown = false;
         setGoUpShown(false);
       }
     };
-  };
+  }, [offsetY]);
 
   useEffect(() => {
     const scrollHandler = observePageScroll();
@@ -26,7 +26,7 @@ export const useObservePageScrool = () => {
     return () => {
       document.removeEventListener('scroll', scrollHandler);
     };
-  }, []);
+  }, [observePageScroll]);
 
   return goUpShown;
 };
