@@ -2,6 +2,7 @@ import {
   ChangeEvent, useCallback, useEffect, useMemo, useState,
 } from 'react';
 import { BrowserView, MobileView } from 'react-device-detect';
+import { useTranslation } from 'react-i18next';
 import { Card as CardDeprecated } from '@/shared/ui/deprecated/Card';
 import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text';
 import { Text } from '@/shared/ui/redesigned/Text';
@@ -36,6 +37,8 @@ export const Rating = (props: RatingProps) => {
     onCancel,
     onAccept,
   } = props;
+
+  const { t } = useTranslation();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [starsCount, setStarsCount] = useState(rate || 0);
@@ -84,7 +87,7 @@ export const Rating = (props: RatingProps) => {
           <Input
             value={feedback}
             onChange={handleFeedbackChange}
-            placeholder='Ваш отзыв'
+            placeholder={t('Ваш отзыв') as string}
           />
         </VStack>
       )}
@@ -94,12 +97,12 @@ export const Rating = (props: RatingProps) => {
           <InputDeprecated
             value={feedback}
             onChange={handleFeedbackChange}
-            placeholder='Ваш отзыв'
+            placeholder={t('Ваш отзыв') as string}
           />
         </VStack>
       )}
     />
-  ), [feedback, feedbackTitle]);
+  ), [feedback, feedbackTitle, t]);
 
   const content = (
     <>
@@ -123,10 +126,10 @@ export const Rating = (props: RatingProps) => {
             on={(
               <HStack max gap='16' justify='end'>
                 <Button variant='negative' onClick={handleCancel}>
-                  Закрыть
+                  {t('Закрыть')}
                 </Button>
                 <Button onClick={handleAcept}>
-                  Отправить
+                  {t('Отправить')}
                 </Button>
               </HStack>
             )}
@@ -136,10 +139,10 @@ export const Rating = (props: RatingProps) => {
                   theme={ButtonTheme.OUTLINE_RED}
                   onClick={handleCancel}
                 >
-                  Закрыть
+                  {t('Закрыть')}
                 </ButtonDeprecated>
                 <ButtonDeprecated onClick={handleAcept}>
-                  Отправить
+                  {t('Отправить')}
                 </ButtonDeprecated>
               </HStack>
             )}
@@ -161,7 +164,7 @@ export const Rating = (props: RatingProps) => {
                 className={cls.sendBtnMobile}
                 onClick={handleAcept}
               >
-                Отправить
+                {t('Отправить')}
               </Button>
             )}
             off={(
@@ -169,7 +172,7 @@ export const Rating = (props: RatingProps) => {
                 className={cls.sendBtnMobile}
                 onClick={handleAcept}
               >
-                Отправить
+                {t('Отправить')}
               </ButtonDeprecated>
             )}
           />

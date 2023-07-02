@@ -60,7 +60,7 @@ export const ArticleRating = memo((props: ArticleRatingProps) => {
       rate={rating?.rate}
       className={cls.rating}
       title={rating ? t('Рейтинг статьи') as string : t('Оцените статью') as string}
-      feedbackTitle='Оставьте свой отзыв о статье'
+      feedbackTitle={t('Оставьте свой отзыв о статье') as string}
     />
   );
 });

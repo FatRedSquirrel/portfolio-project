@@ -71,7 +71,7 @@ export const NotificationsButton = (props: NotificationsButtonProps) => {
       <MobileView>
         {trigger}
         <Drawer isOpen={drawerOpen} onClose={closeDrawer}>
-          <NotificationsList />
+          <NotificationsList className={cls.listMobile} />
         </Drawer>
       </MobileView>
     </>

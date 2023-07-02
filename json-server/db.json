@@ -1066,7 +1066,7 @@
       },
       "jsonSettings": {
         "isArticlesPageWasOpened": true,
-        "theme": "app_dark_theme"
+        "theme": "app_light_theme"
       },
       "avatar": "https://mobimg.b-cdn.net/v3/fetch/0f/0fa2ad47af6d1440a1662c1651724ab0.jpeg"
     },
@@ -1284,6 +1284,43 @@
       "rate": 5,
       "feedback": "123",
       "id": "CcrhZWg"
+    },
+    {
+      "userId": "1",
+      "articleId": "7",
+      "rate": 5,
+      "feedback": "123",
+      "id": "Q_zUEcj"
+    },
+    {
+      "userId": "1",
+      "articleId": "7",
+      "rate": 5,
+      "id": "fJ64rWW"
+    },
+    {
+      "userId": "1",
+      "articleId": "7",
+      "rate": 5,
+      "id": "Go9A18y"
+    },
+    {
+      "userId": "1",
+      "articleId": "7",
+      "rate": 5,
+      "id": "9rvDc4B"
+    },
+    {
+      "userId": "1",
+      "articleId": "7",
+      "rate": 5,
+      "id": "KIo5h7a"
+    },
+    {
+      "userId": "1",
+      "articleId": "7",
+      "rate": 5,
+      "id": "Ooz0QIt"
     }
   ],
   "profile-ratings": [

@@ -30,7 +30,6 @@
   },
   "Комментарии отсутствуют": "There are no comments",
   "Введите текст комментария": "Enter the comment text",
-  "Отправить": "Send",
   "Поиск": "Search",
   "Возрастанию": "Ascending",
   "Убыванию": "Descending",
@@ -66,5 +65,9 @@
   "Редактирование статьи": "Edit article",
   "Создание статьи": "Create article",
   "Ничего не найдено": "Nothing found",
-  "Нет уведомлений": "No notifications"
+  "Нет уведомлений": "No notifications",
+  "Закрыть": "Close",
+  "Отправить": "Send",
+  "Ваш отзыв": "Your feedback",
+  "Оставьте свой отзыв о статье": "Leave your feedback about the article"
 }
