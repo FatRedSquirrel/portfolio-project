@@ -9,9 +9,6 @@ const ProfilePage = () => {
 
   return (
     <Page dataTestid='ProfilePage'>
-      {/* <ProfilePageHeader />
-        <ProfilePageErrors />
-        <ProfileCard /> */}
       <EditableProfileCard id={id} />
     </Page>
   );
