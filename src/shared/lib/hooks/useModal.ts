@@ -47,11 +47,13 @@ export function useModal(props: UseModalProps) {
   useEffect(() => {
     if (isOpen) {
       window.addEventListener('keydown', onKeyDown);
+      document.documentElement.style.overflowY = 'hidden';
     }
 
     return () => {
       clearTimeout(timerRef.current);
       window.removeEventListener('keydown', onKeyDown);
+      document.documentElement.style.overflowY = 'auto';
     };
   }, [isOpen, onKeyDown]);
 
