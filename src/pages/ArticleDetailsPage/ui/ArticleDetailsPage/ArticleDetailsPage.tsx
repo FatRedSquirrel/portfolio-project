@@ -58,6 +58,7 @@ const ArticleDetailsPage = () => {
                       initialValue={rating}
                       onClick={(rate) => setRating(rate)}
                       transition
+                      allowFraction
                     />
                   </VStack>
                 </Card>
