@@ -124,6 +124,7 @@
     "react-i18next": "^12.2.2",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.11.1",
+    "react-simple-star-rating": "^5.1.7",
     "react-virtuoso": "^4.3.6"
   },
   "peerDependencies": {
